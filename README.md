@@ -13,10 +13,42 @@ switches to any of the league's 25 divisions.
 ## What it shows
 
 - **Power rank** for every team, next to its league-table rank, so the disagreements are visible.
+- **A crest for every team**, in the colors of the club it is named for — Chelsea in Stamford
+  Bridge blue, Newcastle in black and white stripes, Flamengo in red and black hoops.
 - **Where the model disagrees with the table** — the three teams the standings most misprice, each with the reason.
 - **A résumé for every team** — each result with the opponent's power rank attached.
 - **Strength of schedule** — the average power score of the opponents a team has actually played.
 - **Projected margins** for upcoming fixtures.
+
+## Crests and colors
+
+Most teams in this league are named for a real club. `scripts/clubs.py` resolves the roster
+name to that club and hands the page its kit: the colors, the pattern they go in (stripes,
+hoops, halves, a sash, a sleeve), and a three-letter code. The page draws the shield from
+those, so a division of ten teams arrives with ten different identities instead of ten grey
+rows. 126 of the league's 219 teams currently resolve to a club.
+
+Nothing is copied from a club. There is no badge artwork anywhere in the repository — what
+renders is a kit assembled from colors, drawn as SVG in the browser.
+
+Teams with no real club behind them (`Predators`, `WF United Blue`) still get a crest. If the
+name contains a color, that is the kit; otherwise one is picked from a fixed palette by a hash
+of the name, so a team keeps the same crest from one refresh to the next. Within a division,
+two palette crests are never allowed to land on the same color.
+
+Each team also gets two accent colors, the same hue pushed to a luminance that reads on a
+white page and on a dark one. That is what the stripe down the side of a row is drawn in.
+Without it, Fulham would be drawn in white and Juventus in black.
+
+To fix a club or add one, edit the `CLUBS` table in `scripts/clubs.py` and rebuild — the key
+is the team name lowercased with everything but letters and digits removed. The table is
+covered by `tests/test_clubs.py`, which checks every entry is well formed, every accent is
+readable in both themes, and every team in the shipped data comes out with a crest the page
+can draw.
+
+A handful of names are genuinely ambiguous and are deliberately left unresolved rather than
+guessed at: `Racing` (Racing Louisville or Racing Club), `Clash`, `Herons`, `Brooklyn`,
+`Canberra`, `Fleury`. `Sheffield` is read as Sheffield United.
 
 ## How the ranking works
 
@@ -73,6 +105,14 @@ python3 -m unittest discover -s tests # run the checks
 
 - `index.html` — the whole site, data baked in
 - `data/rankings.json` — the computed figures on their own
+
+Names, crests and colors are presentation rather than results, so they are attached when the
+page is rendered and stay out of `data/rankings.json`. A change to the club table reaches the
+page on the next build with nothing refetched:
+
+```sh
+python3 scripts/build.py --offline
+```
 
 Open `index.html` directly in a browser; it needs nothing else.
 

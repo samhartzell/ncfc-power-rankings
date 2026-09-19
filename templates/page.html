@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Challenge League Power Rankings</title>
+<title>Power Rankings</title>
 <meta name="description" content="Opponent-adjusted power rankings for the NCFC Youth Challenge league.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +72,16 @@
     color-scheme: dark;
   }
 
+  /* Every element that carries a team's colors gets both accents inline and
+     picks the one that reads on the current background. */
+  .tinted { --team: var(--team-l, var(--accent)); }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tinted { --team: var(--team-d, var(--accent)); }
+  }
+
+  :root[data-theme="dark"] .tinted { --team: var(--team-d, var(--accent)); }
+
   * { box-sizing: border-box; }
 
   html { -webkit-text-size-adjust: 100%; }
@@ -104,6 +114,14 @@
 
   .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
 
+  /* ---------- crests ---------- */
+
+  .crest {
+    display: block;
+    flex: none;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+  }
+
   /* ---------- masthead ---------- */
 
   .masthead {
@@ -115,7 +133,7 @@
     max-width: 1060px;
     margin: 0 auto;
     padding-inline: 16px;
-    padding-block: 22px 18px;
+    padding-block: 24px 20px;
   }
 
   .eyebrow {
@@ -128,19 +146,18 @@
   }
 
   h1 {
-    font-size: clamp(26px, 5vw, 38px);
+    font-size: clamp(30px, 6vw, 44px);
     font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
     margin: 0 0 10px;
-    text-wrap: balance;
   }
 
   .standfirst {
     margin: 0;
-    max-width: 62ch;
+    max-width: 64ch;
     color: var(--ink-2);
-    font-size: 15px;
+    font-size: 14.5px;
   }
 
   .controls {
@@ -148,7 +165,7 @@
     flex-wrap: wrap;
     gap: 12px;
     align-items: flex-end;
-    margin-top: 20px;
+    margin-top: 18px;
   }
 
   .field { display: flex; flex-direction: column; gap: 5px; }
@@ -170,7 +187,7 @@
     border: 1px solid var(--line-strong);
     border-radius: var(--r-md);
     padding: 9px 12px;
-    min-width: 210px;
+    min-width: 230px;
     max-width: 100%;
   }
 
@@ -211,7 +228,7 @@
 
   /* ---------- section furniture ---------- */
 
-  section { margin-top: 36px; }
+  section { margin-top: 34px; }
 
   h2 {
     font-size: 13px;
@@ -229,37 +246,98 @@
     max-width: 68ch;
   }
 
+  /* small tags: the club that runs the team, its site code, girls division */
+  .chip {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 1px 6px;
+    white-space: nowrap;
+    vertical-align: 2px;
+  }
+
   /* ---------- featured team ---------- */
 
-  .featured {
-    background: var(--surface);
+  .hero {
+    background:
+      linear-gradient(105deg,
+        color-mix(in srgb, var(--team) 16%, var(--surface)),
+        var(--surface) 58%);
     border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
+    border-left: 4px solid var(--team);
     border-radius: var(--r-lg);
     padding: 20px;
   }
 
-  .featured-head {
+  .hero-top {
     display: flex;
+    align-items: center;
+    gap: 16px;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px 12px;
-    margin-bottom: 18px;
   }
 
-  .featured-name {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+  .hero-id { flex: 1 1 200px; min-width: 0; }
+
+  .hero-name {
+    font-size: clamp(22px, 3.4vw, 30px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
-  .featured-div { color: var(--ink-3); font-size: 13px; }
+  .hero-club {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+
+  .hero-club b { color: var(--team); font-weight: 700; }
+
+  .hero-rank {
+    flex: none;
+    text-align: right;
+    line-height: 1;
+  }
+
+  .hero-rank-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+
+  .hero-rank-num {
+    font-family: var(--f-mono);
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 0.9;
+    color: var(--team);
+  }
+
+  .hero-rank-of {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-left: 2px;
+  }
 
   .stat-row {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 18px;
   }
 
   .stat {
@@ -290,39 +368,6 @@
 
   .stat-sub { font-size: 11px; color: var(--ink-3); }
 
-  /* ---------- movers ---------- */
-
-  .movers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-  }
-
-  .mover {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-md);
-    padding: 14px 16px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .mover-arrow {
-    font-family: var(--f-mono);
-    font-size: 15px;
-    font-weight: 600;
-    white-space: nowrap;
-    padding-top: 1px;
-  }
-
-  .mover-arrow.up { color: var(--pos); }
-  .mover-arrow.down { color: var(--neg); }
-
-  .mover-team { font-weight: 700; }
-
-  .mover-why { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
-
   /* ---------- table ---------- */
 
   .table-scroll {
@@ -332,7 +377,7 @@
     border-radius: var(--r-lg);
   }
 
-  table { border-collapse: collapse; width: 100%; min-width: 620px; }
+  table { border-collapse: collapse; width: 100%; min-width: 700px; }
 
   thead th {
     font-size: 10px;
@@ -349,7 +394,7 @@
   thead th.left { text-align: left; }
 
   tbody td {
-    padding: 11px 10px;
+    padding: 9px 10px;
     border-bottom: 1px solid var(--line);
     text-align: right;
     vertical-align: middle;
@@ -357,43 +402,62 @@
 
   tbody tr:last-of-type td { border-bottom: 0; }
 
+  .rank-cell {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 17px;
+    font-weight: 600;
+    width: 52px;
+    text-align: center;
+    border-left: 3px solid var(--team);
+  }
+
   .row-team { text-align: left; }
 
   .team-button {
     font-family: var(--f-display);
-    font-size: 15px;
-    font-weight: 600;
     color: var(--ink);
     background: none;
     border: 0;
     padding: 0;
     cursor: pointer;
     text-align: left;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 9px;
+    width: 100%;
+  }
+
+  .team-label { min-width: 0; }
+
+  .team-name {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .team-club {
+    font-size: 11.5px;
+    color: var(--ink-3);
+    line-height: 1.3;
   }
 
   .chev {
     color: var(--ink-3);
-    font-size: 10px;
+    font-size: 9px;
     transition: transform 0.15s ease;
+    flex: none;
   }
 
   tr.is-open .chev { transform: rotate(90deg); }
 
-  .rank-cell {
-    font-family: var(--f-mono);
-    font-variant-numeric: tabular-nums;
-    font-size: 17px;
-    font-weight: 600;
-    width: 44px;
-    text-align: center;
-  }
+  tr.featured-row { background: color-mix(in srgb, var(--team) 11%, transparent); }
 
-  tr.featured-row { background: var(--accent-soft); }
-
-  tr.featured-row .team-button { color: var(--accent); }
+  tr.featured-row .team-name { color: var(--team); }
 
   .move {
     font-family: var(--f-mono);
@@ -449,7 +513,13 @@
 
   /* ---------- resume drawer ---------- */
 
-  .drawer td { padding: 0 10px 16px; border-bottom: 1px solid var(--line); }
+  .drawer td {
+    padding: 2px 10px 16px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+
+  .drawer .rank-cell { border-left: 3px solid var(--team); }
 
   .resume {
     display: flex;
@@ -464,7 +534,7 @@
     border: 1px solid var(--line);
     border-left-width: 3px;
     border-radius: var(--r-sm);
-    padding: 7px 11px 7px 9px;
+    padding: 6px 11px 6px 9px;
     background: var(--surface-2);
     font-size: 13px;
   }
@@ -483,7 +553,7 @@
   .game.l .game-result { color: var(--neg); }
   .game.t .game-result { color: var(--ink-2); }
 
-  .game-opp { color: var(--ink); }
+  .game-opp { color: var(--ink); display: flex; align-items: center; gap: 6px; }
 
   .oppr {
     font-family: var(--f-mono);
@@ -507,17 +577,62 @@
     color: var(--ink-2);
   }
 
+  /* ---------- movers ---------- */
+
+  .movers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+  }
+
+  .mover {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--team);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+  }
+
+  .mover-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+  }
+
+  .mover-arrow {
+    font-family: var(--f-mono);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .mover-arrow.up { color: var(--pos); }
+  .mover-arrow.down { color: var(--neg); }
+
+  .mover-why { font-size: 12.5px; color: var(--ink-2); margin-top: 3px; }
+
   /* ---------- fixtures ---------- */
 
-  .fixtures { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+  .fixtures {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
 
   .fixture {
     background: var(--surface);
-    padding: 11px 14px;
+    padding: 10px 14px;
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 4px 12px;
+    align-items: center;
+    gap: 6px 12px;
   }
 
   .fixture-date {
@@ -528,7 +643,16 @@
     flex: none;
   }
 
-  .fixture-teams { flex: 1 1 200px; font-size: 14px; }
+  .fixture-teams {
+    flex: 1 1 240px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .fixture-teams .vs { color: var(--ink-3); font-size: 12px; }
 
   .fixture-call { font-size: 12.5px; color: var(--ink-2); font-family: var(--f-mono); }
 
@@ -581,10 +705,12 @@
   }
 
   @media (max-width: 560px) {
-    .masthead-inner { padding-block: 18px 16px; }
+    .masthead-inner { padding-block: 20px 16px; }
     select { min-width: 0; width: 100%; }
     .field { width: 100%; }
     .fixture-date { width: auto; }
+    .hero { padding: 16px; }
+    .hero-rank { margin-left: auto; }
   }
 </style>
 </head>
@@ -592,11 +718,10 @@
 <header class="masthead">
   <div class="masthead-inner">
     <p class="eyebrow" id="league-eyebrow">Power Rankings</p>
-    <h1>Who has actually beaten somebody?</h1>
+    <h1>Power Rankings</h1>
     <p class="standfirst">
-      The league table counts points. These rankings count points <em>and</em> who they came
-      against &mdash; a one-goal win over the division leader is worth more than a four-goal win
-      over the team in last.
+      Opponent-adjusted. Every result is weighed by who it came against, so a one-goal win
+      over the division leader is worth more than a four-goal win over the team in last.
     </p>
     <div class="controls">
       <div class="field">
@@ -619,20 +744,11 @@
   <section id="featured-section" hidden>
     <h2>Your team</h2>
     <p class="section-note" id="featured-note"></p>
-    <div class="featured" id="featured"></div>
+    <div id="featured"></div>
   </section>
 
-  <section id="movers-section">
-    <h2>Where the model disagrees with the table</h2>
-    <p class="section-note">
-      Teams whose power rank is furthest from where the standings put them. This is the
-      strength-of-schedule effect made visible.
-    </p>
-    <div class="movers" id="movers"></div>
-  </section>
-
-  <section>
-    <h2>Full rankings</h2>
+  <section id="rankings-section">
+    <h2 id="rankings-heading">The rankings</h2>
     <p class="section-note">
       Select a team to see every result it has posted, with each opponent&rsquo;s power rank.
     </p>
@@ -653,6 +769,15 @@
         <tbody id="rows"></tbody>
       </table>
     </div>
+  </section>
+
+  <section id="movers-section">
+    <h2>Where the model disagrees with the table</h2>
+    <p class="section-note">
+      Teams whose power rank is furthest from where the standings put them. This is the
+      strength-of-schedule effect made visible.
+    </p>
+    <div class="movers" id="movers"></div>
   </section>
 
   <section id="fixtures-section">
@@ -707,6 +832,14 @@
         projected margin, which is where the &ldquo;Next up&rdquo; calls come from.
       </p>
 
+      <h3>The crests</h3>
+      <p>
+        Most teams here are named for a real club, so each crest is drawn in that club&rsquo;s
+        kit colors and pattern &mdash; Chelsea in Stamford Bridge blue, Newcastle in black and
+        white stripes, Flamengo in red and black hoops. <span id="crest-count"></span> Nothing
+        is copied from a club: these are kits assembled from colors, not badges.
+      </p>
+
       <div class="caveat">
         <h3>Read it with the sample size in mind</h3>
         <p id="caveat-text"></p>
@@ -750,6 +883,145 @@
     return div.teams.find((t) => t.league_team_id === DATA.featured_team) || null;
   }
 
+  function teamsById(div) {
+    return new Map(div.teams.map((t) => [t.id, t]));
+  }
+
+  /* ---------- crests ----------
+     A shield in the club's kit colors, with the pattern those colors go in and
+     a name band across the front. Drawn here rather than shipped as artwork:
+     nothing is copied from a club. */
+
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  const SHIELD = "M8 5 H92 V57 C92 83 74 100 50 107 C26 100 8 83 8 57 Z";
+  let crestSeq = 0;
+
+  const svg = (tag, attrs) => {
+    const node = document.createElementNS(SVG_NS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) node.setAttribute(k, String(v));
+    return node;
+  };
+
+  const box = (x, y, w, h, fill) => svg("rect", { x, y, width: w, height: h, fill });
+
+  function luminance(hex) {
+    const h = hex.replace("#", "");
+    const parts = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+    const lin = parts.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+  }
+
+  function patternShapes(group, pattern, field, trim, accent) {
+    switch (pattern) {
+      case "stripes":
+        for (let x = 8; x < 100; x += 28) group.append(box(x, 0, 14, 112, trim));
+        break;
+      case "hoops":
+        for (let y = 8; y < 112; y += 30) group.append(box(0, y, 100, 15, trim));
+        break;
+      case "halves":
+        group.append(box(50, 0, 50, 112, trim));
+        break;
+      case "diagonal":
+        group.append(svg("polygon", { points: "100,0 100,112 0,112", fill: trim }));
+        break;
+      case "sash":
+        group.append(svg("polygon", { points: "0,112 0,74 78,0 100,0 100,26 24,112", fill: trim }));
+        break;
+      case "sleeves":
+        group.append(box(0, 0, 21, 112, trim));
+        group.append(box(79, 0, 21, 112, trim));
+        break;
+      case "cross":
+        group.append(box(38, 0, 24, 112, trim));
+        group.append(box(0, 32, 100, 24, trim));
+        if (accent) group.append(box(44, 0, 12, 112, accent));
+        break;
+      case "band":
+        group.append(box(0, 40, 100, 26, trim));
+        break;
+      default:
+        break;
+    }
+  }
+
+  function crest(team, size) {
+    const id = team.identity;
+    const [field, trim, accent] = id.colors;
+    const uid = `crest-${++crestSeq}`;
+    const root = svg("svg", {
+      class: "crest",
+      viewBox: "0 0 100 112",
+      width: size,
+      height: Math.round(size * 1.12),
+      role: "img",
+      "aria-hidden": "true",
+    });
+
+    const defs = svg("defs");
+    const clip = svg("clipPath", { id: uid });
+    clip.append(svg("path", { d: SHIELD }));
+    defs.append(clip);
+    root.append(defs);
+
+    const group = svg("g", { "clip-path": `url(#${uid})` });
+    group.append(box(0, 0, 100, 112, field));
+    patternShapes(group, id.pattern, field, trim, accent);
+
+    // The name band, with the club's letters on it. Below about 26px the
+    // letters stop being letters, so the crest is left as pure kit.
+    if (size >= 26) {
+      const sorted = [...id.colors].sort((a, b) => luminance(b) - luminance(a));
+      const band = luminance(sorted[0]) > 0.55 ? sorted[0] : "#FFFFFF";
+      const letters = luminance(sorted[sorted.length - 1]) < 0.5
+        ? sorted[sorted.length - 1]
+        : "#151A20";
+      group.append(svg("rect", {
+        x: 0, y: 50, width: 100, height: 26, fill: band,
+        stroke: letters, "stroke-width": 1.5, "stroke-opacity": 0.35,
+      }));
+      const text = svg("text", {
+        x: 50, y: 70, "text-anchor": "middle", fill: letters,
+        "font-family": "IBM Plex Mono, ui-monospace, monospace",
+        "font-size": id.code.length > 3 ? 18 : 22,
+        "font-weight": 600,
+        "letter-spacing": 0.5,
+      });
+      text.textContent = id.code;
+      group.append(text);
+    }
+
+    root.append(group);
+    root.append(svg("path", {
+      d: SHIELD, fill: "none", stroke: "currentColor",
+      "stroke-opacity": 0.28, "stroke-width": 4,
+    }));
+    return root;
+  }
+
+  function tint(node, team) {
+    node.classList.add("tinted");
+    node.style.setProperty("--team-l", team.identity.accent.light);
+    node.style.setProperty("--team-d", team.identity.accent.dark);
+    return node;
+  }
+
+  /** The line under a team's name: the club it is named for, and where that
+      club plays. Teams with no real club behind them get nothing. */
+  function clubLine(team) {
+    const id = team.identity;
+    if (!id.real) return "";
+    if (id.club.toLowerCase() === team.short.toLowerCase()) return id.comp;
+    return `${id.club} · ${id.comp}`;
+  }
+
+  function tags(team) {
+    const out = [];
+    if (!team.host && team.org) out.push(team.org);
+    if (team.site) out.push(team.site);
+    return out;
+  }
+
   /* ---------- controls ---------- */
 
   function buildDivisionSelect() {
@@ -782,7 +1054,7 @@
 
   function renderMeta(div) {
     const parts = [
-      `${DATA.league}`,
+      `${div.teams.length} teams`,
       `${div.games_played} of ${div.games_total} games played`,
       `updated ${new Date(DATA.generated_at).toLocaleDateString(undefined, {
         month: "short", day: "numeric", year: "numeric",
@@ -791,44 +1063,80 @@
     const line = $("meta-line");
     line.replaceChildren();
     parts.forEach((p) => line.append(el("span", null, p)));
-    $("league-eyebrow").textContent = `${DATA.league} · Power Rankings`;
+    $("league-eyebrow").textContent = DATA.league;
+    $("rankings-heading").textContent = div.name;
+    document.title = `Power Rankings · ${div.name}`;
   }
 
   function renderFeatured(div) {
     const team = featuredTeam(div);
     const section = $("featured-section");
-    if (!team) { section.hidden = true; return; }
+    const host = $("featured");
+    if (!team) {
+      section.hidden = true;
+      host.replaceChildren();  // a hidden crest is still a crest in the document
+      return;
+    }
     section.hidden = false;
 
     $("featured-note").textContent =
       `How ${team.short} looks once the schedule is accounted for.`;
 
-    const host = $("featured");
     host.replaceChildren();
+    const card = tint(el("div", "hero"), team);
 
-    const head = el("div", "featured-head");
-    head.append(el("p", "featured-name", team.short));
-    head.append(el("span", "featured-div", `${team.name} · ${div.name}`));
-    host.append(head);
+    const top = el("div", "hero-top");
+    top.append(crest(team, 58));
+
+    const idBlock = el("div", "hero-id");
+    const name = el("h3", "hero-name");
+    name.append(document.createTextNode(team.short));
+    for (const tag of tags(team)) name.append(el("span", "chip", tag));
+    idBlock.append(name);
+
+    const club = el("p", "hero-club");
+    if (team.identity.real) {
+      club.append(document.createTextNode("Playing as "));
+      club.append(el("b", null, team.identity.club));
+      club.append(document.createTextNode(` · ${team.identity.comp}`));
+    } else {
+      club.textContent = div.name;
+    }
+    idBlock.append(club);
+    top.append(idBlock);
+
+    const rank = el("div", "hero-rank");
+    rank.append(el("span", "hero-rank-label", "Power rank"));
+    rank.append(el("span", "hero-rank-num", String(team.power_rank)));
+    rank.append(el("span", "hero-rank-of", `/${div.teams.length}`));
+    top.append(rank);
+    card.append(top);
 
     const stats = el("div", "stat-row");
     const cards = [
-      ["Power rank", `${team.power_rank}`,
-        `of ${div.teams.length} · league table #${team.table_rank}`],
       ["Power score", team.power_score.toFixed(1), "50 is average"],
+      ["League table", `#${team.table_rank}`,
+        team.movement === 0
+          ? "same as the power rank"
+          : `${Math.abs(team.movement)} ${Math.abs(team.movement) === 1 ? "place" : "places"} ` +
+            `${team.movement > 0 ? "better" : "worse"} here`],
       ["Record", recordOf(team), `${team.record.pts} pts · GD ${signed(team.record.gd, 0)}`],
       ["Rating", signed(team.rating, 2), "goals vs. average team"],
-      ["Schedule", `#${team.sos_rank}`, `hardest slate faced = #1`],
+      ["Schedule", `#${team.sos_rank}`, "hardest slate faced = #1"],
     ];
     for (const [label, value, sub] of cards) {
-      const card = el("div", "stat");
-      card.append(el("span", "stat-label", label));
-      card.append(el("div", "stat-value", value));
-      card.append(el("div", "stat-sub", sub));
-      stats.append(card);
+      const stat = el("div", "stat");
+      stat.append(el("span", "stat-label", label));
+      stat.append(el("div", "stat-value", value));
+      stat.append(el("div", "stat-sub", sub));
+      stats.append(stat);
     }
-    host.append(stats);
-    host.append(buildResume(team, div));
+    card.append(stats);
+
+    const resume = buildResume(team, div);
+    resume.style.marginTop = "18px";
+    card.append(resume);
+    host.append(card);
   }
 
   function moverReason(team, div) {
@@ -837,10 +1145,10 @@
     const soft = team.sos_rank > (2 * n) / 3;
     if (team.movement > 0) {
       if (hard) return `Toughest slate in the division (SOS #${team.sos_rank}); the record understates them.`;
-      return `Beat the teams it played by more than the table rewards.`;
+      return "Beat the teams it played by more than the table rewards.";
     }
     if (soft) return `Points came against the softest slate so far (SOS #${team.sos_rank}).`;
-    return `Results are thinner than the points total suggests.`;
+    return "Results are thinner than the points total suggests.";
   }
 
   function renderMovers(div) {
@@ -858,14 +1166,16 @@
     $("movers-section").hidden = false;
 
     for (const team of ranked) {
-      const card = el("div", "mover");
-      const up = team.movement > 0;
-      const arrow = el("span", `mover-arrow ${up ? "up" : "down"}`,
-        `${up ? "▲" : "▼"}${Math.abs(team.movement)}`);
-      card.append(arrow);
+      const card = tint(el("div", "mover"), team);
+      card.append(crest(team, 34));
 
       const body = el("div");
-      body.append(el("div", "mover-team", team.short));
+      const head = el("div", "mover-head");
+      head.append(el("span", null, team.short));
+      const up = team.movement > 0;
+      head.append(el("span", `mover-arrow ${up ? "up" : "down"}`,
+        `${up ? "▲" : "▼"}${Math.abs(team.movement)}`));
+      body.append(head);
       body.append(el("div", "mover-why",
         `Table #${team.table_rank} → power #${team.power_rank}. ${moverReason(team, div)}`));
       card.append(body);
@@ -874,8 +1184,9 @@
   }
 
   function buildResume(team, div) {
-    const box = el("div");
+    const wrapper = el("div");
     const list = el("div", "resume");
+    const byId = teamsById(div);
 
     if (!team.resume.length) {
       list.append(el("span", "venue", "No completed games yet."));
@@ -884,23 +1195,29 @@
     for (const g of team.resume) {
       const game = el("div", `game ${g.outcome.toLowerCase()}`);
       game.append(el("span", "game-result", `${g.outcome} ${g.gf}–${g.ga}`));
-      game.append(el("span", "game-opp", g.opponent));
+
+      const opp = el("span", "game-opp");
+      const oppTeam = byId.get(g.opponent_id);
+      if (oppTeam) opp.append(crest(oppTeam, 18));
+      opp.append(el("span", null, g.opponent));
+      game.append(opp);
+
       const badge = el("span", `oppr ${g.quality}`, `#${g.opponent_rank}`);
       badge.title = `${g.opponent} is ranked ${g.opponent_rank} of ${div.teams.length}`;
       game.append(badge);
       game.append(el("span", "venue", g.home ? "home" : "away"));
       list.append(game);
     }
-    box.append(list);
+    wrapper.append(list);
 
     if (team.resume.length) {
       const note = el("div", "drawer-sos");
       note.textContent =
         `Average opponent power score ${team.sos.toFixed(1)} — ` +
         `${team.sos_rank}${ordinal(team.sos_rank)} hardest of ${div.teams.length} in this division.`;
-      box.append(note);
+      wrapper.append(note);
     }
-    return box;
+    return wrapper;
   }
 
   function ordinal(n) {
@@ -919,22 +1236,31 @@
     const maxRating = Math.max(1e-6, ...div.teams.map((t) => Math.abs(t.rating)));
 
     for (const team of teams) {
-      const tr = el("tr");
+      const tr = tint(el("tr"), team);
       const isFeatured = team.league_team_id === DATA.featured_team;
       if (isFeatured) tr.classList.add("featured-row");
       const isOpen = state.open.has(team.id);
       if (isOpen) tr.classList.add("is-open");
 
-      const rank = el("td", "rank-cell num",
-        String(state.sort === "power" ? team.power_rank : team.table_rank));
-      tr.append(rank);
+      tr.append(el("td", "rank-cell num",
+        String(state.sort === "power" ? team.power_rank : team.table_rank)));
 
       const nameCell = el("td", "row-team");
       const button = el("button", "team-button");
       button.type = "button";
       button.setAttribute("aria-expanded", String(isOpen));
       button.append(el("span", "chev", "▶"));
-      button.append(el("span", null, team.short));
+      button.append(crest(team, 30));
+
+      const label = el("div", "team-label");
+      const name = el("div", "team-name");
+      name.append(document.createTextNode(team.short));
+      for (const tag of tags(team)) name.append(el("span", "chip", tag));
+      label.append(name);
+      const line = clubLine(team);
+      if (line) label.append(el("div", "team-club", line));
+      button.append(label);
+
       button.addEventListener("click", () => {
         if (state.open.has(team.id)) state.open.delete(team.id);
         else state.open.add(team.id);
@@ -976,9 +1302,10 @@
       body.append(tr);
 
       if (isOpen) {
-        const drawer = el("tr", "drawer");
+        const drawer = tint(el("tr", "drawer"), team);
+        drawer.append(el("td", "rank-cell"));
         const cell = el("td");
-        cell.colSpan = 8;
+        cell.colSpan = 7;
         cell.append(buildResume(team, div));
         drawer.append(cell);
         body.append(drawer);
@@ -990,6 +1317,7 @@
     const host = $("fixtures");
     const section = $("fixtures-section");
     host.replaceChildren();
+    const byId = teamsById(div);
 
     const next = div.upcoming.slice(0, 6);
     if (!next.length) { section.hidden = true; return; }
@@ -998,7 +1326,17 @@
     for (const f of next) {
       const row = el("div", "fixture");
       row.append(el("span", "fixture-date num", f.date.replace(/,\s*\d{4}$/, "")));
-      row.append(el("span", "fixture-teams", `${f.home} vs ${f.away}`));
+
+      const teams = el("div", "fixture-teams");
+      const home = byId.get(f.home_id);
+      const away = byId.get(f.away_id);
+      if (home) teams.append(crest(home, 20));
+      teams.append(el("span", null, f.home));
+      teams.append(el("span", "vs", "v"));
+      if (away) teams.append(crest(away, 20));
+      teams.append(el("span", null, f.away));
+      row.append(teams);
+
       const call = f.margin < 0.25
         ? "too close to call"
         : `${f.favorite} by ${f.margin.toFixed(1)}`;
@@ -1015,9 +1353,13 @@
       `win-loss in a short season, but win-loss is what the table rewards, so neither ` +
       `is allowed to dominate.`;
 
-    const perTeam = div.teams.length
-      ? (div.games_played * 2) / div.teams.length
-      : 0;
+    const invented = div.teams.filter((t) => !t.identity.real).length;
+    $("crest-count").textContent = invented
+      ? `The ${invented} team${invented === 1 ? "" : "s"} in this division named for nobody ` +
+        `in particular get a kit built from the name instead.`
+      : "";
+
+    const perTeam = div.teams.length ? (div.games_played * 2) / div.teams.length : 0;
     $("caveat-text").textContent =
       `This division has played ${div.games_played} games — about ` +
       `${perTeam.toFixed(0)} per team. That is a small sample, and the ratings are ` +
@@ -1037,8 +1379,8 @@
     if (!div) return;
     renderMeta(div);
     renderFeatured(div);
-    renderMovers(div);
     renderRows(div);
+    renderMovers(div);
     renderFixtures(div);
     renderMethod(div);
   }
