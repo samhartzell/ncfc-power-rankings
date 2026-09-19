@@ -14,7 +14,6 @@ Usage:
 import argparse
 import json
 import pathlib
-import re
 import sys
 import time
 import urllib.error
@@ -22,6 +21,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import clubs  # noqa: E402
 import ratings  # noqa: E402
 
 API_BASE = "https://api.gb.playmetrics.com/external/lss/"
@@ -76,17 +76,6 @@ def league_payload(**extra):
     return payload
 
 
-def short_name(name):
-    """Trim the age-group and club boilerplate that prefixes every team name.
-
-    'U11 (15) NCFCY Chelsea' -> 'Chelsea'. Anything that does not match the
-    usual shape is left alone rather than mangled.
-    """
-    trimmed = re.sub(r"^U\d+\s*\(\d+\)\s*", "", name).strip()
-    trimmed = re.sub(r"^NCFCY\s+", "", trimmed).strip()
-    return trimmed or name
-
-
 def extract_teams(division):
     """Team list for a division, keyed by the roster id used in the schedule."""
     teams = []
@@ -99,7 +88,7 @@ def extract_teams(division):
                 "id": team["id"],
                 "league_team_id": entry.get("id"),
                 "name": team.get("name", "Unknown"),
-                "short": short_name(team.get("name", "Unknown")),
+                "short": clubs.parse(team.get("name", "Unknown"))["display"],
                 "club": (entry.get("club") or {}).get("name", ""),
                 "cross_divisional": bool(team.get("is_cross_divisional")),
             }
@@ -293,6 +282,10 @@ def fetch_all():
 
 
 def render(payload):
+    # Names, crests and colors are presentation, so they are attached here
+    # rather than saved into data/rankings.json: a change to the club table
+    # reaches the page on the next build with nothing refetched.
+    payload = clubs.decorate(payload)
     template = TEMPLATE.read_text()
     marker = "/*__RANKINGS_DATA__*/null"
     if marker not in template:
