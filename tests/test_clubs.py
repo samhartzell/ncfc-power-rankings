@@ -190,6 +190,15 @@ class TestAgainstTheLeague(unittest.TestCase):
             with self.subTest(division=division["name"]):
                 self.assertEqual(len(labels), len(set(labels)))
 
+    def test_the_page_is_never_told_which_club_a_kit_came_from(self):
+        """A team named for a club turns up in that club's colors and nothing
+        announces it, so the club's name and competition never ship."""
+        for division in self.payload["divisions"]:
+            for team in division["teams"]:
+                with self.subTest(team=team["name"]):
+                    self.assertNotIn("club", team["identity"])
+                    self.assertNotIn("comp", team["identity"])
+
     def test_most_of_the_league_is_named_for_a_real_club(self):
         teams = [t for d in self.payload["divisions"] for t in d["teams"]]
         real = [t for t in teams if t["identity"]["real"]]

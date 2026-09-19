@@ -304,9 +304,11 @@ def monogram(display):
 def identity(display):
     """Resolve a parsed team name to a crest.
 
-    Returns the real club when the name is one, and a generated kit when it is
-    not. ``real`` says which of the two happened, so the page can show the club
-    line only where there is a club to show.
+    Returns the real club's kit when the name is one, and a generated kit when
+    it is not. ``real`` says which of the two happened. The club and its
+    competition are carried for the table's own sake -- to tell two clubs of
+    the same name apart -- and are never drawn on the page: a team named for a
+    club simply turns up in that club's colors, with nothing announcing it.
     """
     key = _key(display)
     key = ALIASES.get(key, key)
@@ -480,10 +482,16 @@ def decorate(payload):
     Runs at render time rather than fetch time: these are presentation, not
     results, so they stay out of data/rankings.json and a change here shows up
     on the next build with no refetch.
+
+    The club's name and competition do not go with the kit. Nothing on the page
+    draws them, and a team named for a club is meant to simply turn up in that
+    club's colors, so they are dropped rather than shipped unread.
     """
     for division in payload.get("divisions", []):
         for team in division.get("teams", []):
             described = describe(team["name"])
+            for unshipped in ("club", "comp"):
+                described["identity"].pop(unshipped, None)
             team["short"] = described["display"]
             team["org"] = described["org"]
             team["host"] = described["host"]
