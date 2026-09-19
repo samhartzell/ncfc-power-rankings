@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Challenge League Power Rankings</title>
+<meta name="description" content="Opponent-adjusted power rankings for the NCFC Youth Challenge league.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f2f4f6;
+    --surface: #ffffff;
+    --surface-2: #e9edf1;
+    --ink: #16202b;
+    --ink-2: #5d6b7a;
+    --ink-3: #8593a2;
+    --line: #dde3e9;
+    --line-strong: #c4ced8;
+    --accent: #1f3f6e;
+    --accent-soft: #e4ebf5;
+    --pos: #0f9481;
+    --neg: #c25429;
+    --neutral-mark: #8e9aa6;
+    --focus: #1f3f6e;
+
+    --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 14px;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12171c;
+      --surface: #1a2129;
+      --surface-2: #222b35;
+      --ink: #e6ecf2;
+      --ink-2: #9aa8b6;
+      --ink-3: #75838f;
+      --line: #2a3440;
+      --line-strong: #3b4855;
+      --accent: #7aa5dd;
+      --accent-soft: #22303f;
+      --pos: #2aa88f;
+      --neg: #d06f45;
+      --neutral-mark: #6b7886;
+      --focus: #7aa5dd;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12171c;
+    --surface: #1a2129;
+    --surface-2: #222b35;
+    --ink: #e6ecf2;
+    --ink-2: #9aa8b6;
+    --ink-3: #75838f;
+    --line: #2a3440;
+    --line-strong: #3b4855;
+    --accent: #7aa5dd;
+    --accent-soft: #22303f;
+    --pos: #2aa88f;
+    --neg: #d06f45;
+    --neutral-mark: #6b7886;
+    --focus: #7aa5dd;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-display);
+    font-size: 15px;
+    line-height: 1.55;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 0 56px;
+  }
+
+  a { color: var(--accent); }
+
+  :where(a, button, select, summary):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--r-sm);
+  }
+
+  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .masthead-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 22px 18px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--ink-2);
+    font-size: 15px;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .field label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  select {
+    font-family: var(--f-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-md);
+    padding: 9px 12px;
+    min-width: 210px;
+    max-width: 100%;
+  }
+
+  .toggle {
+    display: inline-flex;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .toggle button {
+    font-family: var(--f-display);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+
+  .toggle button + button { border-left: 1px solid var(--line-strong); }
+
+  .toggle button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--surface);
+  }
+
+  .meta-line {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  /* ---------- section furniture ---------- */
+
+  section { margin-top: 36px; }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0 0 4px;
+  }
+
+  .section-note {
+    margin: 0 0 16px;
+    color: var(--ink-3);
+    font-size: 13px;
+    max-width: 68ch;
+  }
+
+  /* ---------- featured team ---------- */
+
+  .featured {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--r-lg);
+    padding: 20px;
+  }
+
+  .featured-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 12px;
+    margin-bottom: 18px;
+  }
+
+  .featured-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .featured-div { color: var(--ink-3); font-size: 13px; }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stat {
+    flex: 1 1 118px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 12px 14px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .stat-value {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .stat-sub { font-size: 11px; color: var(--ink-3); }
+
+  /* ---------- movers ---------- */
+
+  .movers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .mover {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .mover-arrow {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .mover-arrow.up { color: var(--pos); }
+  .mover-arrow.down { color: var(--neg); }
+
+  .mover-team { font-weight: 700; }
+
+  .mover-why { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+
+  /* ---------- table ---------- */
+
+  .table-scroll {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+  }
+
+  table { border-collapse: collapse; width: 100%; min-width: 620px; }
+
+  thead th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: right;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+
+  thead th.left { text-align: left; }
+
+  tbody td {
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+    vertical-align: middle;
+  }
+
+  tbody tr:last-of-type td { border-bottom: 0; }
+
+  .row-team { text-align: left; }
+
+  .team-button {
+    font-family: var(--f-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .chev {
+    color: var(--ink-3);
+    font-size: 10px;
+    transition: transform 0.15s ease;
+  }
+
+  tr.is-open .chev { transform: rotate(90deg); }
+
+  .rank-cell {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 17px;
+    font-weight: 600;
+    width: 44px;
+    text-align: center;
+  }
+
+  tr.featured-row { background: var(--accent-soft); }
+
+  tr.featured-row .team-button { color: var(--accent); }
+
+  .move {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .move.up { color: var(--pos); }
+  .move.down { color: var(--neg); }
+  .move.flat { color: var(--ink-3); }
+
+  .score-cell { font-family: var(--f-mono); font-weight: 600; font-size: 15px; }
+
+  /* diverging rating bar: zero line in the middle, teal right, clay left */
+  .bar {
+    position: relative;
+    width: 118px;
+    height: 16px;
+    margin-left: auto;
+  }
+
+  .bar-zero {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line-strong);
+  }
+
+  .bar-fill {
+    position: absolute;
+    top: 3px;
+    height: 10px;
+    border-radius: var(--r-sm);
+  }
+
+  .bar-fill.pos { left: calc(50% + 2px); background: var(--pos); }
+  .bar-fill.neg { right: calc(50% + 2px); background: var(--neg); }
+
+  .bar-value {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    width: 46px;
+    display: inline-block;
+    text-align: right;
+  }
+
+  .rating-cell { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+
+  /* ---------- resume drawer ---------- */
+
+  .drawer td { padding: 0 10px 16px; border-bottom: 1px solid var(--line); }
+
+  .resume {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .game {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-left-width: 3px;
+    border-radius: var(--r-sm);
+    padding: 7px 11px 7px 9px;
+    background: var(--surface-2);
+    font-size: 13px;
+  }
+
+  .game.w { border-left-color: var(--pos); }
+  .game.l { border-left-color: var(--neg); }
+  .game.t { border-left-color: var(--neutral-mark); }
+
+  .game-result {
+    font-family: var(--f-mono);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .game.w .game-result { color: var(--pos); }
+  .game.l .game-result { color: var(--neg); }
+  .game.t .game-result { color: var(--ink-2); }
+
+  .game-opp { color: var(--ink); }
+
+  .oppr {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    color: var(--ink-2);
+  }
+
+  .oppr.strong { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  .oppr.middle { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent); }
+
+  .venue { color: var(--ink-3); font-size: 11.5px; }
+
+  .drawer-sos {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+
+  /* ---------- fixtures ---------- */
+
+  .fixtures { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+
+  .fixture {
+    background: var(--surface);
+    padding: 11px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+
+  .fixture-date {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    width: 76px;
+    flex: none;
+  }
+
+  .fixture-teams { flex: 1 1 200px; font-size: 14px; }
+
+  .fixture-call { font-size: 12.5px; color: var(--ink-2); font-family: var(--f-mono); }
+
+  /* ---------- method ---------- */
+
+  .method {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px;
+  }
+
+  .method h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 20px 0 6px;
+  }
+
+  .method h3:first-of-type { margin-top: 0; }
+
+  .method p { margin: 0 0 10px; color: var(--ink-2); font-size: 14px; max-width: 68ch; }
+
+  .method strong { color: var(--ink); }
+
+  .caveat {
+    border-left: 3px solid var(--neg);
+    padding-left: 14px;
+    margin-top: 18px;
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  .empty {
+    background: var(--surface);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--r-lg);
+    padding: 30px 20px;
+    text-align: center;
+    color: var(--ink-2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 560px) {
+    .masthead-inner { padding-block: 18px 16px; }
+    select { min-width: 0; width: 100%; }
+    .field { width: 100%; }
+    .fixture-date { width: auto; }
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow" id="league-eyebrow">Power Rankings</p>
+    <h1>Who has actually beaten somebody?</h1>
+    <p class="standfirst">
+      The league table counts points. These rankings count points <em>and</em> who they came
+      against &mdash; a one-goal win over the division leader is worth more than a four-goal win
+      over the team in last.
+    </p>
+    <div class="controls">
+      <div class="field">
+        <label for="division-select">Division</label>
+        <select id="division-select"></select>
+      </div>
+      <div class="field">
+        <label for="sort-power">Order by</label>
+        <div class="toggle" role="group" aria-label="Sort order">
+          <button type="button" id="sort-power" aria-pressed="true">Power</button>
+          <button type="button" id="sort-table" aria-pressed="false">League table</button>
+        </div>
+      </div>
+    </div>
+    <div class="meta-line" id="meta-line"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="featured-section" hidden>
+    <h2>Your team</h2>
+    <p class="section-note" id="featured-note"></p>
+    <div class="featured" id="featured"></div>
+  </section>
+
+  <section id="movers-section">
+    <h2>Where the model disagrees with the table</h2>
+    <p class="section-note">
+      Teams whose power rank is furthest from where the standings put them. This is the
+      strength-of-schedule effect made visible.
+    </p>
+    <div class="movers" id="movers"></div>
+  </section>
+
+  <section>
+    <h2>Full rankings</h2>
+    <p class="section-note">
+      Select a team to see every result it has posted, with each opponent&rsquo;s power rank.
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="rank-cell">#</th>
+            <th scope="col" class="left">Team</th>
+            <th scope="col">Move</th>
+            <th scope="col">W&ndash;L&ndash;T</th>
+            <th scope="col">Pts</th>
+            <th scope="col">Power</th>
+            <th scope="col">Rating vs. average</th>
+            <th scope="col">SOS</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="fixtures-section">
+    <h2>Next up</h2>
+    <p class="section-note">
+      Projected margins from the ratings. No home-field adjustment &mdash; see the method note.
+    </p>
+    <div class="fixtures" id="fixtures"></div>
+  </section>
+
+  <section>
+    <h2>How this is calculated</h2>
+    <div class="method">
+      <h3>Two ratings, blended</h3>
+      <p>
+        Every team gets two independent ratings, then they are combined into the
+        <strong>Power</strong> score on a 0&ndash;100 scale where 50 is an average team in
+        that division.
+      </p>
+      <p>
+        <strong>Colley</strong> looks only at wins and losses. Every team starts at .500, and
+        a team&rsquo;s rating is pulled toward the average rating of the opponents it has faced.
+        Beat a good team and your rating rises more than it would for beating a bad one.
+      </p>
+      <p>
+        <strong>Massey</strong> looks at goal margin, so a 4&ndash;0 win counts for more than a
+        1&ndash;0 win over the same opponent. It is solved as a single system across the whole
+        division, which means a margin is judged against the opponent who conceded it.
+      </p>
+      <p id="weights-note"></p>
+
+      <h3>Blowouts are capped, because the league caps them</h3>
+      <p>
+        This league records a maximum of four goals per team per game, and caps each
+        game&rsquo;s differential at four. Those caps are applied here too, so beating a weak
+        team 9&ndash;0 is worth exactly the same as beating them 4&ndash;0. Running up the score
+        earns nothing.
+      </p>
+
+      <h3>Strength of schedule</h3>
+      <p>
+        <strong>SOS</strong> is the average power score of the opponents a team has actually
+        played. A team with SOS rank 1 has faced the hardest slate in its division so far.
+        Early in a season this varies a lot, which is most of the reason the power order and
+        the table order differ.
+      </p>
+
+      <h3>What the numbers mean</h3>
+      <p>
+        <strong>Rating</strong> is on a goals scale: it is the margin a team would be expected
+        to win by against an average team in its division. The gap between two ratings is a
+        projected margin, which is where the &ldquo;Next up&rdquo; calls come from.
+      </p>
+
+      <div class="caveat">
+        <h3>Read it with the sample size in mind</h3>
+        <p id="caveat-text"></p>
+        <p>
+          There is no home-field adjustment. These are club fields with short travel, and a
+          sample this small could not separate a real home effect from noise. The model also
+          has no knowledge of who was missing, who is playing up, or what the weather did.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p id="footer-text"></p>
+  </footer>
+</main>
+
+<script>
+  const DATA = /*__RANKINGS_DATA__*/null;
+
+  const state = {
+    divisionId: DATA.featured_division ?? (DATA.divisions[0] && DATA.divisions[0].id),
+    sort: "power",
+    open: new Set(),
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
+
+  const division = () => DATA.divisions.find((d) => d.id === state.divisionId);
+  const signed = (n, digits = 1) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFixed(digits);
+  const recordOf = (t) => `${t.record.w}–${t.record.l}–${t.record.t}`;
+
+  function featuredTeam(div) {
+    if (!div) return null;
+    return div.teams.find((t) => t.league_team_id === DATA.featured_team) || null;
+  }
+
+  /* ---------- controls ---------- */
+
+  function buildDivisionSelect() {
+    const select = $("division-select");
+    for (const d of DATA.divisions) {
+      const option = el("option", null, d.name);
+      option.value = String(d.id);
+      if (d.id === state.divisionId) option.selected = true;
+      select.append(option);
+    }
+    select.addEventListener("change", (e) => {
+      state.divisionId = Number(e.target.value);
+      state.open.clear();
+      render();
+    });
+  }
+
+  function bindSort() {
+    const set = (mode) => {
+      state.sort = mode;
+      $("sort-power").setAttribute("aria-pressed", String(mode === "power"));
+      $("sort-table").setAttribute("aria-pressed", String(mode === "table"));
+      render();
+    };
+    $("sort-power").addEventListener("click", () => set("power"));
+    $("sort-table").addEventListener("click", () => set("table"));
+  }
+
+  /* ---------- sections ---------- */
+
+  function renderMeta(div) {
+    const parts = [
+      `${DATA.league}`,
+      `${div.games_played} of ${div.games_total} games played`,
+      `updated ${new Date(DATA.generated_at).toLocaleDateString(undefined, {
+        month: "short", day: "numeric", year: "numeric",
+      })}`,
+    ];
+    const line = $("meta-line");
+    line.replaceChildren();
+    parts.forEach((p) => line.append(el("span", null, p)));
+    $("league-eyebrow").textContent = `${DATA.league} · Power Rankings`;
+  }
+
+  function renderFeatured(div) {
+    const team = featuredTeam(div);
+    const section = $("featured-section");
+    if (!team) { section.hidden = true; return; }
+    section.hidden = false;
+
+    $("featured-note").textContent =
+      `How ${team.short} looks once the schedule is accounted for.`;
+
+    const host = $("featured");
+    host.replaceChildren();
+
+    const head = el("div", "featured-head");
+    head.append(el("p", "featured-name", team.short));
+    head.append(el("span", "featured-div", `${team.name} · ${div.name}`));
+    host.append(head);
+
+    const stats = el("div", "stat-row");
+    const cards = [
+      ["Power rank", `${team.power_rank}`,
+        `of ${div.teams.length} · league table #${team.table_rank}`],
+      ["Power score", team.power_score.toFixed(1), "50 is average"],
+      ["Record", recordOf(team), `${team.record.pts} pts · GD ${signed(team.record.gd, 0)}`],
+      ["Rating", signed(team.rating, 2), "goals vs. average team"],
+      ["Schedule", `#${team.sos_rank}`, `hardest slate faced = #1`],
+    ];
+    for (const [label, value, sub] of cards) {
+      const card = el("div", "stat");
+      card.append(el("span", "stat-label", label));
+      card.append(el("div", "stat-value", value));
+      card.append(el("div", "stat-sub", sub));
+      stats.append(card);
+    }
+    host.append(stats);
+    host.append(buildResume(team, div));
+  }
+
+  function moverReason(team, div) {
+    const n = div.teams.length;
+    const hard = team.sos_rank <= n / 3;
+    const soft = team.sos_rank > (2 * n) / 3;
+    if (team.movement > 0) {
+      if (hard) return `Toughest slate in the division (SOS #${team.sos_rank}); the record understates them.`;
+      return `Beat the teams it played by more than the table rewards.`;
+    }
+    if (soft) return `Points came against the softest slate so far (SOS #${team.sos_rank}).`;
+    return `Results are thinner than the points total suggests.`;
+  }
+
+  function renderMovers(div) {
+    const host = $("movers");
+    host.replaceChildren();
+    const ranked = div.teams
+      .filter((t) => t.movement !== 0)
+      .sort((a, b) => Math.abs(b.movement) - Math.abs(a.movement))
+      .slice(0, 3);
+
+    if (!ranked.length) {
+      $("movers-section").hidden = true;
+      return;
+    }
+    $("movers-section").hidden = false;
+
+    for (const team of ranked) {
+      const card = el("div", "mover");
+      const up = team.movement > 0;
+      const arrow = el("span", `mover-arrow ${up ? "up" : "down"}`,
+        `${up ? "▲" : "▼"}${Math.abs(team.movement)}`);
+      card.append(arrow);
+
+      const body = el("div");
+      body.append(el("div", "mover-team", team.short));
+      body.append(el("div", "mover-why",
+        `Table #${team.table_rank} → power #${team.power_rank}. ${moverReason(team, div)}`));
+      card.append(body);
+      host.append(card);
+    }
+  }
+
+  function buildResume(team, div) {
+    const box = el("div");
+    const list = el("div", "resume");
+
+    if (!team.resume.length) {
+      list.append(el("span", "venue", "No completed games yet."));
+    }
+
+    for (const g of team.resume) {
+      const game = el("div", `game ${g.outcome.toLowerCase()}`);
+      game.append(el("span", "game-result", `${g.outcome} ${g.gf}–${g.ga}`));
+      game.append(el("span", "game-opp", g.opponent));
+      const badge = el("span", `oppr ${g.quality}`, `#${g.opponent_rank}`);
+      badge.title = `${g.opponent} is ranked ${g.opponent_rank} of ${div.teams.length}`;
+      game.append(badge);
+      game.append(el("span", "venue", g.home ? "home" : "away"));
+      list.append(game);
+    }
+    box.append(list);
+
+    if (team.resume.length) {
+      const note = el("div", "drawer-sos");
+      note.textContent =
+        `Average opponent power score ${team.sos.toFixed(1)} — ` +
+        `${team.sos_rank}${ordinal(team.sos_rank)} hardest of ${div.teams.length} in this division.`;
+      box.append(note);
+    }
+    return box;
+  }
+
+  function ordinal(n) {
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return s[(v - 20) % 10] || s[v] || s[0];
+  }
+
+  function renderRows(div) {
+    const body = $("rows");
+    body.replaceChildren();
+
+    const teams = [...div.teams].sort((a, b) =>
+      state.sort === "power" ? a.power_rank - b.power_rank : a.table_rank - b.table_rank);
+
+    const maxRating = Math.max(1e-6, ...div.teams.map((t) => Math.abs(t.rating)));
+
+    for (const team of teams) {
+      const tr = el("tr");
+      const isFeatured = team.league_team_id === DATA.featured_team;
+      if (isFeatured) tr.classList.add("featured-row");
+      const isOpen = state.open.has(team.id);
+      if (isOpen) tr.classList.add("is-open");
+
+      const rank = el("td", "rank-cell num",
+        String(state.sort === "power" ? team.power_rank : team.table_rank));
+      tr.append(rank);
+
+      const nameCell = el("td", "row-team");
+      const button = el("button", "team-button");
+      button.type = "button";
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.append(el("span", "chev", "▶"));
+      button.append(el("span", null, team.short));
+      button.addEventListener("click", () => {
+        if (state.open.has(team.id)) state.open.delete(team.id);
+        else state.open.add(team.id);
+        renderRows(division());
+      });
+      nameCell.append(button);
+      tr.append(nameCell);
+
+      const dir = team.movement > 0 ? "up" : team.movement < 0 ? "down" : "flat";
+      const moveText = team.movement === 0
+        ? "–"
+        : `${team.movement > 0 ? "▲" : "▼"}${Math.abs(team.movement)}`;
+      const moveCell = el("td");
+      const move = el("span", `move ${dir}`, moveText);
+      move.title = `League table #${team.table_rank}, power #${team.power_rank}`;
+      moveCell.append(move);
+      tr.append(moveCell);
+
+      tr.append(el("td", "num", recordOf(team)));
+      tr.append(el("td", "num", String(team.record.pts)));
+      tr.append(el("td", "score-cell", team.power_score.toFixed(1)));
+
+      const ratingCell = el("td");
+      const holder = el("div", "rating-cell");
+      holder.append(el("span", "bar-value", signed(team.rating, 2)));
+      const bar = el("div", "bar");
+      bar.append(el("div", "bar-zero"));
+      const fill = el("div", `bar-fill ${team.rating >= 0 ? "pos" : "neg"}`);
+      fill.style.width = `${(Math.abs(team.rating) / maxRating) * 50}%`;
+      bar.append(fill);
+      holder.append(bar);
+      ratingCell.append(holder);
+      tr.append(ratingCell);
+
+      const sosCell = el("td", "num", `#${team.sos_rank}`);
+      sosCell.title = `Average opponent power score ${team.sos.toFixed(1)}`;
+      tr.append(sosCell);
+
+      body.append(tr);
+
+      if (isOpen) {
+        const drawer = el("tr", "drawer");
+        const cell = el("td");
+        cell.colSpan = 8;
+        cell.append(buildResume(team, div));
+        drawer.append(cell);
+        body.append(drawer);
+      }
+    }
+  }
+
+  function renderFixtures(div) {
+    const host = $("fixtures");
+    const section = $("fixtures-section");
+    host.replaceChildren();
+
+    const next = div.upcoming.slice(0, 6);
+    if (!next.length) { section.hidden = true; return; }
+    section.hidden = false;
+
+    for (const f of next) {
+      const row = el("div", "fixture");
+      row.append(el("span", "fixture-date num", f.date.replace(/,\s*\d{4}$/, "")));
+      row.append(el("span", "fixture-teams", `${f.home} vs ${f.away}`));
+      const call = f.margin < 0.25
+        ? "too close to call"
+        : `${f.favorite} by ${f.margin.toFixed(1)}`;
+      row.append(el("span", "fixture-call", call));
+      host.append(row);
+    }
+  }
+
+  function renderMethod(div) {
+    const s = DATA.settings;
+    $("weights-note").textContent =
+      `The two are blended ${Math.round(s.massey_weight * 100)}% Massey to ` +
+      `${Math.round(s.colley_weight * 100)}% Colley. Margin carries more signal than ` +
+      `win-loss in a short season, but win-loss is what the table rewards, so neither ` +
+      `is allowed to dominate.`;
+
+    const perTeam = div.teams.length
+      ? (div.games_played * 2) / div.teams.length
+      : 0;
+    $("caveat-text").textContent =
+      `This division has played ${div.games_played} games — about ` +
+      `${perTeam.toFixed(0)} per team. That is a small sample, and the ratings are ` +
+      `deliberately pulled toward average to keep one lopsided result from running away ` +
+      `with the list. Expect the order to move around for a few more weekends, and treat ` +
+      `gaps of a point or two as noise rather than a real difference.`;
+
+    $("footer-text").textContent =
+      `Built from the published ${DATA.league} schedule and results. ` +
+      `Figures recomputed from the game-by-game scores; the win-loss-tie and goal totals ` +
+      `match the league's official standings exactly. Last updated ` +
+      `${new Date(DATA.generated_at).toLocaleString()}.`;
+  }
+
+  function render() {
+    const div = division();
+    if (!div) return;
+    renderMeta(div);
+    renderFeatured(div);
+    renderMovers(div);
+    renderRows(div);
+    renderFixtures(div);
+    renderMethod(div);
+  }
+
+  buildDivisionSelect();
+  bindSort();
+  render();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+name: Refresh rankings
+
+on:
+  schedule:
+    # 11:00 UTC daily -- early morning Eastern, so Sunday's results are in by Monday.
+    - cron: "0 11 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh-rankings
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run checks
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Fetch results and rebuild
+        run: python3 scripts/build.py
+
+      - name: Commit refreshed data
+        run: |
+          if git diff --quiet -- index.html data/rankings.json; then
+            echo "No change in results; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/rankings.json
+          git commit -m "Refresh rankings"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # The page is self-contained, so only these need publishing.
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
