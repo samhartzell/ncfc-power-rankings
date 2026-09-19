@@ -217,6 +217,9 @@ def build_division(meta, division):
         if g["counts"] or g["status"] == "Rescheduled":
             continue
         margin = ratings.predict_margin(result, g["home_id"], g["away_id"])
+        # Posted on the half goal like a betting line; the favorite still comes
+        # from the raw projection, so a pick'em keeps the side it leaned to.
+        line = ratings.to_line(margin)
         favorite = g["home_id"] if margin >= 0 else g["away_id"]
         upcoming.append(
             {
@@ -226,7 +229,7 @@ def build_division(meta, division):
                 "away_id": g["away_id"],
                 "favorite": by_id[favorite]["short"],
                 "favorite_id": favorite,
-                "margin": round(abs(margin), 1),
+                "margin": abs(line),
                 "date": g["date"],
                 "round": g["round"],
                 "field": g["field"],
@@ -276,6 +279,7 @@ def fetch_all():
             "ridge": ratings.MASSEY_RIDGE,
             "goal_cap": ratings.GOAL_CAP,
             "margin_cap": ratings.MARGIN_CAP,
+            "margin_step": ratings.MARGIN_STEP,
         },
         "divisions": divisions,
     }

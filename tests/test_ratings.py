@@ -13,7 +13,7 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 
 import ratings  # noqa: E402
-from build import extract_games, extract_teams  # noqa: E402
+from build import build_division, extract_games, extract_teams  # noqa: E402
 
 FIXTURE = pathlib.Path(__file__).parent / "fixtures" / "division_19780.json"
 
@@ -155,6 +155,69 @@ class TestScheduleStrengthActuallyMatters(unittest.TestCase):
         a = ratings.rank_teams(teams, blowout)["massey"]["A"]
         b = ratings.rank_teams(teams, capped)["massey"]["A"]
         self.assertAlmostEqual(a, b, places=9)
+
+
+class TestPostedLine(unittest.TestCase):
+    """Projected margins go up on the half goal, the way a line is posted."""
+
+    def test_rounds_to_the_nearest_half_goal(self):
+        cases = {
+            0.0: 0.0,
+            0.1: 0.0,
+            0.24: 0.0,
+            0.3: 0.5,
+            0.7: 0.5,
+            1.28: 1.5,
+            1.7: 1.5,
+            2.2: 2.0,
+            3.99: 4.0,
+        }
+        for margin, expected in cases.items():
+            self.assertEqual(ratings.to_line(margin), expected, f"margin {margin}")
+
+    def test_halves_round_up(self):
+        # Exactly between two lines, take the longer one.
+        self.assertEqual(ratings.to_line(0.25), 0.5)
+        self.assertEqual(ratings.to_line(0.75), 1.0)
+        self.assertEqual(ratings.to_line(1.25), 1.5)
+
+    def test_sign_is_preserved(self):
+        # A negative margin means the away team, and stays negative.
+        self.assertEqual(ratings.to_line(-1.28), -1.5)
+        self.assertEqual(ratings.to_line(-2.2), -2.0)
+        self.assertEqual(ratings.to_line(-0.1), 0.0)
+
+    def test_every_line_is_a_multiple_of_the_step(self):
+        for tenth in range(-60, 61):
+            line = ratings.to_line(tenth / 10)
+            self.assertAlmostEqual(
+                line / ratings.MARGIN_STEP,
+                round(line / ratings.MARGIN_STEP),
+                places=9,
+                msg=f"margin {tenth / 10} produced {line}",
+            )
+
+    def test_already_posted_lines_do_not_move(self):
+        for line in (0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, -1.5, -3.0):
+            self.assertEqual(ratings.to_line(line), line)
+
+
+class TestUpcomingFixtures(unittest.TestCase):
+    """The lines that reach the page are the posted ones, not raw projections."""
+
+    def test_every_projected_margin_is_a_posted_line(self):
+        raw = load_fixture()
+        div = build_division({"id": raw["id"], "name": raw["name"]}, raw)
+        self.assertTrue(div["upcoming"], "fixture should have unplayed games")
+        for f in div["upcoming"]:
+            line = f["margin"]
+            self.assertGreaterEqual(line, 0.0)
+            self.assertAlmostEqual(
+                line / ratings.MARGIN_STEP,
+                round(line / ratings.MARGIN_STEP),
+                places=9,
+                msg=f"{f['home']} v {f['away']} posted {line}",
+            )
 
 
 class TestEmptyDivision(unittest.TestCase):
