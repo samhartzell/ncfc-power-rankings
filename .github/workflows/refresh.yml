@@ -22,6 +22,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.pages_check.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
 
@@ -47,20 +49,39 @@ jobs:
           git commit -m "Refresh rankings"
           git push
 
-      - name: Enable and configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Turns Pages on via the API the first time this runs, so the
-          # repository needs no manual setup.
-          enablement: true
+      # Creating a Pages site needs more than the Actions token carries, so
+      # Pages has to be switched on once by hand. Until that happens the
+      # publish steps are skipped rather than failing the refresh, and the
+      # run leaves a notice saying what to do.
+      - name: Check whether Pages is enabled
+        id: pages_check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" || echo 000)
+          if [ "$code" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Pages is not enabled, so the page was not published. Turn it on at Settings > Pages with Source: GitHub Actions. The rankings data was still refreshed."
+          fi
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Configure Pages
+        if: steps.pages_check.outputs.enabled == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site
+        if: steps.pages_check.outputs.enabled == 'true'
+        uses: actions/upload-pages-artifact@v3
         with:
-          # The page is self-contained, so only these need publishing.
           path: .
 
   deploy:
     needs: build
+    if: needs.build.outputs.pages_enabled == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

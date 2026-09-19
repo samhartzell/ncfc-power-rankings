@@ -103,9 +103,14 @@ division that team plays in. Change all four for a different league.
 change only if something moved, and publishes to GitHub Pages. It can also be run on demand
 from the Actions tab.
 
-The workflow turns GitHub Pages on itself the first time it runs, so there is nothing to
-configure by hand. If the commit step ever fails with a permissions error, check
-**Settings → Actions → General → Workflow permissions: Read and write**.
+Publishing needs GitHub Pages switched on once, under **Settings → Pages → Source: GitHub
+Actions**. Creating a Pages site takes more permission than the Actions token carries, so
+the workflow cannot do it for you. Until it is on, the workflow still refreshes the data and
+leaves a notice on the run saying the page was not published; once it is on, every run
+publishes.
+
+If the commit step ever fails with a permissions error, check **Settings → Actions → General
+→ Workflow permissions: Read and write**.
 
 ## Where the data comes from
 
