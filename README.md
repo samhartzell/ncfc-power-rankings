@@ -103,11 +103,9 @@ division that team plays in. Change all four for a different league.
 change only if something moved, and publishes to GitHub Pages. It can also be run on demand
 from the Actions tab.
 
-Two one-time settings are needed in the repository:
-
-1. **Settings → Pages → Source: GitHub Actions.**
-2. **Settings → Actions → General → Workflow permissions: Read and write**, so the workflow
-   can commit the refreshed data.
+The workflow turns GitHub Pages on itself the first time it runs, so there is nothing to
+configure by hand. If the commit step ever fails with a permissions error, check
+**Settings → Actions → General → Workflow permissions: Read and write**.
 
 ## Where the data comes from
 
