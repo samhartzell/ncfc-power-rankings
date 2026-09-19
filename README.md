@@ -14,7 +14,8 @@ switches to any of the league's 25 divisions.
 
 - **Power rank** for every team, next to its league-table rank, so the disagreements are visible.
 - **A crest for every team**, in the colors of the club it is named for — Chelsea in Stamford
-  Bridge blue, Newcastle in black and white stripes, Flamengo in red and black hoops.
+  Bridge blue, Newcastle in black and white stripes, Flamengo in red and black hoops. The page
+  never says so; the colors just show up.
 - **Where the model disagrees with the table** — the three teams the standings most misprice, each with the reason.
 - **A résumé for every team** — each result with the opponent's power rank attached.
 - **Strength of schedule** — the average power score of the opponents a team has actually played.
@@ -27,6 +28,11 @@ name to that club and hands the page its kit: the colors, the pattern they go in
 hoops, halves, a sash, a sleeve), and a three-letter code. The page draws the shield from
 those, so a division of ten teams arrives with ten different identities instead of ten grey
 rows. 126 of the league's 219 teams currently resolve to a club.
+
+The club itself is never named on the page. There is no "playing as Chelsea" line under a
+team, and no competition label: a team named for a club turns up in that club's colors and
+that is the whole of it. The `club` and `comp` fields exist so the table can tell two clubs
+of the same name apart, not to be rendered.
 
 Nothing is copied from a club. There is no badge artwork anywhere in the repository — what
 renders is a kit assembled from colors, drawn as SVG in the browser.

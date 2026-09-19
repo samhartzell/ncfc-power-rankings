@@ -294,13 +294,11 @@
     flex-wrap: wrap;
   }
 
-  .hero-club {
+  .hero-sub {
     margin: 4px 0 0;
     font-size: 13px;
     color: var(--ink-2);
   }
-
-  .hero-club b { color: var(--team); font-weight: 700; }
 
   .hero-rank {
     flex: none;
@@ -438,12 +436,6 @@
     align-items: center;
     gap: 6px;
     flex-wrap: wrap;
-  }
-
-  .team-club {
-    font-size: 11.5px;
-    color: var(--ink-3);
-    line-height: 1.3;
   }
 
   .chev {
@@ -834,10 +826,10 @@
 
       <h3>The crests</h3>
       <p>
-        Most teams here are named for a real club, so each crest is drawn in that club&rsquo;s
-        kit colors and pattern &mdash; Chelsea in Stamford Bridge blue, Newcastle in black and
-        white stripes, Flamengo in red and black hoops. <span id="crest-count"></span> Nothing
-        is copied from a club: these are kits assembled from colors, not badges.
+        Every team gets its own crest, so a division of ten arrives as ten identities rather
+        than ten grey rows. Each one is a kit &mdash; two or three colors in a pattern, with
+        the team&rsquo;s letters across the band &mdash; drawn as SVG in the browser. No badge
+        artwork is used anywhere on the page.
       </p>
 
       <div class="caveat">
@@ -1006,15 +998,6 @@
     return node;
   }
 
-  /** The line under a team's name: the club it is named for, and where that
-      club plays. Teams with no real club behind them get nothing. */
-  function clubLine(team) {
-    const id = team.identity;
-    if (!id.real) return "";
-    if (id.club.toLowerCase() === team.short.toLowerCase()) return id.comp;
-    return `${id.club} · ${id.comp}`;
-  }
-
   function tags(team) {
     const out = [];
     if (!team.host && team.org) out.push(team.org);
@@ -1094,15 +1077,7 @@
     for (const tag of tags(team)) name.append(el("span", "chip", tag));
     idBlock.append(name);
 
-    const club = el("p", "hero-club");
-    if (team.identity.real) {
-      club.append(document.createTextNode("Playing as "));
-      club.append(el("b", null, team.identity.club));
-      club.append(document.createTextNode(` · ${team.identity.comp}`));
-    } else {
-      club.textContent = div.name;
-    }
-    idBlock.append(club);
+    idBlock.append(el("p", "hero-sub", div.name));
     top.append(idBlock);
 
     const rank = el("div", "hero-rank");
@@ -1257,8 +1232,6 @@
       name.append(document.createTextNode(team.short));
       for (const tag of tags(team)) name.append(el("span", "chip", tag));
       label.append(name);
-      const line = clubLine(team);
-      if (line) label.append(el("div", "team-club", line));
       button.append(label);
 
       button.addEventListener("click", () => {
@@ -1352,12 +1325,6 @@
       `${Math.round(s.colley_weight * 100)}% Colley. Margin carries more signal than ` +
       `win-loss in a short season, but win-loss is what the table rewards, so neither ` +
       `is allowed to dominate.`;
-
-    const invented = div.teams.filter((t) => !t.identity.real).length;
-    $("crest-count").textContent = invented
-      ? `The ${invented} team${invented === 1 ? "" : "s"} in this division named for nobody ` +
-        `in particular get a kit built from the name instead.`
-      : "";
 
     const perTeam = div.teams.length ? (div.games_played * 2) / div.teams.length : 0;
     $("caveat-text").textContent =
