@@ -5,7 +5,10 @@ on:
     # 11:00 UTC daily -- early morning Eastern, so Sunday's results are in by Monday.
     - cron: "0 11 * * *"
   push:
-    branches: [main]
+    # Scheduled runs always use the default branch; this is just so a code
+    # change rebuilds the page immediately. Both names are listed so the
+    # workflow keeps working if the default branch is renamed to main.
+    branches: [main, claude/laughing-volta-97ukl2]
   workflow_dispatch:
 
 permissions:
