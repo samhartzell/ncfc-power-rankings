@@ -19,7 +19,7 @@ switches to any of the league's 25 divisions.
 - **Where the model disagrees with the table** — the three teams the standings most misprice, each with the reason.
 - **A résumé for every team** — each result with the opponent's power rank attached.
 - **Strength of schedule** — the average power score of the opponents a team has actually played.
-- **Projected margins** for upcoming fixtures.
+- **Projected margins** for upcoming fixtures, posted on the half goal.
 
 ## Crests and colors
 
@@ -85,6 +85,16 @@ same as beating them 4–0.
 That reading of the rules is not a guess. `tests/test_ratings.py` replays a real division and
 asserts that the recomputed W–L–T, GF, GA, GD and points match the league's own published
 standings row for row, for all ten teams.
+
+### Projections are posted on the half goal
+
+The gap between two Massey ratings is a projected margin, and that is what the "Next up"
+calls come from. It is rounded to the nearest half goal, the way a betting line is: a
+projection of 1.28 goes up as `Chelsea by 1.5`, and 2.2 as `Chelsea by 2`. Halves round up,
+so 1.25 posts at 1.5. A game that rounds to zero is shown as too close to call.
+
+Tenths of a goal would advertise precision three games of data cannot support. The step is
+`MARGIN_STEP` in `scripts/ratings.py`; set it to `1.0` to post whole goals instead.
 
 ### What it deliberately does not do
 

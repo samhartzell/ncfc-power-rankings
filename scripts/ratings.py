@@ -33,6 +33,12 @@ COLLEY_WEIGHT = 1.0 - MASSEY_WEIGHT
 # average; its pull fades automatically as teams accumulate games.
 MASSEY_RIDGE = 1.0
 
+# Projected margins are posted on the half goal, the way a betting line is: a
+# 1.28 projection goes up as 1.5. Tenths of a goal are precision the ratings do
+# not have on a sample this size, and a half-goal line reads as a call rather
+# than a measurement.
+MARGIN_STEP = 0.5
+
 POINTS_WIN, POINTS_TIE, POINTS_LOSS = 3, 1, 0
 
 
@@ -223,3 +229,15 @@ def predict_margin(ratings, home_id, away_id):
     15-game sample could not separate a real home effect from noise anyway.
     """
     return ratings["massey"][home_id] - ratings["massey"][away_id]
+
+
+def to_line(margin):
+    """Round a projected margin to the nearest half goal, halves going up.
+
+    1.28 becomes 1.5, 2.2 becomes 2.0, and anything under a quarter goal
+    becomes 0.0 -- a pick'em, which is what the page calls too close to call.
+    The sign survives, so a negative line still means the away team.
+    """
+    steps = int(abs(margin) / MARGIN_STEP + 0.5)  # abs first, so int() floors
+    line = steps * MARGIN_STEP
+    return -line if margin < 0 else line

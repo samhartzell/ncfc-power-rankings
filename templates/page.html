@@ -775,7 +775,8 @@
   <section id="fixtures-section">
     <h2>Next up</h2>
     <p class="section-note">
-      Projected margins from the ratings. No home-field adjustment &mdash; see the method note.
+      Projected margins from the ratings, posted on the half goal. No home-field adjustment
+      &mdash; see the method note.
     </p>
     <div class="fixtures" id="fixtures"></div>
   </section>
@@ -822,6 +823,11 @@
         <strong>Rating</strong> is on a goals scale: it is the margin a team would be expected
         to win by against an average team in its division. The gap between two ratings is a
         projected margin, which is where the &ldquo;Next up&rdquo; calls come from.
+      </p>
+      <p>
+        Those calls are posted on the half goal, the way a betting line is: a projection of
+        1.28 goes up as 1.5. Tenths would claim precision the ratings do not have on a sample
+        this size. A game that rounds to zero is shown as too close to call.
       </p>
 
       <h3>The crests</h3>
@@ -1310,9 +1316,11 @@
       teams.append(el("span", null, f.away));
       row.append(teams);
 
-      const call = f.margin < 0.25
+      // The line arrives already posted on the half goal, so show 2 rather
+      // than 2.0 and 1.5 as it is. A line of zero is a pick'em.
+      const call = f.margin === 0
         ? "too close to call"
-        : `${f.favorite} by ${f.margin.toFixed(1)}`;
+        : `${f.favorite} by ${f.margin.toFixed(f.margin % 1 ? 1 : 0)}`;
       row.append(el("span", "fixture-call", call));
       host.append(row);
     }
