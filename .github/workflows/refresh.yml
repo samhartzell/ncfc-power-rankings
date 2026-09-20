@@ -2,8 +2,15 @@ name: Refresh rankings
 
 on:
   schedule:
-    # 11:00 UTC daily -- early morning Eastern, so Sunday's results are in by Monday.
-    - cron: "0 11 * * *"
+    # Deliberately off the top of the hour. GitHub queues on-the-hour schedules
+    # hardest, and the first 11:00 run here started 3h36m late. An odd minute
+    # only improves the odds -- Actions never promises a punctual cron, which is
+    # why there are two runs rather than one.
+    # 11:37 UTC is early morning Eastern, catching results entered overnight.
+    - cron: "37 11 * * *"
+    # 01:37 UTC is 9:37pm Eastern the evening before, so a score entered a few
+    # hours after a weekend game shows up the same night.
+    - cron: "37 1 * * *"
   push:
     # Scheduled runs always use the default branch whatever it is called;
     # this trigger just rebuilds the page as soon as the code changes.

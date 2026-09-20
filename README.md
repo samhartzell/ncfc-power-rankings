@@ -155,7 +155,8 @@ division that team plays in. Change all four for a different league.
 
 ## Keeping it current
 
-`.github/workflows/refresh.yml` re-fetches results every morning, rebuilds, commits the
+`.github/workflows/refresh.yml` re-fetches results twice a day -- early morning Eastern
+and mid-evening Eastern -- rebuilds, commits the
 change only if something moved, and publishes to GitHub Pages. It can also be run on demand
 from the Actions tab.
 
