@@ -1,0 +1,1719 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team Report</title>
+<meta name="description" content="A full season report for one team in the NCFC Youth Challenge league: form, opponents, every remaining fixture, and a simulated finish.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  /*__SHARED_CSS__*/
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .masthead-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 22px 18px;
+  }
+
+  .backlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
+
+  .backlink:hover { color: var(--accent); }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-size: clamp(32px, 7vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .title-sub {
+    margin: 4px 0 0;
+    color: var(--ink-2);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .standfirst {
+    margin: 14px 0 0;
+    max-width: 62ch;
+    color: var(--ink-2);
+    font-size: 14.5px;
+  }
+
+  .meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-3);
+    font-family: var(--f-mono);
+  }
+
+  .meta-line span + span::before {
+    content: "·";
+    margin-right: 14px;
+    color: var(--line-strong);
+  }
+
+  /* ---------- shell ---------- */
+
+  .wrap { padding-block: 0 64px; }
+
+  section { margin-top: 44px; }
+
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  h2 .h2-count {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-3);
+    letter-spacing: 0;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .section-note {
+    margin: 0 0 18px;
+    max-width: 68ch;
+    color: var(--ink-2);
+    font-size: 13.5px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 18px;
+  }
+
+  /* ---------- next up ---------- */
+
+  .nextup {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--team, var(--accent));
+    border-radius: var(--r-lg);
+    padding: 20px;
+    margin-top: 22px;
+  }
+
+  .nextup-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .nextup-when {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .countdown {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface-2);
+    border-radius: 999px;
+    padding: 3px 11px;
+  }
+
+  .matchup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .matchup-side {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .matchup-vs {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .venue {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    align-items: baseline;
+  }
+
+  .venue .where { font-weight: 600; color: var(--ink); }
+
+  /* ---------- stat tiles ---------- */
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+
+  .tile {
+    background: var(--surface);
+    padding: 14px 16px;
+  }
+
+  @media (min-width: 720px) {
+    .tiles { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .tile-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .tile-value {
+    font-family: var(--f-mono);
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-top: 3px;
+  }
+
+  .tile-sub {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    margin-top: 2px;
+  }
+
+  .verdict {
+    margin-top: 18px;
+    padding: 16px 18px;
+    background: var(--surface-2);
+    border-radius: var(--r-md);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .verdict p { margin: 0 0 10px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  /* ---------- ladder ---------- */
+
+  .ladder { margin-top: 20px; }
+
+  .rung {
+    display: grid;
+    grid-template-columns: 26px minmax(96px, 150px) 1fr 46px;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+
+  .rung.me { font-weight: 700; }
+
+  .rung-rank { font-family: var(--f-mono); color: var(--ink-3); text-align: right; font-size: 12px; }
+
+  .rung-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .rung-name span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rung-track {
+    position: relative;
+    height: 13px;
+    background: var(--surface-2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .rung-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--line-strong);
+    border-radius: 3px;
+  }
+
+  .rung.me .rung-fill { background: var(--team, var(--accent)); }
+
+  .rung-mid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--ink-3);
+    opacity: 0.55;
+  }
+
+  .rung-score { font-family: var(--f-mono); font-size: 12px; text-align: right; }
+
+  /* ---------- results ---------- */
+
+  .results { display: grid; gap: 10px; }
+
+  .result {
+    display: grid;
+    grid-template-columns: 62px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line-strong);
+    border-radius: var(--r-md);
+    padding: 11px 14px;
+  }
+
+  .result.w { border-left-color: var(--pos); }
+  .result.l { border-left-color: var(--neg); }
+  .result.t { border-left-color: var(--neutral-mark); }
+
+  .result-score {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .result-opp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  .result-meta {
+    font-size: 11.5px;
+    color: var(--ink-3);
+    margin-top: 2px;
+    font-family: var(--f-mono);
+  }
+
+  .edge {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .edge-sub {
+    font-size: 10.5px;
+    color: var(--ink-3);
+    font-family: var(--f-display);
+    font-weight: 400;
+  }
+
+  .up { color: var(--pos); }
+  .down { color: var(--neg); }
+
+  .oppr {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 1px 7px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-2);
+  }
+
+  .oppr.strong { border-color: var(--pos); color: var(--pos); }
+  .oppr.weak { border-color: var(--neg); color: var(--neg); }
+
+  /* ---------- fixtures ---------- */
+
+  .fixtures { display: grid; gap: 16px; }
+
+  .fixture {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+
+  .fixture.tbd { border-style: dashed; }
+
+  .fixture-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 12px 18px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .fixture-when {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .fixture-round {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .fixture-body { padding: 16px 18px 18px; }
+
+  .fixture-opp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .fixture-opp-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .haway {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .scout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .scout-item .tile-label { font-size: 10px; }
+  .scout-item .scout-value {
+    font-family: var(--f-mono);
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .odds { margin-top: 16px; }
+
+  .odds-bar {
+    display: flex;
+    height: 26px;
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .odds-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .odds-seg.win { background: var(--pos); }
+  .odds-seg.draw { background: var(--neutral-mark); }
+  .odds-seg.loss { background: var(--neg); }
+
+  .odds-key {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 7px;
+    font-size: 11.5px;
+    color: var(--ink-2);
+  }
+
+  .odds-key b { font-family: var(--f-mono); color: var(--ink); }
+
+  .hist {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 46px;
+    margin-top: 14px;
+  }
+
+  .hist-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+
+  .hist-bar { background: var(--line-strong); border-radius: 2px 2px 0 0; min-height: 1px; }
+  .hist-col.win .hist-bar { background: var(--pos); }
+  .hist-col.loss .hist-bar { background: var(--neg); }
+  .hist-col.draw .hist-bar { background: var(--neutral-mark); }
+
+  .hist-axis {
+    display: flex;
+    gap: 3px;
+    margin-top: 3px;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--ink-3);
+  }
+
+  .hist-axis span { flex: 1; text-align: center; }
+
+  .form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-2);
+  }
+
+  .pip {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--r-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .pip.w { background: var(--pos); }
+  .pip.l { background: var(--neg); }
+  .pip.t { background: var(--neutral-mark); }
+
+  .swing {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--surface-2);
+    border-radius: var(--r-md);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .callout {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--r-lg);
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    background: transparent;
+  }
+
+  .callout b { color: var(--ink); }
+
+  /* ---------- season simulation ---------- */
+
+  .finish-strip { margin-top: 6px; }
+
+  .finish-row {
+    display: grid;
+    grid-template-columns: 26px minmax(96px, 150px) 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 3px 0;
+    font-size: 13px;
+  }
+
+  .finish-cells { display: flex; gap: 2px; }
+
+  .finish-cell {
+    flex: 1;
+    height: 22px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    background: var(--surface-2);
+    color: var(--ink-2);
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .finish-head {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--ink-3);
+    text-align: center;
+  }
+
+  .points-dist { display: flex; align-items: flex-end; gap: 4px; height: 76px; margin-top: 10px; }
+  .points-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+  .points-bar { background: var(--team, var(--accent)); border-radius: 2px 2px 0 0; min-height: 1px; opacity: 0.85; }
+  .points-axis { display: flex; gap: 4px; margin-top: 4px; font-family: var(--f-mono); font-size: 10px; color: var(--ink-3); }
+  .points-axis span { flex: 1; text-align: center; }
+
+  /* ---------- tables ---------- */
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    text-align: right;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0 10px 8px;
+    border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+
+  thead th.left, tbody td.left { text-align: left; }
+
+  tbody td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-of-type td { border-bottom: 0; }
+
+  tbody tr.me td { background: var(--accent-soft); font-weight: 600; }
+
+  .td-team { display: flex; align-items: center; gap: 8px; }
+
+  /* ---------- method ---------- */
+
+  .method { font-size: 14px; color: var(--ink-2); max-width: 72ch; }
+  .method h3 { color: var(--ink); margin-top: 22px; }
+  .method p { margin: 0 0 12px; }
+  .method strong { color: var(--ink); }
+
+  .method table { max-width: 460px; margin: 4px 0 16px; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 560px) {
+    .rung, .finish-row { grid-template-columns: 22px minmax(72px, 110px) 1fr; }
+    .rung-score { display: none; }
+    .result { grid-template-columns: 56px 1fr; }
+    .edge { grid-column: 1 / -1; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="backlink" href="index.html">&larr; All divisions</a>
+    <div class="title-row" id="title-row"></div>
+    <p class="standfirst" id="standfirst"></p>
+    <div class="meta-line" id="meta-line"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="nextup-section">
+    <h2>Next up</h2>
+    <p class="section-note" id="nextup-note"></p>
+    <div id="nextup"></div>
+  </section>
+
+  <section>
+    <h2>Where the team stands</h2>
+    <p class="section-note" id="standing-note"></p>
+    <div class="tiles" id="tiles"></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="ladder" id="ladder"></div>
+  </section>
+
+  <section>
+    <h2>The season so far <span class="h2-count" id="results-count"></span></h2>
+    <p class="section-note">
+      Every game played, with the opponent&rsquo;s power rank and the margin the model would
+      have projected for that game &mdash; fitted without the game itself, so the projection
+      never gets to see the result it is being judged against.
+    </p>
+    <div class="results" id="results"></div>
+    <div class="callout" id="results-summary" style="margin-top:16px"></div>
+  </section>
+
+  <section>
+    <h2>Every game left <span class="h2-count" id="remaining-count"></span></h2>
+    <p class="section-note" id="remaining-note"></p>
+    <div class="fixtures" id="fixtures"></div>
+  </section>
+
+  <section>
+    <h2>How the season could end</h2>
+    <p class="section-note" id="sim-note"></p>
+    <div class="card">
+      <h3 id="finish-heading">Finishing position</h3>
+      <div class="points-dist" id="points-dist"></div>
+      <div class="points-axis" id="points-axis"></div>
+      <p class="section-note" id="points-note" style="margin:12px 0 0"></p>
+    </div>
+    <div class="callout" id="run-the-table" style="margin-top:16px"></div>
+    <div class="card" style="margin-top:16px">
+      <h3>Where every team lands</h3>
+      <p class="section-note">
+        Each row is one team&rsquo;s chance of finishing in each position, darkest where it is
+        most likely. Read across to see how wide a team&rsquo;s range still is.
+      </p>
+      <div class="finish-strip" id="finish-strip"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Which game matters most</h2>
+    <p class="section-note" id="leverage-note"></p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="left">Game</th>
+            <th scope="col">Win</th>
+            <th scope="col">Draw</th>
+            <th scope="col">Lose</th>
+            <th scope="col">Swing</th>
+          </tr>
+        </thead>
+        <tbody id="leverage-rows"></tbody>
+      </table>
+    </div>
+    <p class="section-note" id="leverage-foot" style="margin-top:14px"></p>
+  </section>
+
+  <section>
+    <h2>The rest of the division</h2>
+    <p class="section-note" id="division-note"></p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" class="left">Team</th>
+            <th scope="col">W&ndash;L&ndash;T</th>
+            <th scope="col">Pts</th>
+            <th scope="col">Power</th>
+            <th scope="col">Left</th>
+            <th scope="col">Proj. pts</th>
+            <th scope="col">Wins it</th>
+            <th scope="col" class="left" id="meeting-head">Meeting</th>
+          </tr>
+        </thead>
+        <tbody id="division-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to read all this</h2>
+    <div class="method">
+      <h3>The rating</h3>
+      <p>
+        Every team carries a <strong>power score</strong> out of 100, where 50 is an average
+        team in this division, and a <strong>rating</strong> on a goals scale &mdash; the
+        margin it would be expected to win by against an average team. Both come from the
+        same place as the league-wide page: a blend of a win-loss model and a goal-margin
+        model, with the league&rsquo;s own caps applied, so running the score up past four
+        goals earns nothing. The full explanation is on the
+        <a href="index.html">rankings page</a>.
+      </p>
+
+      <h3>Turning a projection into odds</h3>
+      <p id="sigma-note"></p>
+      <p>
+        That spread is measured, not assumed, and it is measured honestly: every game the
+        league has played is re-predicted from a model fitted <em>without</em> that game.
+        Scored against games it had already seen, the model looks about a goal sharper than
+        it is.
+      </p>
+      <p id="calibration-note"></p>
+      <table id="calibration-table"></table>
+
+      <h3>The simulation</h3>
+      <p id="sim-method"></p>
+      <p>
+        Ratings are held still for the whole run: the model is not allowed to learn from the
+        games it is inventing, which would let one imagined blowout compound into a runaway
+        season. Tables are ordered the way the league orders them &mdash; points, then goal
+        difference, then goals for, then goals against. Head-to-head is the league&rsquo;s
+        first tie-break, but it only settles a clean two-team tie, so it is left out here and
+        a finish decided that deep should be treated as a coin flip rather than a forecast.
+      </p>
+
+      <h3>What it does not know</h3>
+      <p id="caveat"></p>
+      <p>
+        There is no home-field adjustment, no knowledge of who is away on a given weekend, who
+        is playing up, and no weather. A postponed game is assumed to be played. Treat a gap
+        of a point or two as noise, and treat everything here as a description of the record
+        so far rather than a promise about a Sunday afternoon.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p id="footer-text"></p>
+  </footer>
+</main>
+
+<script>
+  const DATA = /*__RANKINGS_DATA__*/null;
+
+  /*__CREST_JS__*/
+
+  /* One team, looked at from every angle the data supports. The league-wide
+     page answers "who is good?"; this one answers "what happens to us now?" */
+
+  const F = DATA.featured;
+  const DIV = DATA.divisions.find((d) => d.id === F.division_id);
+  const BY_ID = new Map(DIV.teams.map((t) => [t.id, t]));
+  const ME = BY_ID.get(F.team_id);
+  const N = DIV.teams.length;
+
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
+  const signed = (n, digits = 1) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFixed(digits);
+  const recordOf = (t) => `${t.record.w}–${t.record.l}–${t.record.t}`;
+  const pct = (p) => `${Math.round(p * 100)}%`;
+  const ordinal = (n) => {
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  };
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+
+  // "Oct  4, 2026" arrives with the day padded, which Date does not always
+  // forgive, and the map link is just a search for the address the league
+  // publishes, so it is built here rather than carried in the data.
+  const cleanDate = (d) => (d || "").replace(/\s+/g, " ").trim();
+  const asDate = (d) => {
+    const parsed = new Date(cleanDate(d));
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  };
+  const mapLink = (address) =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+  const daysAway = (d) => {
+    const when = asDate(d);
+    if (!when) return null;
+    const today = new Date();
+    const midnight = (x) => Date.UTC(x.getFullYear(), x.getMonth(), x.getDate());
+    return Math.round((midnight(when) - midnight(today)) / 86400000);
+  };
+
+  const countdownText = (days) => {
+    if (days === null) return "";
+    if (days < 0) return "awaiting a result";
+    if (days === 0) return "today";
+    if (days === 1) return "tomorrow";
+    return `in ${plural(days, "day", "days")}`;
+  };
+
+  const quality = (rank) => (rank / N <= 1 / 3 ? "strong" : rank / N <= 2 / 3 ? "middle" : "weak");
+
+  /* Every team's remaining fixtures, from the division's own schedule. */
+  function fixturesFor(teamId) {
+    const out = [];
+    for (const f of DIV.upcoming) if (f.home_id === teamId || f.away_id === teamId) out.push({ ...f, tbd: false });
+    for (const f of DIV.postponed) if (f.home_id === teamId || f.away_id === teamId) out.push({ ...f, tbd: true });
+    return out;
+  }
+
+  const simFor = (teamId) => F.sim.teams.find((t) => t.id === teamId);
+
+  /* ---------- masthead ---------- */
+
+  function renderMasthead() {
+    document.title = `${ME.short} · ${DIV.name}`;
+    const row = $("title-row");
+    row.append(crest(ME, 56));
+    const block = el("div");
+    block.append(el("h1", null, ME.short));
+    block.append(el("p", "title-sub", `${DIV.name} · ${DATA.league}`));
+    row.append(block);
+
+    const left = F.remaining.length;
+    $("standfirst").textContent =
+      `Everything the results say about ${ME.short} so far, every game still on the ` +
+      `schedule, and what ${left ? "those " + left + " games" : "the season"} look like ` +
+      `once the rest of the division is played out ${F.sim.runs.toLocaleString()} times over.`;
+
+    const meta = $("meta-line");
+    [
+      `power rank ${ME.power_rank} of ${N}`,
+      `${recordOf(ME)} · ${ME.record.pts} pts`,
+      `${plural(left, "game", "games")} left`,
+      `updated ${new Date(DATA.generated_at).toLocaleDateString(undefined, {
+        month: "short", day: "numeric", year: "numeric",
+      })}`,
+    ].forEach((part) => meta.append(el("span", null, part)));
+  }
+
+  /* ---------- next up ---------- */
+
+  function oddsBar(fixture) {
+    const wrap = el("div", "odds");
+    const bar = el("div", "odds-bar");
+    for (const [key, value] of [["win", fixture.win], ["draw", fixture.draw], ["loss", fixture.loss]]) {
+      const seg = el("div", `odds-seg ${key}`, value >= 0.12 ? pct(value) : "");
+      seg.style.width = `${value * 100}%`;
+      bar.append(seg);
+    }
+    wrap.append(bar);
+    const key = el("div", "odds-key");
+    const opponent = BY_ID.get(fixture.opponent_id);
+    for (const [label, value] of [
+      [`${ME.short} win`, fixture.win],
+      ["draw", fixture.draw],
+      [`${opponent.short} win`, fixture.loss],
+    ]) {
+      const item = el("span");
+      item.append(el("b", null, pct(value)));
+      item.append(document.createTextNode(` ${label}`));
+      key.append(item);
+    }
+    wrap.append(key);
+    return wrap;
+  }
+
+  function lineText(fixture) {
+    const opponent = BY_ID.get(fixture.opponent_id);
+    const line = Math.abs(fixture.line);
+    if (line === 0) return "too close to call";
+    const favorite = fixture.line > 0 ? ME.short : opponent.short;
+    return `${favorite} by ${line.toFixed(line % 1 ? 1 : 0)}`;
+  }
+
+  function venueLine(fixture) {
+    const line = el("div", "venue");
+    line.append(el("span", "where", fixture.home ? "Home" : "Away"));
+    if (fixture.field) line.append(el("span", null, fixture.field));
+    if (fixture.address) {
+      const link = el("a", null, fixture.address);
+      link.href = mapLink(fixture.address);
+      link.target = "_blank";
+      link.rel = "noopener";
+      line.append(link);
+    }
+    return line;
+  }
+
+  function whenText(fixture) {
+    if (fixture.tbd) return "Date to be set";
+    const parts = [];
+    if (fixture.day) parts.push(fixture.day);
+    parts.push(cleanDate(fixture.date).replace(/,\s*\d{4}$/, ""));
+    let text = parts.join(", ");
+    if (fixture.time) text += ` · ${fixture.time}`;
+    return text;
+  }
+
+  function renderNextUp() {
+    const host = $("nextup");
+    const note = $("nextup-note");
+    const scheduled = F.remaining.filter((f) => !f.tbd);
+
+    if (!F.remaining.length) {
+      note.textContent = "The schedule is complete — every game has been played.";
+      return;
+    }
+    if (!scheduled.length) {
+      note.textContent =
+        "Nothing on the calendar with a date on it. The one game still owed is waiting on a " +
+        "new slot; it is listed below.";
+      return;
+    }
+
+    const fixture = scheduled[0];
+    const opponent = BY_ID.get(fixture.opponent_id);
+    const days = daysAway(fixture.date);
+    const byeNote = F.byes.length
+      ? ` ${ME.short} sits out ${F.byes.join(" and ")}, so there is no game that weekend.`
+      : "";
+    const pending = F.remaining.filter((f) => f.tbd);
+    const pendingNote = pending.length
+      ? ` One more game — ${pending.map((f) => BY_ID.get(f.opponent_id).short).join(" and ")} ` +
+        `— has been postponed and could be slotted in ahead of this one.`
+      : "";
+    note.textContent =
+      `The next fixture with a date on it, and what the ratings make of it.` +
+      `${byeNote}${pendingNote}`;
+
+    const card = tint(el("div", "nextup"), ME);
+    const head = el("div", "nextup-head");
+    head.append(el("div", "nextup-when", whenText(fixture)));
+    const badge = countdownText(days);
+    if (badge) head.append(el("span", "countdown", badge));
+    card.append(head);
+
+    const matchup = el("div", "matchup");
+    const mine = el("div", "matchup-side");
+    mine.append(crest(ME, 30));
+    mine.append(el("span", null, ME.short));
+    matchup.append(mine);
+    matchup.append(el("span", "matchup-vs", fixture.home ? "vs" : "at"));
+    const theirs = el("div", "matchup-side");
+    theirs.append(crest(opponent, 30));
+    theirs.append(el("span", null, opponent.short));
+    matchup.append(theirs);
+    matchup.append(el("span", "haway", `#${opponent.power_rank} in the division`));
+    card.append(matchup);
+
+    card.append(venueLine(fixture));
+    card.append(oddsBar(fixture));
+    card.append(el("div", "swing", `Projected line: ${lineText(fixture)}.`));
+    host.append(card);
+  }
+
+  /* ---------- standing ---------- */
+
+  function renderTiles() {
+    const gap = ME.power_rank > 1
+      ? DIV.teams.find((t) => t.power_rank === ME.power_rank - 1)
+      : null;
+    const sim = F.sim.focus;
+
+    const tiles = [
+      ["Power rank", `${ME.power_rank}/${N}`,
+        gap ? `${(gap.power_score - ME.power_score).toFixed(1)} behind ${gap.short}` : "top of the division"],
+      ["Power score", ME.power_score.toFixed(1), "50 is an average team here"],
+      ["League table", `#${ME.table_rank}`,
+        ME.movement === 0 ? "same as the power rank"
+          : `${plural(Math.abs(ME.movement), "place", "places")} ${ME.movement > 0 ? "better" : "worse"} here`],
+      ["Record", recordOf(ME), `${ME.record.pts} pts · GD ${signed(ME.record.gd, 0)}`],
+      ["Rating", signed(ME.rating, 2), "goals vs. an average team"],
+      ["Schedule faced", `#${ME.sos_rank}`, `avg opponent ${ME.sos.toFixed(1)} · #1 is hardest`],
+      ["Projected finish", ordinal(Math.round(sim.mean_finish)),
+        `${sim.mean_points.toFixed(1)} points on average`],
+      ["Wins the division", pct(sim.first), `${pct(sim.top3)} to finish top three`],
+    ];
+
+    const host = $("tiles");
+    for (const [label, value, sub] of tiles) {
+      const tile = el("div", "tile");
+      tile.append(el("div", "tile-label", label));
+      tile.append(el("div", "tile-value", value));
+      tile.append(el("div", "tile-sub", sub));
+      host.append(tile);
+    }
+
+    $("standing-note").textContent =
+      `${ME.short} through ${plural(ME.record.gp, "game", "games")}, measured against the ` +
+      `division rather than against the calendar.`;
+  }
+
+  function renderVerdict() {
+    const host = $("verdict");
+    const sim = F.sim.focus;
+    const leader = DIV.teams.find((t) => t.power_rank === 1);
+    const beaten = ME.resume.filter((g) => g.outcome === "W");
+    const best = [...beaten].sort((a, b) => a.opponent_rank - b.opponent_rank)[0];
+    const softer = ME.sos_rank > N / 2;
+
+    const first = el("p");
+    first.textContent =
+      `${ME.short} sits ${ordinal(ME.power_rank)} of ${N} on power score and ` +
+      `${ordinal(ME.table_rank)} in the table` +
+      (ME.movement === 0
+        ? ", so the model and the standings agree. "
+        : `, a ${plural(Math.abs(ME.movement), "place", "places")} ` +
+          `${ME.movement > 0 ? "upgrade on" : "downgrade from"} the standings. `) +
+      `The rating of ${signed(ME.rating, 2)} says a game against an average team in this ` +
+      `division projects as a ${Math.abs(ME.rating).toFixed(1)}-goal ` +
+      `${ME.rating >= 0 ? "win" : "loss"}.`;
+    host.append(first);
+
+    const second = el("p");
+    let text = best
+      ? `The best win by opponent is ${best.gf}–${best.ga} ` +
+        `${best.home ? "at home to" : "away at"} ${best.opponent}, who rank ` +
+        `${best.opponent_rank} of ${N}. `
+      : "";
+    text +=
+      `The schedule so far rates ${ordinal(ME.sos_rank)} hardest of ${N} — ` +
+      (softer
+        ? "a softer draw than most, which is the main reason to hold the record at arm's length. "
+        : "a genuinely testing draw, which makes the record worth more than it looks. ");
+    text += `${leader.id === ME.id ? "" : `${leader.short} leads on power score. `}`;
+    second.textContent = text;
+    host.append(second);
+
+    if (F.remaining.length) {
+      const third = el("p");
+      const harder = F.remaining_sos > ME.sos;
+      third.textContent =
+        `What is left averages ${F.remaining_sos.toFixed(1)} in opponent power score against ` +
+        `${ME.sos.toFixed(1)} for what has been played — ` +
+        (harder ? "a step up in difficulty" : "slightly easier going") +
+        `. Over ${F.sim.runs.toLocaleString()} simulated finishes, ${ME.short} lands ` +
+        `${ordinal(sim.finish.indexOf(Math.max(...sim.finish)) + 1)} more often than anywhere ` +
+        `else, wins the division ${pct(sim.first)} of the time, and finishes top three ` +
+        `${pct(sim.top3)} of the time.`;
+      host.append(third);
+    }
+  }
+
+  function renderLadder() {
+    const host = $("ladder");
+    const heading = el("h3", null, "The division by power score");
+    host.append(heading);
+    const teams = [...DIV.teams].sort((a, b) => a.power_rank - b.power_rank);
+    for (const team of teams) {
+      const row = tint(el("div", `rung${team.id === ME.id ? " me" : ""}`), team);
+      row.append(el("div", "rung-rank", String(team.power_rank)));
+      const name = el("div", "rung-name");
+      name.append(crest(team, 18));
+      name.append(el("span", null, team.short));
+      row.append(name);
+      const track = el("div", "rung-track");
+      const fill = el("div", "rung-fill");
+      fill.style.width = `${Math.max(2, team.power_score)}%`;
+      track.append(fill);
+      track.append(el("div", "rung-mid"));
+      row.append(track);
+      row.append(el("div", "rung-score", team.power_score.toFixed(1)));
+      host.append(row);
+    }
+    const note = el("p", "section-note");
+    note.style.marginTop = "10px";
+    note.textContent = "The line down the middle is 50 — an average team in this division.";
+    host.append(note);
+  }
+
+  /* ---------- results ---------- */
+
+  function renderResults() {
+    const host = $("results");
+    $("results-count").textContent = `${F.played.length} played`;
+
+    for (const game of F.played) {
+      const opponent = BY_ID.get(game.opponent_id);
+      const card = el("div", `result ${game.outcome.toLowerCase()}`);
+      card.append(el("div", "result-score", `${game.outcome} ${game.gf}–${game.ga}`));
+
+      const middle = el("div");
+      const line = el("div", "result-opp");
+      line.append(crest(opponent, 20));
+      line.append(el("span", null, `${game.home ? "vs" : "at"} ${opponent.short}`));
+      const badge = el("span", `oppr ${game.quality}`, `#${game.opponent_rank}`);
+      badge.title = `${opponent.short} ranks ${game.opponent_rank} of ${N}`;
+      line.append(badge);
+      middle.append(line);
+      middle.append(el("div", "result-meta",
+        `${game.round} · ${cleanDate(game.date).replace(/,\s*\d{4}$/, "")}`));
+      card.append(middle);
+
+      const edge = el("div", "edge");
+      if (game.edge === null) {
+        edge.append(el("div", null, "—"));
+      } else {
+        const value = el("div", game.edge > 0.25 ? "up" : game.edge < -0.25 ? "down" : null,
+          `${signed(game.edge, 1)} goals`);
+        edge.append(value);
+        edge.append(el("div", "edge-sub", `projected ${signed(game.expected, 1)}`));
+      }
+      card.append(edge);
+      host.append(card);
+    }
+
+    renderResultsSummary();
+  }
+
+  function renderResultsSummary() {
+    const host = $("results-summary");
+    const rated = F.played.filter((g) => g.edge !== null);
+    if (!rated.length) {
+      host.textContent = "No completed games yet.";
+      return;
+    }
+    const mean = rated.reduce((sum, g) => sum + g.edge, 0) / rated.length;
+    const best = [...rated].sort((a, b) => b.edge - a.edge)[0];
+    const worst = [...rated].sort((a, b) => a.edge - b.edge)[0];
+    const strong = F.played.filter((g) => g.quality === "strong");
+    const wins = strong.filter((g) => g.outcome === "W").length;
+
+    const bits = [];
+    bits.push(
+      `Across ${plural(rated.length, "game", "games")} ${ME.short} has beaten the projection ` +
+      `by ${signed(mean, 1)} goals a game on average. `);
+    bits.push(
+      `The biggest overperformance is ${best.gf}–${best.ga} ` +
+      `${best.home ? "at home to" : "away at"} ${best.opponent}, ` +
+      `${Math.abs(best.edge).toFixed(1)} goals ${best.edge >= 0 ? "better" : "worse"} ` +
+      `than projected. `);
+    if (worst !== best) {
+      bits.push(
+        `The one to file away is ${worst.gf}–${worst.ga} ${worst.home ? "at home to" : "away at"} ` +
+        `${worst.opponent}, ${Math.abs(worst.edge).toFixed(1)} goals the other way. `);
+    }
+    bits.push(
+      strong.length
+        ? `Against the top third of the division: ${wins} win${wins === 1 ? "" : "s"} from ` +
+          `${plural(strong.length, "try", "tries")}.`
+        : `No games yet against the top third of the division.`);
+
+    const paragraph = el("p");
+    paragraph.style.margin = "0";
+    paragraph.textContent = bits.join("");
+    host.append(paragraph);
+  }
+
+  /* ---------- fixtures ---------- */
+
+  function formPips(team) {
+    const recent = team.resume.slice(-3);
+    const wrap = el("div", "form");
+    wrap.append(el("span", null, "Recent form"));
+    if (!recent.length) {
+      wrap.append(el("span", null, "— no games played"));
+      return wrap;
+    }
+    for (const game of recent) {
+      const pip = el("span", `pip ${game.outcome.toLowerCase()}`, game.outcome);
+      pip.title = `${game.outcome} ${game.gf}–${game.ga} ${game.home ? "vs" : "at"} ` +
+        `${game.opponent} (#${game.opponent_rank})`;
+      wrap.append(pip);
+    }
+    const last = recent[recent.length - 1];
+    wrap.append(el("span", null,
+      `latest: ${last.gf}–${last.ga} ${last.home ? "vs" : "at"} ${last.opponent} (#${last.opponent_rank})`));
+    return wrap;
+  }
+
+  function histogram(fixture) {
+    const wrap = el("div");
+    const caption = el("div", "tile-label", `Chance of each final margin, ${ME.short} first`);
+    caption.style.marginTop = "14px";
+    wrap.append(caption);
+    const chart = el("div", "hist");
+    chart.style.marginTop = "6px";
+    const peak = Math.max(...fixture.margins.map(([, p]) => p));
+    for (const [goals, p] of fixture.margins) {
+      const col = el("div", `hist-col ${goals > 0 ? "win" : goals < 0 ? "loss" : "draw"}`);
+      const bar = el("div", "hist-bar");
+      bar.style.height = `${(p / peak) * 100}%`;
+      col.append(bar);
+      col.title = `${pct(p)} chance of ${goals === 0 ? "a draw"
+        : goals > 0 ? `winning by ${goals}${goals === 4 ? "+" : ""}`
+        : `losing by ${-goals}${goals === -4 ? "+" : ""}`}`;
+      chart.append(col);
+    }
+    wrap.append(chart);
+    const axis = el("div", "hist-axis");
+    for (const [goals] of fixture.margins) {
+      axis.append(el("span", null, goals === 4 ? "+4" : goals === -4 ? "−4" : goals === 0 ? "0" : signed(goals, 0)));
+    }
+    wrap.append(axis);
+    return wrap;
+  }
+
+  function scoutRow(opponent) {
+    const sim = simFor(opponent.id);
+    const grid = el("div", "scout");
+    const items = [
+      ["Power rank", `#${opponent.power_rank}`],
+      ["Power score", opponent.power_score.toFixed(1)],
+      ["Record", recordOf(opponent)],
+      ["Points", String(opponent.record.pts)],
+      ["Goals", `${opponent.record.gf}–${opponent.record.ga}`],
+      ["Rating", signed(opponent.rating, 2)],
+      ["Sched. faced", `#${opponent.sos_rank}`, "#1 is the hardest slate faced so far"],
+      ["Proj. finish", sim ? ordinal(Math.round(sim.mean_finish)) : "—"],
+    ];
+    for (const [label, value, hint] of items) {
+      const item = el("div", "scout-item");
+      if (hint) item.title = hint;
+      item.append(el("div", "tile-label", label));
+      item.append(el("div", "scout-value", value));
+      grid.append(item);
+    }
+    return grid;
+  }
+
+  function headToHead(opponent) {
+    const met = F.played.filter((g) => g.opponent_id === opponent.id);
+    if (!met.length) return null;
+    const game = met[met.length - 1];
+    return `Already met: ${game.outcome} ${game.gf}–${game.ga} ${game.home ? "at home" : "away"}, ` +
+      `${cleanDate(game.date).replace(/,\s*\d{4}$/, "")}.`;
+  }
+
+  function swingText(fixture) {
+    const leverage = fixture.swing;
+    if (!leverage) return null;
+    const base = F.sim.focus;
+    return `Win it and ${ME.short} takes the division ${pct(leverage.W.first)} of the time ` +
+      `and finishes top three ${pct(leverage.W.top3)} of the time. Lose it and those fall to ` +
+      `${pct(leverage.L.first)} and ${pct(leverage.L.top3)}. Right now they stand at ` +
+      `${pct(base.first)} and ${pct(base.top3)}.`;
+  }
+
+  function renderFixtures() {
+    const host = $("fixtures");
+    const scheduled = F.remaining.filter((f) => !f.tbd).length;
+    const tbd = F.remaining.length - scheduled;
+    $("remaining-count").textContent =
+      `${F.remaining.length} to play` + (tbd ? ` · ${tbd} awaiting a date` : "");
+
+    const byeNote = F.byes.length
+      ? ` ${ME.short} has no game in ${F.byes.join(" or ")} while the rest of the division plays.`
+      : "";
+    $("remaining-note").textContent =
+      `Every fixture still owed, with the opponent as the ratings currently see them, the ` +
+      `projected margin, and what each result would do to the season.${byeNote}` +
+      (tbd
+        ? ` One game was postponed and has no new date posted; it is shown last and is still ` +
+          `counted in every projection on this page.`
+        : "");
+
+    if (!F.remaining.length) {
+      host.append(el("div", "callout", "Nothing left to play — the season is complete."));
+      return;
+    }
+
+    // The fixtures arrive in schedule order with the dateless one last, which
+    // is where it belongs: a game nobody can plan around should not sit in the
+    // middle of a list that claims to be a calendar.
+    F.remaining.forEach((fixture, index) => {
+      const opponent = BY_ID.get(fixture.opponent_id);
+      const card = tint(el("div", `fixture${fixture.tbd ? " tbd" : ""}`), opponent);
+
+      const head = el("div", "fixture-head");
+      head.append(el("div", "fixture-when", whenText(fixture)));
+      const right = el("div", "fixture-round",
+        `${fixture.round}${fixture.tbd ? " · postponed" : ""}`);
+      head.append(right);
+      card.append(head);
+
+      const body = el("div", "fixture-body");
+      const top = el("div", "fixture-opp");
+      top.append(crest(opponent, 40));
+      const name = el("div");
+      name.append(el("div", "fixture-opp-name", opponent.short));
+      const sub = el("div", "result-meta", lineText(fixture));
+      name.append(sub);
+      top.append(name);
+      top.append(el("span", "haway", fixture.home ? "Home" : "Away"));
+      body.append(top);
+
+      body.append(venueLine(fixture));
+      body.append(scoutRow(opponent));
+      body.append(oddsBar(fixture));
+      body.append(histogram(fixture));
+      body.append(formPips(opponent));
+
+      const h2h = headToHead(opponent);
+      const rest = fixturesFor(opponent.id).filter((f) => f.home_id !== ME.id && f.away_id !== ME.id);
+      const notes = [];
+      if (h2h) notes.push(h2h);
+      if (rest.length) {
+        notes.push(`Still to play: ` + rest.map((f) => {
+          const other = f.home_id === opponent.id ? BY_ID.get(f.away_id) : BY_ID.get(f.home_id);
+          return `${f.home_id === opponent.id ? "vs" : "at"} ${other.short}`;
+        }).join(", ") + ".");
+      }
+      if (notes.length) {
+        const meta = el("div", "form");
+        meta.append(el("span", null, notes.join(" ")));
+        body.append(meta);
+      }
+
+      const swing = swingText(fixture);
+      if (swing) body.append(el("div", "swing", swing));
+
+      card.append(body);
+      host.append(card);
+    });
+  }
+
+  /* ---------- simulation ---------- */
+
+  function renderPoints() {
+    const sim = F.sim.focus;
+    const dist = sim.points.distribution;
+    $("finish-heading").textContent = `Where ${ME.short} ends up on points`;
+    const host = $("points-dist");
+    const axis = $("points-axis");
+    const peak = Math.max(...dist.map(([, p]) => p));
+    for (const [points, p] of dist) {
+      const col = el("div", "points-col");
+      const bar = tint(el("div", "points-bar"), ME);
+      bar.style.height = `${(p / peak) * 100}%`;
+      bar.title = `${pct(p)} chance of finishing on ${points} points`;
+      col.append(bar);
+      host.append(col);
+      axis.append(el("span", null, String(points)));
+    }
+    const champion = F.sim.champion_points;
+    const sweep = sim.sweep;
+    const table = $("run-the-table");
+    const line = el("p");
+    line.style.margin = "0";
+    const bits = [
+      `It takes about ${champion.low}–${champion.high} points to win this division: that is ` +
+      `where the winning total lands in eight of every ten runs, averaging ${champion.mean}. `,
+    ];
+    if (sweep && sweep.first !== null && F.remaining.length) {
+      bits.push(
+        `Win all ${plural(F.remaining.length, "game", "games")} — which happens in ` +
+        `${pct(sweep.share)} of runs — and ${ME.short} finishes on ` +
+        `${ME.record.pts + F.remaining.length * 3} points and takes the division ` +
+        `${pct(sweep.first)} of the time, with a top-three finish in ` +
+        `${sweep.top3 >= 0.995 ? "every single one" : pct(sweep.top3) + " of them"}. ` +
+        `The other ${pct(1 - sweep.first)} is the rest of the division refusing to slip.`);
+    }
+    line.textContent = bits.join("");
+    table.append(line);
+
+    $("points-note").textContent =
+      `Most likely ${sim.points.most_likely} points, averaging ${sim.points.mean}. Eight in ten ` +
+      `runs land between ${sim.points.low} and ${sim.points.high}. ${ME.short} has ` +
+      `${ME.record.pts} now with ${plural(F.remaining.length, "game", "games")} to play.`;
+
+    const title = DIV.teams
+      .map((t) => ({ team: t, sim: simFor(t.id) }))
+      .filter((row) => row.sim)
+      .sort((a, b) => b.sim.first - a.sim.first);
+    const favourite = title[0];
+    $("sim-note").textContent =
+      `The rest of the division is played out ${F.sim.runs.toLocaleString()} times, one draw ` +
+      `per fixture around its projected margin, using the spread the model has actually ` +
+      `missed by. ${favourite.team.short} comes out on top most often (${pct(favourite.sim.first)}), ` +
+      `and ${ME.short} ${sim.first >= 0.5 ? "wins it" : "takes it"} ${pct(sim.first)} of the time.`;
+  }
+
+  function renderFinishStrip() {
+    const host = $("finish-strip");
+    const header = el("div", "finish-row");
+    header.append(el("div"));
+    header.append(el("div"));
+    const heads = el("div", "finish-cells");
+    for (let i = 1; i <= N; i += 1) heads.append(el("div", "finish-head", String(i)));
+    header.append(heads);
+    host.append(header);
+
+    const rows = DIV.teams
+      .map((t) => ({ team: t, sim: simFor(t.id) }))
+      .filter((row) => row.sim)
+      .sort((a, b) => a.sim.mean_finish - b.sim.mean_finish);
+
+    rows.forEach((row, index) => {
+      const line = el("div", "finish-row");
+      line.append(el("div", "rung-rank", String(index + 1)));
+      const name = el("div", "rung-name");
+      name.append(crest(row.team, 18));
+      const label = el("span", null, row.team.short);
+      if (row.team.id === ME.id) label.style.fontWeight = "700";
+      name.append(label);
+      line.append(name);
+
+      const cells = el("div", "finish-cells");
+      row.sim.finish.forEach((p, position) => {
+        const cell = el("div", "finish-cell", p >= 0.08 ? Math.round(p * 100) : "");
+        // One hue for every row, so the same shade means the same probability
+        // wherever it appears, and capped short of full strength so the number
+        // on top of it stays readable in both themes. Tinting by team colour
+        // would make a red 30% look stronger than a pale blue 40%.
+        // A square-root ramp: a linear one spends most of its range on
+        // probabilities no team has, and flattens 50% against 88%. Capped at
+        // 55% of the accent so the number on top stays readable either theme.
+        cell.style.background =
+          `color-mix(in srgb, var(--accent) ${(55 * Math.sqrt(p)).toFixed(1)}%, var(--surface-2))`;
+        cell.title = `${row.team.short}: ${pct(p)} to finish ${ordinal(position + 1)}`;
+        cells.append(cell);
+      });
+      line.append(cells);
+      host.append(line);
+    });
+  }
+
+  function renderLeverage() {
+    const body = $("leverage-rows");
+    const base = F.sim.focus;
+    $("leverage-note").textContent =
+      `The same ${F.sim.runs.toLocaleString()} seasons, sorted by what happened in each game. ` +
+      `This is the honest version of "must-win": the column is the chance ${ME.short} wins the ` +
+      `division given that result, with everything else left to play out as it may. ` +
+      `The baseline is ${pct(base.first)}, and the swing column is the gap in percentage ` +
+      `points between winning the game and losing it.`;
+
+    const rows = F.remaining
+      .map((fixture) => ({
+        fixture,
+        leverage: fixture.swing,
+        opponent: BY_ID.get(fixture.opponent_id),
+      }))
+      .filter((row) => row.leverage);
+
+    const swing = (row) => row.leverage.W.first - row.leverage.L.first;
+    const ranked = [...rows].sort((a, b) => swing(b) - swing(a));
+
+    for (const row of ranked) {
+      const tr = tint(el("tr"), row.opponent);
+      const cell = el("td", "left");
+      const holder = el("div", "td-team");
+      holder.append(crest(row.opponent, 20));
+      const label = el("div");
+      label.append(el("div", null, `${row.fixture.home ? "vs" : "at"} ${row.opponent.short}`));
+      label.append(el("div", "result-meta",
+        row.fixture.tbd ? "date to be set" : whenText(row.fixture)));
+      holder.append(label);
+      cell.append(holder);
+      tr.append(cell);
+
+      for (const key of ["W", "D", "L"]) {
+        const value = el("td", "num", pct(row.leverage[key].first));
+        value.title = `${pct(row.leverage[key].top3)} to finish top three`;
+        tr.append(value);
+      }
+      const delta = el("td", "num", `${Math.round(swing(row) * 100)} pp`);
+      delta.title = "Percentage points between the win column and the lose column";
+      tr.append(delta);
+      body.append(tr);
+    }
+
+    const top = ranked[0];
+    if (top) {
+      $("leverage-foot").textContent =
+        `The biggest single swing is ${top.fixture.home ? "the home game with" : "the trip to"} ` +
+        `${top.opponent.short}: ${pct(top.leverage.W.first)} to win the division if it goes ` +
+        `${ME.short}'s way, ${pct(top.leverage.L.first)} if it does not. Every percentage ` +
+        `point here already accounts for the other nine teams playing their own games out.`;
+    }
+  }
+
+  /* ---------- the division ---------- */
+
+  function renderDivision() {
+    const body = $("division-rows");
+    $("meeting-head").textContent = `vs ${ME.short}`;
+    const unmet = DIV.teams.filter((t) =>
+      t.id !== ME.id &&
+      !F.remaining.some((f) => f.opponent_id === t.id) &&
+      !F.played.some((g) => g.opponent_id === t.id));
+    $("division-note").textContent =
+      `Everybody ${ME.short} is measured against, with what each has left to play and how ` +
+      `often they come out on top. The last column is ${ME.short}'s own game with them` +
+      (unmet.length
+        ? `, and the division is a game short of a full round robin: ` +
+          `${unmet.map((t) => t.short).join(", ")} ` +
+          `${unmet.length === 1 ? "is a team" : "are teams"} ${ME.short} never plays.`
+        : ".");
+
+    const teams = [...DIV.teams].sort((a, b) => a.power_rank - b.power_rank);
+    for (const team of teams) {
+      const sim = simFor(team.id);
+      const left = fixturesFor(team.id);
+      const tr = tint(el("tr", team.id === ME.id ? "me" : null), team);
+      tr.append(el("td", "num", String(team.power_rank)));
+
+      const nameCell = el("td", "left");
+      const holder = el("div", "td-team");
+      holder.append(crest(team, 22));
+      holder.append(el("span", null, team.short));
+      nameCell.append(holder);
+      tr.append(nameCell);
+
+      tr.append(el("td", "num", recordOf(team)));
+      tr.append(el("td", "num", String(team.record.pts)));
+      tr.append(el("td", "num", team.power_score.toFixed(1)));
+      tr.append(el("td", "num", String(left.length)));
+      tr.append(el("td", "num", sim ? sim.mean_points.toFixed(1) : "—"));
+      tr.append(el("td", "num", sim ? pct(sim.first) : "—"));
+
+      const meeting = team.id === ME.id
+        ? "—"
+        : (() => {
+            const fixture = F.remaining.find((f) => f.opponent_id === team.id);
+            if (!fixture) {
+              const played = F.played.find((g) => g.opponent_id === team.id);
+              return played ? `played · ${played.outcome} ${played.gf}–${played.ga}` : "no fixture";
+            }
+            return fixture.tbd
+              ? "date to be set"
+              : `${fixture.home ? "home" : "away"} · ${cleanDate(fixture.date).replace(/,\s*\d{4}$/, "")}`;
+          })();
+      tr.append(el("td", "left", meeting));
+      body.append(tr);
+    }
+  }
+
+  /* ---------- method ---------- */
+
+  function renderMethod() {
+    const calibration = F.calibration;
+    $("sigma-note").textContent =
+      `A projected margin on its own says nothing about how sure it is. The spread around it ` +
+      `is ${F.sigma} goals — that is the standard deviation of how far this model's ` +
+      `projections have actually landed from the real margin across all ` +
+      `${calibration.games} games this league has played. A game is a draw when the margin ` +
+      `comes out at zero, so the win and loss tails start half a goal either side of the ` +
+      `projection. That is the whole of the probability model.`;
+
+    if (calibration.buckets.length) {
+      $("calibration-note").textContent =
+        `Grouping every one of those predictions by how likely a home win was called, against ` +
+        `how often the home team actually won:`;
+      const table = $("calibration-table");
+      const head = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      for (const label of ["Called", "Model said", "Actually happened", "Games"]) {
+        const th = el("th", label === "Called" ? "left" : null, label);
+        th.scope = "col";
+        headRow.append(th);
+      }
+      head.append(headRow);
+      table.append(head);
+      const tbody = document.createElement("tbody");
+      for (const bucket of calibration.buckets) {
+        const tr = document.createElement("tr");
+        tr.append(el("td", "left", `${Math.round(bucket.low * 100)}–${Math.round(bucket.high * 100)}%`));
+        tr.append(el("td", "num", pct(bucket.predicted)));
+        tr.append(el("td", "num", pct(bucket.actual)));
+        tr.append(el("td", "num", String(bucket.games)));
+        tbody.append(tr);
+      }
+      table.append(tbody);
+
+      const score = el("p");
+      score.textContent =
+        `Scored as a Brier score, the model comes in at ${calibration.brier}` +
+        (calibration.baseline
+          ? `, against ${calibration.baseline} for quoting the league's overall home-win rate ` +
+            `at every game regardless of who is playing — about ${pct(calibration.skill)} ` +
+            `better than knowing nothing about the teams`
+          : "") +
+        `. Rows of thirty or eighty games are small, so read the table as a sanity check ` +
+        `rather than a proof.`;
+      $("calibration-table").after(score);
+    }
+
+    $("sim-method").textContent =
+      `Every fixture left in the division — ${F.sim.fixtures} of them, this team's and ` +
+      `everyone else's — is played ${F.sim.runs.toLocaleString()} times. Each time, a margin ` +
+      `is drawn around that game's projection using the spread above, and the losing side's ` +
+      `goals are drawn from what this league has actually produced, so a simulated season ` +
+      `has real scorelines and the goal tie-breakers mean something. The league's caps apply ` +
+      `throughout: four goals a side, four goals of differential.`;
+
+    const perTeam = DIV.teams.length ? (DIV.games_played * 2) / DIV.teams.length : 0;
+    $("caveat").textContent =
+      `This division has played ${DIV.games_played} games, about ${perTeam.toFixed(0)} per ` +
+      `team. That is a small sample, and every rating here is deliberately pulled toward ` +
+      `average so that one lopsided afternoon cannot run away with the list. The odds move ` +
+      `on their own as results come in.`;
+
+    $("footer-text").textContent =
+      `Built from the published ${DATA.league} schedule and results. The win-loss-tie and ` +
+      `goal totals match the league's official standings exactly. Kickoff times are the ` +
+      `league's own. Last updated ${new Date(DATA.generated_at).toLocaleString()}.`;
+  }
+
+  renderMasthead();
+  renderNextUp();
+  renderTiles();
+  renderVerdict();
+  renderLadder();
+  renderResults();
+  renderFixtures();
+  renderPoints();
+  renderFinishStrip();
+  renderLeverage();
+  renderDivision();
+  renderMethod();
+</script>
+</body>
+</html>

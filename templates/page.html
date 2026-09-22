@@ -9,118 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-  :root {
-    --bg: #f2f4f6;
-    --surface: #ffffff;
-    --surface-2: #e9edf1;
-    --ink: #16202b;
-    --ink-2: #5d6b7a;
-    --ink-3: #8593a2;
-    --line: #dde3e9;
-    --line-strong: #c4ced8;
-    --accent: #1f3f6e;
-    --accent-soft: #e4ebf5;
-    --pos: #0f9481;
-    --neg: #c25429;
-    --neutral-mark: #8e9aa6;
-    --focus: #1f3f6e;
-
-    --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
-    --r-sm: 4px;
-    --r-md: 8px;
-    --r-lg: 14px;
-    color-scheme: light;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #12171c;
-      --surface: #1a2129;
-      --surface-2: #222b35;
-      --ink: #e6ecf2;
-      --ink-2: #9aa8b6;
-      --ink-3: #75838f;
-      --line: #2a3440;
-      --line-strong: #3b4855;
-      --accent: #7aa5dd;
-      --accent-soft: #22303f;
-      --pos: #2aa88f;
-      --neg: #d06f45;
-      --neutral-mark: #6b7886;
-      --focus: #7aa5dd;
-      color-scheme: dark;
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #12171c;
-    --surface: #1a2129;
-    --surface-2: #222b35;
-    --ink: #e6ecf2;
-    --ink-2: #9aa8b6;
-    --ink-3: #75838f;
-    --line: #2a3440;
-    --line-strong: #3b4855;
-    --accent: #7aa5dd;
-    --accent-soft: #22303f;
-    --pos: #2aa88f;
-    --neg: #d06f45;
-    --neutral-mark: #6b7886;
-    --focus: #7aa5dd;
-    color-scheme: dark;
-  }
-
-  /* Every element that carries a team's colors gets both accents inline and
-     picks the one that reads on the current background. */
-  .tinted { --team: var(--team-l, var(--accent)); }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .tinted { --team: var(--team-d, var(--accent)); }
-  }
-
-  :root[data-theme="dark"] .tinted { --team: var(--team-d, var(--accent)); }
-
-  * { box-sizing: border-box; }
-
-  html { -webkit-text-size-adjust: 100%; }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--f-display);
-    font-size: 15px;
-    line-height: 1.55;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  .wrap {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding-inline: 16px;
-    padding-block: 0 56px;
-  }
-
-  a { color: var(--accent); }
-
-  :where(a, button, select, summary):focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-    border-radius: var(--r-sm);
-  }
-
-  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
-
-  /* ---------- crests ---------- */
-
-  .crest {
-    display: block;
-    flex: none;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-  }
+  /*__SHARED_CSS__*/
 
   /* ---------- masthead ---------- */
 
@@ -169,6 +58,13 @@
   }
 
   .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .team-link {
+    margin: 16px 0 0;
+    font-size: 13.5px;
+  }
+
+  .team-link a { font-weight: 600; }
 
   .field label {
     font-size: 11px;
@@ -728,6 +624,7 @@
         </div>
       </div>
     </div>
+    <p class="team-link" id="team-link" hidden></p>
     <div class="meta-line" id="meta-line"></div>
   </div>
 </header>
@@ -885,131 +782,7 @@
     return new Map(div.teams.map((t) => [t.id, t]));
   }
 
-  /* ---------- crests ----------
-     A shield in the club's kit colors, with the pattern those colors go in and
-     a name band across the front. Drawn here rather than shipped as artwork:
-     nothing is copied from a club. */
-
-  const SVG_NS = "http://www.w3.org/2000/svg";
-  const SHIELD = "M8 5 H92 V57 C92 83 74 100 50 107 C26 100 8 83 8 57 Z";
-  let crestSeq = 0;
-
-  const svg = (tag, attrs) => {
-    const node = document.createElementNS(SVG_NS, tag);
-    for (const [k, v] of Object.entries(attrs || {})) node.setAttribute(k, String(v));
-    return node;
-  };
-
-  const box = (x, y, w, h, fill) => svg("rect", { x, y, width: w, height: h, fill });
-
-  function luminance(hex) {
-    const h = hex.replace("#", "");
-    const parts = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
-    const lin = parts.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
-    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
-  }
-
-  function patternShapes(group, pattern, field, trim, accent) {
-    switch (pattern) {
-      case "stripes":
-        for (let x = 8; x < 100; x += 28) group.append(box(x, 0, 14, 112, trim));
-        break;
-      case "hoops":
-        for (let y = 8; y < 112; y += 30) group.append(box(0, y, 100, 15, trim));
-        break;
-      case "halves":
-        group.append(box(50, 0, 50, 112, trim));
-        break;
-      case "diagonal":
-        group.append(svg("polygon", { points: "100,0 100,112 0,112", fill: trim }));
-        break;
-      case "sash":
-        group.append(svg("polygon", { points: "0,112 0,74 78,0 100,0 100,26 24,112", fill: trim }));
-        break;
-      case "sleeves":
-        group.append(box(0, 0, 21, 112, trim));
-        group.append(box(79, 0, 21, 112, trim));
-        break;
-      case "cross":
-        group.append(box(38, 0, 24, 112, trim));
-        group.append(box(0, 32, 100, 24, trim));
-        if (accent) group.append(box(44, 0, 12, 112, accent));
-        break;
-      case "band":
-        group.append(box(0, 40, 100, 26, trim));
-        break;
-      default:
-        break;
-    }
-  }
-
-  function crest(team, size) {
-    const id = team.identity;
-    const [field, trim, accent] = id.colors;
-    const uid = `crest-${++crestSeq}`;
-    const root = svg("svg", {
-      class: "crest",
-      viewBox: "0 0 100 112",
-      width: size,
-      height: Math.round(size * 1.12),
-      role: "img",
-      "aria-hidden": "true",
-    });
-
-    const defs = svg("defs");
-    const clip = svg("clipPath", { id: uid });
-    clip.append(svg("path", { d: SHIELD }));
-    defs.append(clip);
-    root.append(defs);
-
-    const group = svg("g", { "clip-path": `url(#${uid})` });
-    group.append(box(0, 0, 100, 112, field));
-    patternShapes(group, id.pattern, field, trim, accent);
-
-    // The name band, with the club's letters on it. Below about 26px the
-    // letters stop being letters, so the crest is left as pure kit.
-    if (size >= 26) {
-      const sorted = [...id.colors].sort((a, b) => luminance(b) - luminance(a));
-      const band = luminance(sorted[0]) > 0.55 ? sorted[0] : "#FFFFFF";
-      const letters = luminance(sorted[sorted.length - 1]) < 0.5
-        ? sorted[sorted.length - 1]
-        : "#151A20";
-      group.append(svg("rect", {
-        x: 0, y: 50, width: 100, height: 26, fill: band,
-        stroke: letters, "stroke-width": 1.5, "stroke-opacity": 0.35,
-      }));
-      const text = svg("text", {
-        x: 50, y: 70, "text-anchor": "middle", fill: letters,
-        "font-family": "IBM Plex Mono, ui-monospace, monospace",
-        "font-size": id.code.length > 3 ? 18 : 22,
-        "font-weight": 600,
-        "letter-spacing": 0.5,
-      });
-      text.textContent = id.code;
-      group.append(text);
-    }
-
-    root.append(group);
-    root.append(svg("path", {
-      d: SHIELD, fill: "none", stroke: "currentColor",
-      "stroke-opacity": 0.28, "stroke-width": 4,
-    }));
-    return root;
-  }
-
-  function tint(node, team) {
-    node.classList.add("tinted");
-    node.style.setProperty("--team-l", team.identity.accent.light);
-    node.style.setProperty("--team-d", team.identity.accent.dark);
-    return node;
-  }
-
-  function tags(team) {
-    const out = [];
-    if (!team.host && team.org) out.push(team.org);
-    if (team.site) out.push(team.site);
-    return out;
-  }
+  /*__CREST_JS__*/
 
   /* ---------- controls ---------- */
 
@@ -1045,6 +818,9 @@
     const parts = [
       `${div.teams.length} teams`,
       `${div.games_played} of ${div.games_total} games played`,
+      // A postponed game is still owed, so counting it nowhere would quietly
+      // understate what the division has left.
+      ...(div.games_postponed ? [`${div.games_postponed} postponed`] : []),
       `updated ${new Date(DATA.generated_at).toLocaleDateString(undefined, {
         month: "short", day: "numeric", year: "numeric",
       })}`,
@@ -1053,6 +829,22 @@
     line.replaceChildren();
     parts.forEach((p) => line.append(el("span", null, p)));
     $("league-eyebrow").textContent = DATA.league;
+
+    // The featured team has a page of its own -- every fixture it has left,
+    // with odds and a simulated finish. Only offer it on the division that
+    // team actually plays in.
+    const link = $("team-link");
+    const mine = featuredTeam(div);
+    if (mine) {
+      link.hidden = false;
+      link.replaceChildren();
+      const anchor = el("a", null, `${mine.short}: the full team report →`);
+      anchor.href = "team.html";
+      link.append(anchor);
+    } else {
+      link.hidden = true;
+    }
+
     $("rankings-heading").textContent = div.name;
     document.title = `Power Rankings · ${div.name}`;
   }

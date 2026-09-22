@@ -1,0 +1,115 @@
+/* Design tokens, the light/dark contract, and the primitives both pages
+   are built from. Inlined into every template at build time, so each page
+   still ships as one file that needs nothing but a browser. */
+  :root {
+    --bg: #f2f4f6;
+    --surface: #ffffff;
+    --surface-2: #e9edf1;
+    --ink: #16202b;
+    --ink-2: #5d6b7a;
+    --ink-3: #8593a2;
+    --line: #dde3e9;
+    --line-strong: #c4ced8;
+    --accent: #1f3f6e;
+    --accent-soft: #e4ebf5;
+    --pos: #0f9481;
+    --neg: #c25429;
+    --neutral-mark: #8e9aa6;
+    --focus: #1f3f6e;
+
+    --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 14px;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12171c;
+      --surface: #1a2129;
+      --surface-2: #222b35;
+      --ink: #e6ecf2;
+      --ink-2: #9aa8b6;
+      --ink-3: #75838f;
+      --line: #2a3440;
+      --line-strong: #3b4855;
+      --accent: #7aa5dd;
+      --accent-soft: #22303f;
+      --pos: #2aa88f;
+      --neg: #d06f45;
+      --neutral-mark: #6b7886;
+      --focus: #7aa5dd;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12171c;
+    --surface: #1a2129;
+    --surface-2: #222b35;
+    --ink: #e6ecf2;
+    --ink-2: #9aa8b6;
+    --ink-3: #75838f;
+    --line: #2a3440;
+    --line-strong: #3b4855;
+    --accent: #7aa5dd;
+    --accent-soft: #22303f;
+    --pos: #2aa88f;
+    --neg: #d06f45;
+    --neutral-mark: #6b7886;
+    --focus: #7aa5dd;
+    color-scheme: dark;
+  }
+
+  /* Every element that carries a team's colors gets both accents inline and
+     picks the one that reads on the current background. */
+  .tinted { --team: var(--team-l, var(--accent)); }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tinted { --team: var(--team-d, var(--accent)); }
+  }
+
+  :root[data-theme="dark"] .tinted { --team: var(--team-d, var(--accent)); }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-display);
+    font-size: 15px;
+    line-height: 1.55;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 0 56px;
+  }
+
+  a { color: var(--accent); }
+
+  :where(a, button, select, summary):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--r-sm);
+  }
+
+  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- crests ---------- */
+
+  .crest {
+    display: block;
+    flex: none;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+  }
