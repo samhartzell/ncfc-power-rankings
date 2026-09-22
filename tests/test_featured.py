@@ -53,13 +53,18 @@ class TestScheduleDetail(unittest.TestCase):
         for entry in raw["schedule"]:
             entry["field"] = None
         division = build_division({"id": raw["id"], "name": raw["name"]}, raw)
-        for fixture in division["upcoming"] + division["postponed"]:
+        for fixture in division["upcoming"]:
             self.assertEqual(fixture["field"], "")
             self.assertEqual(fixture["address"], "")
 
 
-class TestPostponedGamesAreStillOwed(unittest.TestCase):
-    """A rescheduled game is a fixture with no date, not a fixture that is gone."""
+class TestRescheduledGamesKeepTheirNewDate(unittest.TestCase):
+    """The league moves a game by rewriting its row, not by emptying it.
+
+    A "Rescheduled" row arrives with a new date, time, field and round label
+    already on it, so the flag says the fixture moved -- not that nobody knows
+    when it is.
+    """
 
     def setUp(self):
         self.raw = load_fixture()
@@ -68,21 +73,35 @@ class TestPostponedGamesAreStillOwed(unittest.TestCase):
     def test_every_scheduled_game_lands_in_exactly_one_list(self):
         played = self.division["games_played"]
         upcoming = len(self.division["upcoming"])
-        postponed = len(self.division["postponed"])
-        self.assertEqual(played + upcoming + postponed, len(self.raw["schedule"]))
+        self.assertEqual(played + upcoming, len(self.raw["schedule"]))
+        self.assertEqual(self.division["games_total"], len(self.raw["schedule"]))
 
-    def test_the_rescheduled_games_are_the_postponed_ones(self):
+    def test_the_rescheduled_games_are_flagged_as_moved(self):
         expected = sum(1 for g in self.raw["schedule"] if g["status"] == "Rescheduled")
         self.assertEqual(expected, 3)
-        self.assertEqual(self.division["games_postponed"], expected)
-        self.assertEqual(len(self.division["postponed"]), expected)
+        self.assertEqual(self.division["games_moved"], expected)
+        self.assertEqual(sum(1 for f in self.division["upcoming"] if f["moved"]), expected)
 
-    def test_a_postponed_game_never_appears_as_a_dated_fixture(self):
-        dated = {(f["home_id"], f["away_id"]) for f in self.division["upcoming"]}
-        for fixture in self.division["postponed"]:
-            self.assertNotIn((fixture["home_id"], fixture["away_id"]), dated)
+    def test_a_rescheduled_game_carries_the_date_the_league_posted(self):
+        by_pair = {(g["home_team_id"], g["away_team_id"]): g for g in self.raw["schedule"]}
+        moved = [f for f in self.division["upcoming"] if f["moved"]]
+        self.assertTrue(moved)
+        for fixture in moved:
+            source = by_pair[(fixture["home_id"], fixture["away_id"])]
+            with self.subTest(pair=(fixture["home_id"], fixture["away_id"])):
+                self.assertEqual(fixture["date"], source["date_short"])
+                self.assertEqual(fixture["time"], source["time"])
+                self.assertEqual(fixture["field"], source["field"]["name"])
 
-    def test_postponed_games_stay_out_of_the_played_count(self):
+    def test_the_fixture_list_stays_in_kickoff_order(self):
+        starts = [
+            next(g["start_datetime"] for g in self.raw["schedule"]
+                 if (g["home_team_id"], g["away_team_id"]) == (f["home_id"], f["away_id"]))
+            for f in self.division["upcoming"]
+        ]
+        self.assertEqual(starts, sorted(starts))
+
+    def test_rescheduled_games_stay_out_of_the_played_count(self):
         # They carry a placeholder 0-0, so counting them would invent draws.
         self.assertEqual(
             self.division["games_played"],
@@ -130,10 +149,17 @@ class TestTeamReport(unittest.TestCase):
         }
         self.assertEqual(len(self.featured["remaining"]), len(owed))
 
-    def test_the_postponed_game_is_flagged_and_listed_last(self):
-        flags = [f["tbd"] for f in self.featured["remaining"]]
-        self.assertIn(True, flags)
-        self.assertEqual(flags, sorted(flags))  # False before True
+    def test_the_rescheduled_game_is_flagged_and_sorted_by_its_new_date(self):
+        moved = [f for f in self.featured["remaining"] if f["moved"]]
+        self.assertEqual(len(moved), 1)
+        # Chelsea's Round 5 game was pushed to Saturday, October 3, which puts
+        # it ahead of the Round 6 fixture the rest of the division plays --
+        # where the old "listed last" rule buried it.
+        self.assertEqual(moved[0]["date"], "Oct  3, 2026")
+        self.assertEqual(moved[0]["time"], "11:30 AM")
+        after = self.featured["remaining"][self.featured["remaining"].index(moved[0]) + 1]
+        self.assertEqual(after["date"], "Oct  4, 2026")
+        self.assertIsNot(self.featured["remaining"][-1], moved[0])
 
     def test_home_and_away_match_the_schedule(self):
         by_opponent = {}
@@ -147,9 +173,14 @@ class TestTeamReport(unittest.TestCase):
             with self.subTest(opponent=fixture["opponent_id"]):
                 self.assertEqual(fixture["home"], by_opponent[fixture["opponent_id"]])
 
-    def test_the_bye_round_is_found(self):
-        # Chelsea's Round 5 opponent was moved, leaving it with a free weekend.
-        self.assertEqual(self.featured["byes"], ["Round 5"])
+    def test_a_relabelled_round_is_not_reported_as_a_bye(self):
+        # The moved game took Round 6's label, leaving Round 5 empty and Round
+        # 6 doubled. Chelsea plays all eight games, so it has no free weekend.
+        rounds = [g["round"] for g in self.featured["played"]]
+        rounds += [f["round"] for f in self.featured["remaining"]]
+        self.assertNotIn("Round 5", rounds)
+        self.assertEqual(rounds.count("Round 6"), 2)
+        self.assertEqual(self.featured["byes"], [])
 
     def test_every_fixture_carries_a_full_set_of_odds(self):
         for fixture in self.featured["remaining"]:
@@ -189,8 +220,7 @@ class TestTeamReport(unittest.TestCase):
 
     def test_the_simulation_covers_the_whole_division_not_just_this_team(self):
         self.assertEqual(
-            self.featured["sim"]["fixtures"],
-            len(self.division["upcoming"]) + len(self.division["postponed"]),
+            self.featured["sim"]["fixtures"], len(self.division["upcoming"])
         )
         self.assertEqual(len(self.featured["sim"]["teams"]), len(self.division["teams"]))
 

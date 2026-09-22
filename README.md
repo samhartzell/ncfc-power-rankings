@@ -29,8 +29,9 @@ good; this one asks what happens to one team now. It covers whichever team
 `FEATURED_LEAGUE_TEAM_ID` names, and the two pages link to each other.
 
 - **Every game still on the schedule**, with the kickoff time, the field, and its address
-  as a map link. A postponed game is listed as a fixture with no date rather than dropped,
-  and a round the team sits out is named as a bye.
+  as a map link. A rescheduled game sits in kickoff order under the new date the league
+  posted for it, flagged as moved, and a round the team genuinely sits out is named as a
+  bye.
 - **A scouting line on every remaining opponent** — their rank, record, rating, goals,
   strength of schedule, recent form, what else they still have to play, and the result if
   the two have already met.

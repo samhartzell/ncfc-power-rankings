@@ -12,6 +12,7 @@ Usage:
     python3 scripts/build.py --offline       # rebuild the page from data/rankings.json
 """
 import argparse
+import collections
 import json
 import pathlib
 import sys
@@ -105,9 +106,9 @@ def extract_games(division):
     """Normalize the schedule.
 
     A game counts toward the ratings only when it has actually been played with
-    a visible score and is not excluded from standings. Postponed games carry a
-    placeholder 0-0 with show_score false, so filtering on status alone would
-    silently invent draws.
+    a visible score and is not excluded from standings. A rescheduled game
+    carries a placeholder 0-0 with show_score false, so filtering on status
+    alone would silently invent draws.
     """
     known = {t["id"] for t in extract_teams(division)}
     games = []
@@ -145,7 +146,9 @@ def extract_games(division):
                 "address": field.get("address", ""),
             }
         )
-    games.sort(key=lambda g: g["start"] or "")
+    # A game the league has not slotted yet sorts last rather than first: an
+    # empty string would otherwise sort ahead of every real kickoff.
+    games.sort(key=lambda g: (not g["start"], g["start"]))
     return games
 
 
@@ -224,7 +227,7 @@ def build_division(meta, division):
             }
         )
 
-    upcoming, postponed = [], []
+    upcoming = []
     for g in games:
         if g["counts"]:
             continue
@@ -248,23 +251,24 @@ def build_division(meta, division):
             "round": g["round"],
             "field": g["field"],
             "address": g["address"],
+            # The league marks a moved game "Rescheduled" and rewrites its
+            # date, time, field and round label in place, so the row already
+            # says when the game is. The flag is kept to say the fixture moved,
+            # not to say it is dateless.
+            "moved": g["status"] == "Rescheduled",
         }
-        # A rescheduled game is a real fixture with no date yet, not a game
-        # that vanished. Listing it separately keeps it off a schedule that
-        # claims to be in date order while still counting it as owed.
-        (postponed if g["status"] == "Rescheduled" else upcoming).append(fixture)
+        upcoming.append(fixture)
 
     return {
         "id": meta["id"],
         "name": meta["name"],
         "gender": meta.get("gender", ""),
         "games_played": len(played),
-        "games_total": len([g for g in games if g["status"] != "Rescheduled"]),
+        "games_total": len(games),
         "rounds_complete": len({g["round"] for g in played}),
-        "games_postponed": len(postponed),
+        "games_moved": sum(1 for f in upcoming if f["moved"]),
         "teams": rows,
         "upcoming": upcoming,
-        "postponed": postponed,
     }
 
 
@@ -330,11 +334,8 @@ def build_featured(payload):
         )
 
     remaining = []
-    scheduled_left = division.get("upcoming", [])
-    postponed_left = division.get("postponed", [])
-    for fixture, tbd in [(f, False) for f in scheduled_left] + [
-        (f, True) for f in postponed_left
-    ]:
+    fixtures = division.get("upcoming", [])
+    for fixture in fixtures:
         if team["id"] not in (fixture["home_id"], fixture["away_id"]):
             continue
         at_home = fixture["home_id"] == team["id"]
@@ -351,7 +352,7 @@ def build_featured(payload):
                 "time": fixture.get("time", ""),
                 "field": fixture.get("field", ""),
                 "address": fixture.get("address", ""),
-                "tbd": tbd,
+                "moved": fixture.get("moved", False),
                 "raw_margin": round(mu, 2),
                 "line": ratings.to_line(mu),
                 "win": round(win, 4),
@@ -364,17 +365,22 @@ def build_featured(payload):
             }
         )
 
-    # Rounds the rest of the division plays and this team does not.
-    scheduled = {g["round"] for g in team["resume"]}
-    scheduled |= {f["round"] for f in remaining}
+    # Rounds the rest of the division plays and this team does not. A moved
+    # game takes the round label of the weekend it lands on, which leaves a
+    # hole in one round and two games in another. Netting the doubles off the
+    # gaps keeps a relabelled fixture from being announced as a free weekend.
+    played_rounds = [g["round"] for g in team["resume"]]
+    owed_rounds = [f["round"] for f in remaining]
+    counts = collections.Counter(played_rounds + owed_rounds)
+    doubled = sum(n - 1 for n in counts.values() if n > 1)
     all_rounds = {g["round"] for t in division["teams"] for g in t["resume"]}
-    all_rounds |= {f["round"] for f in scheduled_left + postponed_left}
-    byes = sorted(all_rounds - scheduled, key=_round_key)
+    all_rounds |= {f["round"] for f in fixtures}
+    gaps = sorted(all_rounds - set(counts), key=_round_key)
+    byes = gaps[doubled:]
 
     # Every fixture left in the division feeds the simulation, this team's and
     # everyone else's: a rival's remaining schedule decides where we finish
     # just as surely as our own does.
-    fixtures = scheduled_left + postponed_left
     sim = projections.simulate_season(
         division, fixtures, massey, sigma, floor_weights, focus_id=team["id"]
     )

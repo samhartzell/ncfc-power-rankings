@@ -400,7 +400,7 @@
     overflow: hidden;
   }
 
-  .fixture.tbd { border-style: dashed; }
+  .fixture.undated { border-style: dashed; }
 
   .fixture-head {
     display: flex;
@@ -832,9 +832,10 @@
       <p id="caveat"></p>
       <p>
         There is no home-field adjustment, no knowledge of who is away on a given weekend, who
-        is playing up, and no weather. A postponed game is assumed to be played. Treat a gap
-        of a point or two as noise, and treat everything here as a description of the record
-        so far rather than a promise about a Sunday afternoon.
+        is playing up, and no weather. A rescheduled game is assumed to be played on the new
+        date the league posted for it. Treat a gap of a point or two as noise, and treat
+        everything here as a description of the record so far rather than a promise about a
+        Sunday afternoon.
       </p>
     </div>
   </section>
@@ -907,8 +908,7 @@
   /* Every team's remaining fixtures, from the division's own schedule. */
   function fixturesFor(teamId) {
     const out = [];
-    for (const f of DIV.upcoming) if (f.home_id === teamId || f.away_id === teamId) out.push({ ...f, tbd: false });
-    for (const f of DIV.postponed) if (f.home_id === teamId || f.away_id === teamId) out.push({ ...f, tbd: true });
+    for (const f of DIV.upcoming) if (f.home_id === teamId || f.away_id === teamId) out.push(f);
     return out;
   }
 
@@ -992,7 +992,9 @@
   }
 
   function whenText(fixture) {
-    if (fixture.tbd) return "Date to be set";
+    // A rescheduled game arrives with its new date already on it; the fallback
+    // is for the rare row the league has genuinely not slotted yet.
+    if (!fixture.date) return "Date to be set";
     const parts = [];
     if (fixture.day) parts.push(fixture.day);
     parts.push(cleanDate(fixture.date).replace(/,\s*\d{4}$/, ""));
@@ -1004,33 +1006,24 @@
   function renderNextUp() {
     const host = $("nextup");
     const note = $("nextup-note");
-    const scheduled = F.remaining.filter((f) => !f.tbd);
 
     if (!F.remaining.length) {
       note.textContent = "The schedule is complete — every game has been played.";
       return;
     }
-    if (!scheduled.length) {
-      note.textContent =
-        "Nothing on the calendar with a date on it. The one game still owed is waiting on a " +
-        "new slot; it is listed below.";
-      return;
-    }
 
-    const fixture = scheduled[0];
+    const fixture = F.remaining[0];
     const opponent = BY_ID.get(fixture.opponent_id);
     const days = daysAway(fixture.date);
     const byeNote = F.byes.length
       ? ` ${ME.short} sits out ${F.byes.join(" and ")}, so there is no game that weekend.`
       : "";
-    const pending = F.remaining.filter((f) => f.tbd);
-    const pendingNote = pending.length
-      ? ` One more game — ${pending.map((f) => BY_ID.get(f.opponent_id).short).join(" and ")} ` +
-        `— has been postponed and could be slotted in ahead of this one.`
+    const movedNote = fixture.moved
+      ? ` This one was rescheduled, so it lands off the division's usual weekend.`
       : "";
     note.textContent =
-      `The next fixture with a date on it, and what the ratings make of it.` +
-      `${byeNote}${pendingNote}`;
+      `The next fixture on the calendar, and what the ratings make of it.` +
+      `${byeNote}${movedNote}`;
 
     const card = tint(el("div", "nextup"), ME);
     const head = el("div", "nextup-head");
@@ -1343,10 +1336,9 @@
 
   function renderFixtures() {
     const host = $("fixtures");
-    const scheduled = F.remaining.filter((f) => !f.tbd).length;
-    const tbd = F.remaining.length - scheduled;
+    const moved = F.remaining.filter((f) => f.moved).length;
     $("remaining-count").textContent =
-      `${F.remaining.length} to play` + (tbd ? ` · ${tbd} awaiting a date` : "");
+      `${F.remaining.length} to play` + (moved ? ` · ${moved} rescheduled` : "");
 
     const byeNote = F.byes.length
       ? ` ${ME.short} has no game in ${F.byes.join(" or ")} while the rest of the division plays.`
@@ -1354,27 +1346,26 @@
     $("remaining-note").textContent =
       `Every fixture still owed, with the opponent as the ratings currently see them, the ` +
       `projected margin, and what each result would do to the season.${byeNote}` +
-      (tbd
-        ? ` One game was postponed and has no new date posted; it is shown last and is still ` +
-          `counted in every projection on this page.`
-        : "");
+      (moved === 0 ? "" : moved === 1
+        ? ` One game was rescheduled; it sits here under the new date the league posted.`
+        : ` ${moved} games were rescheduled; they sit here under the new dates the league posted.`);
 
     if (!F.remaining.length) {
       host.append(el("div", "callout", "Nothing left to play — the season is complete."));
       return;
     }
 
-    // The fixtures arrive in schedule order with the dateless one last, which
-    // is where it belongs: a game nobody can plan around should not sit in the
-    // middle of a list that claims to be a calendar.
+    // The fixtures arrive in kickoff order, a rescheduled game included: it
+    // has a real date on it, so burying it at the end of a list that claims to
+    // be a calendar would hide the next game this team actually plays.
     F.remaining.forEach((fixture, index) => {
       const opponent = BY_ID.get(fixture.opponent_id);
-      const card = tint(el("div", `fixture${fixture.tbd ? " tbd" : ""}`), opponent);
+      const card = tint(el("div", `fixture${fixture.date ? "" : " undated"}`), opponent);
 
       const head = el("div", "fixture-head");
       head.append(el("div", "fixture-when", whenText(fixture)));
       const right = el("div", "fixture-round",
-        `${fixture.round}${fixture.tbd ? " · postponed" : ""}`);
+        `${fixture.round}${fixture.moved ? " · rescheduled" : ""}`);
       head.append(right);
       card.append(head);
 
@@ -1548,8 +1539,7 @@
       holder.append(crest(row.opponent, 20));
       const label = el("div");
       label.append(el("div", null, `${row.fixture.home ? "vs" : "at"} ${row.opponent.short}`));
-      label.append(el("div", "result-meta",
-        row.fixture.tbd ? "date to be set" : whenText(row.fixture)));
+      label.append(el("div", "result-meta", whenText(row.fixture)));
       holder.append(label);
       cell.append(holder);
       tr.append(cell);
@@ -1622,9 +1612,9 @@
               const played = F.played.find((g) => g.opponent_id === team.id);
               return played ? `played · ${played.outcome} ${played.gf}–${played.ga}` : "no fixture";
             }
-            return fixture.tbd
-              ? "date to be set"
-              : `${fixture.home ? "home" : "away"} · ${cleanDate(fixture.date).replace(/,\s*\d{4}$/, "")}`;
+            return fixture.date
+              ? `${fixture.home ? "home" : "away"} · ${cleanDate(fixture.date).replace(/,\s*\d{4}$/, "")}`
+              : "date to be set";
           })();
       tr.append(el("td", "left", meeting));
       body.append(tr);
