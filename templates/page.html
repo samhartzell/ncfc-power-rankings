@@ -818,9 +818,9 @@
     const parts = [
       `${div.teams.length} teams`,
       `${div.games_played} of ${div.games_total} games played`,
-      // A postponed game is still owed, so counting it nowhere would quietly
-      // understate what the division has left.
-      ...(div.games_postponed ? [`${div.games_postponed} postponed`] : []),
+      // A moved game is still one of the division's own, so it is counted in
+      // the total above and only flagged here as having shifted weekends.
+      ...(div.games_moved ? [`${div.games_moved} rescheduled`] : []),
       `updated ${new Date(DATA.generated_at).toLocaleDateString(undefined, {
         month: "short", day: "numeric", year: "numeric",
       })}`,

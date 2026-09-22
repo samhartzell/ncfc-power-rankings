@@ -186,7 +186,7 @@ class TestSimulation(unittest.TestCase):
             t for t in self.division["teams"]
             if t["league_team_id"] == CHELSEA_LEAGUE_TEAM_ID
         )
-        self.fixtures = self.division["upcoming"] + self.division["postponed"]
+        self.fixtures = self.division["upcoming"]
         self.massey = {t["id"]: t["rating"] for t in self.division["teams"]}
         self.weights = projections.floor_goal_weights([self.division])
         self.sim = self.simulate()
