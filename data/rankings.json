@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-09-22T11:37:28+00:00",
+  "generated_at": "2026-09-22T15:40:08+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -11130,7 +11130,7 @@
       "games_played": 14,
       "games_total": 40,
       "rounds_complete": 3,
-      "games_moved": 5,
+      "games_moved": 3,
       "teams": [
         {
           "id": 69616,
@@ -11928,6 +11928,23 @@
           "moved": false
         },
         {
+          "home": "Dynamo",
+          "away": "WF United White",
+          "home_id": 69386,
+          "away_id": 69393,
+          "favorite": "WF United White",
+          "favorite_id": 69393,
+          "margin": 1.0,
+          "raw_margin": -0.82,
+          "date": "Oct  3, 2026",
+          "day": "Saturday",
+          "time": "11:30 AM",
+          "round": "Round 6",
+          "field": "South Side Fields 2",
+          "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
+          "moved": false
+        },
+        {
           "home": "WF United Blue",
           "away": "AC Milan",
           "home_id": 69392,
@@ -11945,21 +11962,21 @@
           "moved": false
         },
         {
-          "home": "Dynamo",
-          "away": "WF United White",
-          "home_id": 69386,
-          "away_id": 69393,
-          "favorite": "WF United White",
-          "favorite_id": 69393,
-          "margin": 1.0,
-          "raw_margin": -0.82,
+          "home": "Parma",
+          "away": "Rowdies",
+          "home_id": 69399,
+          "away_id": 69401,
+          "favorite": "Parma",
+          "favorite_id": 69399,
+          "margin": 0.5,
+          "raw_margin": 0.59,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "1:00 PM",
           "round": "Round 6",
           "field": "South Side Fields 2",
           "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
-          "moved": true
+          "moved": false
         },
         {
           "home": "Brighton",
@@ -11977,23 +11994,6 @@
           "field": "Davis Drive MS MP",
           "address": "2101 Davis Dr, Cary, NC 27519, USA",
           "moved": false
-        },
-        {
-          "home": "Parma",
-          "away": "Rowdies",
-          "home_id": 69399,
-          "away_id": 69401,
-          "favorite": "Parma",
-          "favorite_id": 69399,
-          "margin": 0.5,
-          "raw_margin": 0.59,
-          "date": "Oct  3, 2026",
-          "day": "Saturday",
-          "time": "2:30 PM",
-          "round": "Round 6",
-          "field": "South Side Fields 2",
-          "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
-          "moved": true
         },
         {
           "home": "Finley Scorpions",
@@ -13080,8 +13080,8 @@
           "day": "Saturday",
           "time": "12:00 PM",
           "round": "Round 5",
-          "field": "Davis Drive MS MP",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
+          "field": "Middle Creek Park 1",
+          "address": "151 Middle Creek Park Ave, Apex, NC 27539, USA",
           "moved": false
         },
         {
@@ -13114,8 +13114,8 @@
           "day": "Saturday",
           "time": "1:30 PM",
           "round": "Round 5",
-          "field": "Davis Drive MS MP",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
+          "field": "Middle Creek Park 1",
+          "address": "151 Middle Creek Park Ave, Apex, NC 27539, USA",
           "moved": false
         },
         {
@@ -13148,8 +13148,8 @@
           "day": "Saturday",
           "time": "3:00 PM",
           "round": "Round 5",
-          "field": "Davis Drive MS MP",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
+          "field": "Middle Creek Park 1",
+          "address": "151 Middle Creek Park Ave, Apex, NC 27539, USA",
           "moved": false
         },
         {
@@ -14239,7 +14239,7 @@
       "games_played": 11,
       "games_total": 28,
       "rounds_complete": 3,
-      "games_moved": 2,
+      "games_moved": 1,
       "teams": [
         {
           "id": 69413,
@@ -14843,11 +14843,11 @@
           "raw_margin": -0.23,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "4:00 PM",
+          "time": "2:30 PM",
           "round": "Round 6",
           "field": "South Side Fields 2",
           "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
-          "moved": true
+          "moved": false
         },
         {
           "home": "Rowdies",
@@ -22194,7 +22194,7 @@
       "games_played": 15,
       "games_total": 36,
       "rounds_complete": 4,
-      "games_moved": 1,
+      "games_moved": 2,
       "teams": [
         {
           "id": 69470,
@@ -22914,11 +22914,11 @@
           "raw_margin": 1.29,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "11:00 AM",
+          "time": "8:00 AM",
           "round": "Round 6",
           "field": "South Side Fields 2",
           "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
-          "moved": false
+          "moved": true
         },
         {
           "home": "WF United Red",
