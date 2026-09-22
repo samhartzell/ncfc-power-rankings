@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import clubs  # noqa: E402
+import projections  # noqa: E402
 import ratings  # noqa: E402
 
 API_BASE = "https://api.gb.playmetrics.com/external/lss/"
@@ -37,7 +38,11 @@ FEATURED_LEAGUE_TEAM_ID = 64255
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "templates" / "page.html"
+TEAM_TEMPLATE = ROOT / "templates" / "team.html"
+SHARED_CSS = ROOT / "templates" / "shared.css"
+CREST_JS = ROOT / "templates" / "crest.js"
 OUT_PAGE = ROOT / "index.html"
+OUT_TEAM_PAGE = ROOT / "team.html"
 OUT_DATA = ROOT / "data" / "rankings.json"
 
 TEAM_URL = (
@@ -118,6 +123,7 @@ def extract_games(division):
             and hs is not None
             and as_ is not None
         )
+        field = g.get("field") or {}
         games.append(
             {
                 "id": g.get("id"),
@@ -129,8 +135,14 @@ def extract_games(division):
                 "status": g.get("status", ""),
                 "round": g.get("round_name", ""),
                 "date": g.get("date_short", ""),
+                "day": (g.get("date", "").split(",") or [""])[0],
+                "time": g.get("time", ""),
                 "start": g.get("start_datetime", ""),
-                "field": (g.get("field") or {}).get("name", ""),
+                "field": field.get("name", ""),
+                # The address is kept and the map link is not: the API's link is
+                # just a Google Maps search for that same address, so the page
+                # builds it rather than carrying 400 copies of it.
+                "address": field.get("address", ""),
             }
         )
     games.sort(key=lambda g: g["start"] or "")
@@ -212,29 +224,35 @@ def build_division(meta, division):
             }
         )
 
-    upcoming = []
+    upcoming, postponed = [], []
     for g in games:
-        if g["counts"] or g["status"] == "Rescheduled":
+        if g["counts"]:
             continue
         margin = ratings.predict_margin(result, g["home_id"], g["away_id"])
         # Posted on the half goal like a betting line; the favorite still comes
         # from the raw projection, so a pick'em keeps the side it leaned to.
         line = ratings.to_line(margin)
         favorite = g["home_id"] if margin >= 0 else g["away_id"]
-        upcoming.append(
-            {
-                "home": by_id[g["home_id"]]["short"],
-                "away": by_id[g["away_id"]]["short"],
-                "home_id": g["home_id"],
-                "away_id": g["away_id"],
-                "favorite": by_id[favorite]["short"],
-                "favorite_id": favorite,
-                "margin": abs(line),
-                "date": g["date"],
-                "round": g["round"],
-                "field": g["field"],
-            }
-        )
+        fixture = {
+            "home": by_id[g["home_id"]]["short"],
+            "away": by_id[g["away_id"]]["short"],
+            "home_id": g["home_id"],
+            "away_id": g["away_id"],
+            "favorite": by_id[favorite]["short"],
+            "favorite_id": favorite,
+            "margin": abs(line),
+            "raw_margin": round(margin, 2),
+            "date": g["date"],
+            "day": g["day"],
+            "time": g["time"],
+            "round": g["round"],
+            "field": g["field"],
+            "address": g["address"],
+        }
+        # A rescheduled game is a real fixture with no date yet, not a game
+        # that vanished. Listing it separately keeps it off a schedule that
+        # claims to be in date order while still counting it as owed.
+        (postponed if g["status"] == "Rescheduled" else upcoming).append(fixture)
 
     return {
         "id": meta["id"],
@@ -243,8 +261,151 @@ def build_division(meta, division):
         "games_played": len(played),
         "games_total": len([g for g in games if g["status"] != "Rescheduled"]),
         "rounds_complete": len({g["round"] for g in played}),
+        "games_postponed": len(postponed),
         "teams": rows,
         "upcoming": upcoming,
+        "postponed": postponed,
+    }
+
+
+def _round_key(name):
+    """Sort 'Round 10' after 'Round 9' rather than after 'Round 1'."""
+    digits = "".join(c for c in name if c.isdigit())
+    return (0, int(digits)) if digits else (1, name)
+
+
+def build_featured(payload):
+    """Everything the team page needs about the one team the page is built for.
+
+    The division pages answer "who is good?". This answers "what happens to us
+    now?", which needs two things the ranking does not: a measured spread
+    around each projection, and a replay of the games still to come. Both are
+    computed here so the page ships as arithmetic already done.
+    """
+    division = next(
+        (d for d in payload["divisions"] if d["id"] == payload.get("featured_division")),
+        None,
+    )
+    if not division:
+        return None
+    team = next(
+        (t for t in division["teams"] if t["league_team_id"] == payload["featured_team"]),
+        None,
+    )
+    if not team:
+        return None
+
+    # The spread is measured across the whole league, not just this division:
+    # one division of twenty games would give a noisy number, and how far a
+    # projection misses is a property of the model, not of the division.
+    predictions = projections.loo_predictions(payload["divisions"])
+    sigma = projections.sigma_from(predictions)
+    floor_weights = projections.floor_goal_weights(payload["divisions"])
+    by_id = {t["id"]: t for t in division["teams"]}
+    massey = {t["id"]: t["rating"] for t in division["teams"]}
+
+    # What each result was worth against what the model expected of it, with
+    # the game itself held out of the fit that made the expectation.
+    replayed, expected = projections.loo_expected(division)
+    margin_by_pair = {}
+    for game, mu in zip(replayed, expected):
+        if mu is not None:
+            margin_by_pair[(game["home_id"], game["away_id"])] = mu
+
+    played = []
+    for entry in team["resume"]:
+        pair = ((team["id"], entry["opponent_id"]) if entry["home"]
+                else (entry["opponent_id"], team["id"]))
+        mu = margin_by_pair.get(pair)
+        if mu is not None and not entry["home"]:
+            mu = -mu
+        actual = max(-ratings.MARGIN_CAP,
+                     min(ratings.MARGIN_CAP, entry["gf"] - entry["ga"]))
+        played.append(
+            {
+                **entry,
+                "expected": round(mu, 2) if mu is not None else None,
+                "edge": round(actual - mu, 2) if mu is not None else None,
+            }
+        )
+
+    remaining = []
+    scheduled_left = division.get("upcoming", [])
+    postponed_left = division.get("postponed", [])
+    for fixture, tbd in [(f, False) for f in scheduled_left] + [
+        (f, True) for f in postponed_left
+    ]:
+        if team["id"] not in (fixture["home_id"], fixture["away_id"]):
+            continue
+        at_home = fixture["home_id"] == team["id"]
+        opponent = fixture["away_id"] if at_home else fixture["home_id"]
+        mu = massey[team["id"]] - massey[opponent]
+        win, draw, loss = projections.outcome_probs(mu, sigma)
+        remaining.append(
+            {
+                "opponent_id": opponent,
+                "home": at_home,
+                "round": fixture["round"],
+                "date": fixture["date"],
+                "day": fixture.get("day", ""),
+                "time": fixture.get("time", ""),
+                "field": fixture.get("field", ""),
+                "address": fixture.get("address", ""),
+                "tbd": tbd,
+                "raw_margin": round(mu, 2),
+                "line": ratings.to_line(mu),
+                "win": round(win, 4),
+                "draw": round(draw, 4),
+                "loss": round(loss, 4),
+                "margins": [
+                    [k, round(v, 4)]
+                    for k, v in sorted(projections.margin_distribution(mu, sigma).items())
+                ],
+            }
+        )
+
+    # Rounds the rest of the division plays and this team does not.
+    scheduled = {g["round"] for g in team["resume"]}
+    scheduled |= {f["round"] for f in remaining}
+    all_rounds = {g["round"] for t in division["teams"] for g in t["resume"]}
+    all_rounds |= {f["round"] for f in scheduled_left + postponed_left}
+    byes = sorted(all_rounds - scheduled, key=_round_key)
+
+    # Every fixture left in the division feeds the simulation, this team's and
+    # everyone else's: a rival's remaining schedule decides where we finish
+    # just as surely as our own does.
+    fixtures = scheduled_left + postponed_left
+    sim = projections.simulate_season(
+        division, fixtures, massey, sigma, floor_weights, focus_id=team["id"]
+    )
+
+    # What each result in each game would do to the season, attached to the
+    # fixture it belongs to. Both lists walk the same fixtures in the same
+    # order, so they pair off by position -- looking the entry up by opponent
+    # would quietly pick the wrong game in a division that schedules a pairing
+    # twice.
+    swings = sim.pop("leverage", [])
+    if len(swings) != len(remaining):
+        raise RuntimeError("leverage and remaining fixtures disagree")
+    for fixture, swing in zip(remaining, swings):
+        if swing["opponent_id"] != fixture["opponent_id"]:
+            raise RuntimeError("leverage is out of step with the schedule")
+        fixture["swing"] = {result: swing[result] for result in ("W", "D", "L")}
+
+    opponents_left = [by_id[f["opponent_id"]]["power_score"] for f in remaining]
+    return {
+        "team_id": team["id"],
+        "league_team_id": team["league_team_id"],
+        "division_id": division["id"],
+        "sigma": round(sigma, 2),
+        "calibration": projections.calibration(predictions, sigma),
+        "played": played,
+        "remaining": remaining,
+        "byes": byes,
+        "remaining_sos": round(sum(opponents_left) / len(opponents_left), 1)
+        if opponents_left
+        else None,
+        "sim": sim,
     }
 
 
@@ -285,18 +446,32 @@ def fetch_all():
     }
 
 
+MARKER = "/*__RANKINGS_DATA__*/null"
+# The two pages share their design tokens and their crest drawing. Both are
+# kept in one place and inlined here, so a change reaches both pages and each
+# page still ships as a single file that needs nothing but a browser.
+PARTIALS = {"/*__SHARED_CSS__*/": SHARED_CSS, "/*__CREST_JS__*/": CREST_JS}
+
+
 def render(payload):
+    """Write both pages: the league-wide rankings and the featured team's own.
+
+    Both are the same data seen from different distances, so both get the whole
+    payload baked in and neither needs a server.
+    """
     # Names, crests and colors are presentation, so they are attached here
     # rather than saved into data/rankings.json: a change to the club table
     # reaches the page on the next build with nothing refetched.
     payload = clubs.decorate(payload)
-    template = TEMPLATE.read_text()
-    marker = "/*__RANKINGS_DATA__*/null"
-    if marker not in template:
-        raise RuntimeError(f"template is missing the {marker} placeholder")
     # </script> inside the JSON would close the tag early.
     blob = json.dumps(payload, separators=(",", ":")).replace("</", "<\\/")
-    OUT_PAGE.write_text(template.replace(marker, blob))
+    for template_path, out_path in ((TEMPLATE, OUT_PAGE), (TEAM_TEMPLATE, OUT_TEAM_PAGE)):
+        template = template_path.read_text()
+        if MARKER not in template:
+            raise RuntimeError(f"{template_path.name} is missing the {MARKER} placeholder")
+        for placeholder, partial in PARTIALS.items():
+            template = template.replace(placeholder, partial.read_text())
+        out_path.write_text(template.replace(MARKER, blob))
 
 
 def main():
@@ -314,13 +489,21 @@ def main():
     else:
         print("fetching league data", file=sys.stderr)
         payload = fetch_all()
+
+    # Recomputed on every build, offline included: it is all derived from the
+    # payload, so a change to the projection code reaches the page without a
+    # refetch, the same way a change to the club table does.
+    print("projecting the rest of the season", file=sys.stderr)
+    payload["featured"] = build_featured(payload)
+
+    if not args.offline:
         OUT_DATA.parent.mkdir(parents=True, exist_ok=True)
         OUT_DATA.write_text(json.dumps(payload, indent=2) + "\n")
 
     render(payload)
     total = sum(d["games_played"] for d in payload["divisions"])
     print(
-        f"built {OUT_PAGE.relative_to(ROOT)}: "
+        f"built {OUT_PAGE.relative_to(ROOT)} and {OUT_TEAM_PAGE.relative_to(ROOT)}: "
         f"{len(payload['divisions'])} divisions, {total} games rated",
         file=sys.stderr,
     )

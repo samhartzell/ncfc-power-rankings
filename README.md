@@ -7,10 +7,11 @@ The league table answers "who has the most points?" This answers a different que
 **who has actually beaten somebody?** A one-goal win over the division leader counts for
 more than a four-goal win over the team in last, and the ratings say so.
 
-The page opens on **U11 Red Boys** with **NCFCY Chelsea** highlighted, and a picker
-switches to any of the league's 25 divisions.
+There are two pages. `index.html` opens on **U11 Red Boys** with **NCFCY Chelsea**
+highlighted, and a picker switches to any of the league's 25 divisions. `team.html` is a
+full season report for the one team the build is pointed at.
 
-## What it shows
+## What the league page shows
 
 - **Power rank** for every team, next to its league-table rank, so the disagreements are visible.
 - **A crest for every team**, in the colors of the club it is named for — Chelsea in Stamford
@@ -20,6 +21,52 @@ switches to any of the league's 25 divisions.
 - **A résumé for every team** — each result with the opponent's power rank attached.
 - **Strength of schedule** — the average power score of the opponents a team has actually played.
 - **Projected margins** for upcoming fixtures, posted on the half goal.
+
+## The team page
+
+`team.html` answers a different question from the rankings. The league page asks who is
+good; this one asks what happens to one team now. It covers whichever team
+`FEATURED_LEAGUE_TEAM_ID` names, and the two pages link to each other.
+
+- **Every game still on the schedule**, with the kickoff time, the field, and its address
+  as a map link. A postponed game is listed as a fixture with no date rather than dropped,
+  and a round the team sits out is named as a bye.
+- **A scouting line on every remaining opponent** — their rank, record, rating, goals,
+  strength of schedule, recent form, what else they still have to play, and the result if
+  the two have already met.
+- **Win/draw/loss odds** for each of those games, and the full distribution of final
+  margins behind them.
+- **Every result so far** measured against the margin the model would have projected,
+  fitted *without* that game, so the projection never sees the result it is judged against.
+- **A simulated finish**: the rest of the division played out 20,000 times, giving a
+  finishing-position distribution for all ten teams, a final points spread, what it takes
+  to win the division, and what a clean sweep of the remaining games is worth.
+- **Which game matters most** — the chance of winning the division given a win, a draw or
+  a loss in each remaining fixture, read straight off the same simulated seasons.
+
+## How the odds are worked out
+
+A projected margin says nothing on its own about how sure it is, so `scripts/projections.py`
+measures the spread around it. Every game the league has played is re-predicted from a
+Massey fit that leaves that game out, and the standard deviation of those misses is the
+spread — currently about 2.3 goals across 395 games. Scored on games it has already been
+fitted to the model looks about a goal sharper than it is, which is exactly why the
+leave-one-out pass exists; `tests/test_projections.py` fails if that gap ever inverts.
+
+A game is a draw when the margin lands on zero, so the win and loss tails start half a goal
+either side of the projection. That is the whole model. Grouped by how likely a home win was
+called, it comes out close to honest — the 60–80% calls win 73% of the time — and its Brier
+score of 0.19 beats the 0.25 you get from quoting the league's home-win rate at every game
+regardless of who is playing. The page shows that table so the claim can be checked rather
+than taken.
+
+The simulation draws one margin per remaining fixture from that spread, holding ratings
+still so the model cannot learn from games it is inventing, and draws the losing side's
+goals from the distribution this league has actually produced — a margin alone would settle
+points and goal difference but not the goals-scored tie-break. Tables are ordered the
+league's way: points, goal difference, goals for, goals against. The seed is fixed, so a
+refresh that finds no new results produces the same odds rather than ones that wobble by
+half a point twice a day.
 
 ## Crests and colors
 
@@ -117,10 +164,15 @@ python3 scripts/build.py --offline    # rebuild the page from the saved data/ran
 python3 -m unittest discover -s tests # run the checks
 ```
 
-`scripts/build.py` writes two files, both committed so the page works with no server:
+`scripts/build.py` writes three files, all committed so the pages work with no server:
 
-- `index.html` — the whole site, data baked in
+- `index.html` — the league-wide rankings, data baked in
+- `team.html` — the featured team's season report, same data baked in
 - `data/rankings.json` — the computed figures on their own
+
+Both pages share their design tokens (`templates/shared.css`) and their crest drawing
+(`templates/crest.js`); the build inlines both, so a change reaches both pages and each
+page still ships as a single file.
 
 Names, crests and colors are presentation rather than results, so they are attached when the
 page is rendered and stay out of `data/rankings.json`. A change to the club table reaches the
@@ -150,13 +202,14 @@ LEAGUE_KEY = "07598d11"
 FEATURED_LEAGUE_TEAM_ID = 64255   # the team the page opens on
 ```
 
-Change `FEATURED_LEAGUE_TEAM_ID` to follow a different team; the page will open on whichever
-division that team plays in. Change all four for a different league.
+Change `FEATURED_LEAGUE_TEAM_ID` to follow a different team; the league page will open on
+whichever division that team plays in, and `team.html` becomes that team's report. Change
+all four for a different league.
 
 ## Keeping it current
 
 `.github/workflows/refresh.yml` re-fetches results twice a day -- early morning Eastern
-and mid-evening Eastern -- rebuilds, commits the
+and mid-evening Eastern -- rebuilds both pages, commits the
 change only if something moved, and publishes to GitHub Pages. It can also be run on demand
 from the Actions tab.
 
