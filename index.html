@@ -473,6 +473,11 @@
   .move.down { color: var(--neg); }
   .move.flat { color: var(--ink-3); }
 
+  /* On a phone the movement rides under the rank instead of taking a column. */
+  .rank-move { display: none; }
+
+  .nowrap { white-space: nowrap; }
+
   .score-cell { font-family: var(--f-mono); font-weight: 600; font-size: 15px; }
 
   /* diverging rating bar: zero line in the middle, teal right, clay left */
@@ -573,6 +578,17 @@
   .oppr.middle { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent); }
 
   .venue { color: var(--ink-3); font-size: 11.5px; }
+
+  .drawer-stats {
+    display: none;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+
+  .drawer-stats b { font-family: var(--f-mono); font-weight: 600; color: var(--ink); }
 
   .drawer-sos {
     margin-top: 10px;
@@ -714,6 +730,23 @@
     .fixture-date { width: auto; }
     .hero { padding: 16px; }
     .hero-rank { margin-left: auto; }
+
+    /* Rankings table: fit the phone instead of scrolling sideways. Move rides
+       under the rank; the rating and SOS move into the team's drawer. */
+    table { min-width: 0; }
+    .col-move, .col-rating, .col-sos { display: none; }
+    thead th { padding: 11px 6px; }
+    tbody td { padding: 10px 6px; }
+    .rank-cell { width: 38px; font-size: 16px; line-height: 1.2; }
+    .rank-move { display: block; font-size: 10.5px; margin-top: 2px; }
+    .rank-move.flat { display: none; }
+    .team-button { gap: 7px; }
+    .team-name { font-size: 14.5px; line-height: 1.25; }
+    .score-cell { font-size: 14px; }
+    .drawer td { padding: 2px 8px 14px 6px; }
+    .game { width: 100%; }
+    .game .venue { margin-left: auto; }
+    .drawer-stats { display: flex; }
   }
 </style>
 </head>
@@ -762,12 +795,12 @@
           <tr>
             <th scope="col" class="rank-cell">#</th>
             <th scope="col" class="left">Team</th>
-            <th scope="col">Move</th>
+            <th scope="col" class="col-move">Move</th>
             <th scope="col">W&ndash;L&ndash;T</th>
             <th scope="col">Pts</th>
             <th scope="col">Power</th>
-            <th scope="col">Rating vs. average</th>
-            <th scope="col">SOS</th>
+            <th scope="col" class="col-rating">Rating vs. average</th>
+            <th scope="col" class="col-sos">SOS</th>
           </tr>
         </thead>
         <tbody id="rows"></tbody>
@@ -1200,6 +1233,20 @@
 
   function buildResume(team, div) {
     const wrapper = el("div");
+
+    // Only shown on a phone, where these columns are hidden.
+    const stats = el("div", "drawer-stats");
+    for (const [label, value] of [
+      ["Rating", signed(team.rating, 2)],
+      ["SOS", `#${team.sos_rank}`],
+      ["Table", `#${team.table_rank}`],
+    ]) {
+      const item = el("span", null, `${label} `);
+      item.append(el("b", null, value));
+      stats.append(item);
+    }
+    wrapper.append(stats);
+
     const list = el("div", "resume");
     const byId = teamsById(div);
 
@@ -1257,14 +1304,16 @@
       const isOpen = state.open.has(team.id);
       if (isOpen) tr.classList.add("is-open");
 
-      tr.append(el("td", "rank-cell num",
-        String(state.sort === "power" ? team.power_rank : team.table_rank)));
+      const rankCell = el("td", "rank-cell num",
+        String(state.sort === "power" ? team.power_rank : team.table_rank));
+      tr.append(rankCell);
 
       const nameCell = el("td", "row-team");
       const button = el("button", "team-button");
       button.type = "button";
       button.setAttribute("aria-expanded", String(isOpen));
-      button.append(el("span", "chev", "▶"));
+      // U+FE0E keeps iOS from drawing the arrow as a play-button emoji.
+      button.append(el("span", "chev", "\u25B6\uFE0E"));
       button.append(crest(team, 30));
 
       const label = el("div", "team-label");
@@ -1286,17 +1335,18 @@
       const moveText = team.movement === 0
         ? "–"
         : `${team.movement > 0 ? "▲" : "▼"}${Math.abs(team.movement)}`;
-      const moveCell = el("td");
+      const moveCell = el("td", "col-move");
       const move = el("span", `move ${dir}`, moveText);
       move.title = `League table #${team.table_rank}, power #${team.power_rank}`;
       moveCell.append(move);
       tr.append(moveCell);
+      rankCell.append(el("span", `move rank-move ${dir}`, moveText));
 
-      tr.append(el("td", "num", recordOf(team)));
+      tr.append(el("td", "num nowrap", recordOf(team)));
       tr.append(el("td", "num", String(team.record.pts)));
       tr.append(el("td", "score-cell", team.power_score.toFixed(1)));
 
-      const ratingCell = el("td");
+      const ratingCell = el("td", "col-rating");
       const holder = el("div", "rating-cell");
       holder.append(el("span", "bar-value", signed(team.rating, 2)));
       const bar = el("div", "bar");
@@ -1308,7 +1358,7 @@
       ratingCell.append(holder);
       tr.append(ratingCell);
 
-      const sosCell = el("td", "num", `#${team.sos_rank}`);
+      const sosCell = el("td", "num col-sos", `#${team.sos_rank}`);
       sosCell.title = `Average opponent power score ${team.sos.toFixed(1)}`;
       tr.append(sosCell);
 
