@@ -59,13 +59,6 @@
 
   .field { display: flex; flex-direction: column; gap: 5px; }
 
-  .team-link {
-    margin: 16px 0 0;
-    font-size: 13.5px;
-  }
-
-  .team-link a { font-weight: 600; }
-
   .field label {
     font-size: 11px;
     font-weight: 600;
@@ -114,31 +107,36 @@
   }
 
   .meta-line {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: 12px;
     color: var(--ink-3);
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 14px;
+    gap: 4px 10px;
+  }
+
+  .meta-line span:not(:last-child)::after {
+    content: "·";
+    margin-left: 10px;
+    color: var(--line-strong);
   }
 
   /* ---------- section furniture ---------- */
 
-  section { margin-top: 34px; }
+  section { margin-top: 44px; }
 
   h2 {
-    font-size: 13px;
+    font-size: 21px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    margin: 0 0 4px;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    margin: 0 0 6px;
   }
 
   .section-note {
-    margin: 0 0 16px;
-    color: var(--ink-3);
-    font-size: 13px;
+    margin: 0 0 18px;
+    color: var(--ink-2);
+    font-size: 13.5px;
     max-width: 68ch;
   }
 
@@ -173,10 +171,9 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    flex-wrap: wrap;
   }
 
-  .hero-id { flex: 1 1 200px; min-width: 0; }
+  .hero-id { flex: 1 1 auto; min-width: 0; }
 
   .hero-name {
     font-size: clamp(22px, 3.4vw, 30px);
@@ -227,20 +224,53 @@
     margin-left: 2px;
   }
 
+  /* One joined panel of tiles rather than five floating boxes, so an odd
+     count never leaves a lone card stranded on its own row. */
   .stat-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
     margin-top: 18px;
   }
 
   .stat {
-    flex: 1 1 118px;
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-md);
     padding: 12px 14px;
+    min-width: 0;
   }
+
+  .hero .drawer-stats { display: none !important; }
+
+  .hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    margin-top: 16px;
+  }
+
+  .hero-foot .drawer-sos { margin-top: 0; }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--surface);
+    background: var(--team, var(--accent));
+    border-radius: 999px;
+    padding: 8px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .cta:hover { filter: brightness(1.08); }
 
   .stat-label {
     font-size: 10px;
@@ -342,6 +372,10 @@
   }
 
   tr.is-open .chev { transform: rotate(90deg); }
+
+  #rows tr:not(.drawer):not(.featured-row):hover { background: var(--surface-2); }
+  #rows tr:not(.drawer) { cursor: pointer; }
+  #rows tr:not(.drawer):hover .chev { color: var(--ink); }
 
   tr.featured-row { background: color-mix(in srgb, var(--team) 11%, transparent); }
 
@@ -558,16 +592,15 @@
 
   .fixture-teams .vs { color: var(--ink-3); font-size: 12px; }
 
-  .fixture-call { font-size: 12.5px; color: var(--ink-2); font-family: var(--f-mono); }
+  .fixture-call {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    font-family: var(--f-mono);
+    margin-left: auto;
+    white-space: nowrap;
+  }
 
   /* ---------- method ---------- */
-
-  .method {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    padding: 22px;
-  }
 
   .method h3 {
     font-size: 14px;
@@ -575,7 +608,7 @@
     margin: 20px 0 6px;
   }
 
-  .method h3:first-of-type { margin-top: 0; }
+  .method h3:first-of-type { margin-top: 16px; }
 
   .method p { margin: 0 0 10px; color: var(--ink-2); font-size: 14px; max-width: 68ch; }
 
@@ -608,13 +641,28 @@
     * { transition: none !important; animation: none !important; }
   }
 
+  @media (max-width: 760px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  }
+
   @media (max-width: 560px) {
     .masthead-inner { padding-block: 20px 16px; }
     select { min-width: 0; width: 100%; }
     .field { width: 100%; }
+    /* Date and line share the top row; the matchup gets the full width. */
+    .fixture { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
     .fixture-date { width: auto; }
+    .fixture-teams { grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; }
+    .fixture-call { grid-row: 1; grid-column: 2; text-align: right; }
     .hero { padding: 16px; }
-    .hero-rank { margin-left: auto; }
+    .hero-top { gap: 12px; }
+    .hero-top .crest { width: 44px; height: auto; }
+    .hero-rank-num { font-size: 42px; }
+    .stat-value { font-size: 19px; }
+    .cta { width: 100%; justify-content: center; }
+    h2 { font-size: 19px; }
+    section { margin-top: 36px; }
 
     /* Rankings table: fit the phone instead of scrolling sideways. Move rides
        under the rank; the rating and SOS move into the team's drawer. */
@@ -657,7 +705,6 @@
         </div>
       </div>
     </div>
-    <p class="team-link" id="team-link" hidden></p>
     <div class="meta-line" id="meta-line"></div>
   </div>
 </header>
@@ -712,8 +759,9 @@
   </section>
 
   <section>
-    <h2>How this is calculated</h2>
-    <div class="method">
+    <details class="fold method">
+      <summary>How this is calculated <span class="fold-hint">Method &amp; caveats</span></summary>
+      <div class="fold-body">
       <h3>Two ratings, blended</h3>
       <p>
         Every team gets two independent ratings, then they are combined into the
@@ -777,7 +825,8 @@
           has no knowledge of who was missing, who is playing up, or what the weather did.
         </p>
       </div>
-    </div>
+      </div>
+    </details>
   </section>
 
   <footer>
@@ -789,7 +838,7 @@
   const DATA = /*__RANKINGS_DATA__*/null;
 
   const state = {
-    divisionId: DATA.featured_division ?? (DATA.divisions[0] && DATA.divisions[0].id),
+    divisionId: null,
     sort: "power",
     open: new Set(),
   };
@@ -819,17 +868,54 @@
 
   /* ---------- controls ---------- */
 
+  /* The division lives in the URL hash (#u11-red-boys), so a link to one
+     division opens on it and the back button steps between divisions. */
+  const slug = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  function divisionFromHash() {
+    const want = decodeURIComponent(location.hash.slice(1));
+    const hit = want && DATA.divisions.find((d) => slug(d.name) === want);
+    return hit ? hit.id : null;
+  }
+
+  // "U15/16 Girls" sorts as 15; boys before girls, then youngest first,
+  // then the league's own Red / Navy / Gray order within an age.
+  function divisionOrder(d) {
+    const age = Number((d.name.match(/U(\d+)/) || [])[1] || 99);
+    const girls = /girls/i.test(d.name) ? 1 : 0;
+    const tier = ["red", "navy", "gray"].findIndex((c) => d.name.toLowerCase().includes(c));
+    return [girls, age, tier < 0 ? 9 : tier];
+  }
+
   function buildDivisionSelect() {
     const select = $("division-select");
-    for (const d of DATA.divisions) {
+    const sorted = [...DATA.divisions].sort((a, b) => {
+      const x = divisionOrder(a), y = divisionOrder(b);
+      return x[0] - y[0] || x[1] - y[1] || x[2] - y[2];
+    });
+    const groups = new Map();
+    for (const d of sorted) {
+      const label = /girls/i.test(d.name) ? "Girls" : "Boys";
+      if (!groups.has(label)) groups.set(label, el("optgroup"));
+      const group = groups.get(label);
+      group.label = label;
       const option = el("option", null, d.name);
       option.value = String(d.id);
-      if (d.id === state.divisionId) option.selected = true;
-      select.append(option);
+      group.append(option);
     }
+    select.append(...groups.values());
+    select.value = String(state.divisionId);
+
     select.addEventListener("change", (e) => {
-      state.divisionId = Number(e.target.value);
+      const d = DATA.divisions.find((x) => x.id === Number(e.target.value));
+      if (d) location.hash = slug(d.name);
+    });
+    window.addEventListener("hashchange", () => {
+      const id = divisionFromHash() ?? DATA.featured_division ?? state.divisionId;
+      if (id === state.divisionId) return;
+      state.divisionId = id;
       state.open.clear();
+      select.value = String(id);
       render();
     });
   }
@@ -862,21 +948,6 @@
     line.replaceChildren();
     parts.forEach((p) => line.append(el("span", null, p)));
     $("league-eyebrow").textContent = DATA.league;
-
-    // The featured team has a page of its own -- every fixture it has left,
-    // with odds and a simulated finish. Only offer it on the division that
-    // team actually plays in.
-    const link = $("team-link");
-    const mine = featuredTeam(div);
-    if (mine) {
-      link.hidden = false;
-      link.replaceChildren();
-      const anchor = el("a", null, `${mine.short}: the full team report →`);
-      anchor.href = "team.html";
-      link.append(anchor);
-    } else {
-      link.hidden = true;
-    }
 
     $("rankings-heading").textContent = div.name;
     document.title = `Power Rankings · ${div.name}`;
@@ -942,6 +1013,16 @@
     const resume = buildResume(team, div);
     resume.style.marginTop = "18px";
     card.append(resume);
+
+    // The featured team has a page of its own -- every fixture it has left,
+    // with odds and a simulated finish -- so the way in sits on its card.
+    const foot = el("div", "hero-foot");
+    const sos = resume.querySelector(".drawer-sos");
+    if (sos) foot.append(sos);
+    const anchor = el("a", "cta", `Full ${team.short} report →`);
+    anchor.href = "team.html";
+    foot.append(anchor);
+    card.append(foot);
     host.append(card);
   }
 
@@ -1088,6 +1169,8 @@
       });
       nameCell.append(button);
       tr.append(nameCell);
+      // The whole row opens the drawer; the button stays the keyboard target.
+      tr.addEventListener("click", (e) => { if (!button.contains(e.target)) button.click(); });
 
       const dir = team.movement > 0 ? "up" : team.movement < 0 ? "down" : "flat";
       const moveText = team.movement === 0
@@ -1202,6 +1285,8 @@
     renderMethod(div);
   }
 
+  state.divisionId = divisionFromHash()
+    ?? DATA.featured_division ?? (DATA.divisions[0] && DATA.divisions[0].id);
   buildDivisionSelect();
   bindSort();
   render();

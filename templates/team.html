@@ -79,11 +79,51 @@
     font-family: var(--f-mono);
   }
 
-  .meta-line span + span::before {
+  .meta-line span:not(:last-child)::after {
     content: "·";
-    margin-right: 14px;
+    margin-left: 14px;
     color: var(--line-strong);
   }
+
+  /* ---------- section jump bar ----------
+     The report runs long on a phone, so a thin bar of section links stays
+     pinned under the top edge. It scrolls sideways rather than wrapping. */
+
+  .jump {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .jump-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .jump-inner::-webkit-scrollbar { display: none; }
+
+  .jump a {
+    flex: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 6px 11px;
+    border-radius: 999px;
+  }
+
+  .jump a:hover { background: var(--surface-2); color: var(--ink); }
+
+  .jump a.is-here { background: var(--accent-soft); color: var(--accent); }
 
   /* ---------- shell ---------- */
 
@@ -664,7 +704,8 @@
 
   /* ---------- method ---------- */
 
-  .method { font-size: 14px; color: var(--ink-2); max-width: 72ch; }
+  .method { font-size: 14px; color: var(--ink-2); }
+  .method .fold-body > * { max-width: 72ch; }
   .method h3 { color: var(--ink); margin-top: 22px; }
   .method p { margin: 0 0 12px; }
   .method strong { color: var(--ink); }
@@ -697,6 +738,18 @@
   </div>
 </header>
 
+<nav class="jump" aria-label="On this page">
+  <div class="jump-inner">
+    <a href="#nextup-section">Next up</a>
+    <a href="#standing">Standing</a>
+    <a href="#results-section">Results</a>
+    <a href="#remaining">Games left</a>
+    <a href="#finish">Finish</a>
+    <a href="#leverage">Big games</a>
+    <a href="#division">Division</a>
+  </div>
+</nav>
+
 <main class="wrap">
   <section id="nextup-section">
     <h2>Next up</h2>
@@ -704,7 +757,7 @@
     <div id="nextup"></div>
   </section>
 
-  <section>
+  <section id="standing">
     <h2>Where the team stands</h2>
     <p class="section-note" id="standing-note"></p>
     <div class="tiles" id="tiles"></div>
@@ -712,7 +765,7 @@
     <div class="ladder" id="ladder"></div>
   </section>
 
-  <section>
+  <section id="results-section">
     <h2>The season so far <span class="h2-count" id="results-count"></span></h2>
     <p class="section-note">
       Every game played, with the opponent&rsquo;s power rank and the margin the model would
@@ -723,13 +776,13 @@
     <div class="callout" id="results-summary" style="margin-top:16px"></div>
   </section>
 
-  <section>
+  <section id="remaining">
     <h2>Every game left <span class="h2-count" id="remaining-count"></span></h2>
     <p class="section-note" id="remaining-note"></p>
     <div class="fixtures" id="fixtures"></div>
   </section>
 
-  <section>
+  <section id="finish">
     <h2>How the season could end</h2>
     <p class="section-note" id="sim-note"></p>
     <div class="card">
@@ -749,7 +802,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="leverage">
     <h2>Which game matters most</h2>
     <p class="section-note" id="leverage-note"></p>
     <div class="table-scroll">
@@ -769,7 +822,7 @@
     <p class="section-note" id="leverage-foot" style="margin-top:14px"></p>
   </section>
 
-  <section>
+  <section id="division">
     <h2>The rest of the division</h2>
     <p class="section-note" id="division-note"></p>
     <div class="table-scroll">
@@ -792,9 +845,10 @@
     </div>
   </section>
 
-  <section>
-    <h2>How to read all this</h2>
-    <div class="method">
+  <section id="method">
+    <details class="fold method">
+      <summary>How to read all this <span class="fold-hint">Method &amp; caveats</span></summary>
+      <div class="fold-body">
       <h3>The rating</h3>
       <p>
         Every team carries a <strong>power score</strong> out of 100, where 50 is an average
@@ -837,7 +891,8 @@
         everything here as a description of the record so far rather than a promise about a
         Sunday afternoon.
       </p>
-    </div>
+      </div>
+    </details>
   </section>
 
   <footer>
@@ -1704,6 +1759,30 @@
   renderLeverage();
   renderDivision();
   renderMethod();
+
+  /* Light up the jump-bar link for whichever section is under the bar, and
+     keep that link scrolled into view when the bar overflows on a phone. */
+  (function trackSections() {
+    const links = [...document.querySelectorAll(".jump a")];
+    const targets = links.map((a) => document.querySelector(a.getAttribute("href")));
+    if (!("IntersectionObserver" in window) || targets.some((t) => !t)) return;
+    const visible = new Set();
+    const mark = () => {
+      const i = targets.findIndex((t) => visible.has(t));
+      links.forEach((a, j) => a.classList.toggle("is-here", j === i));
+      const here = links[i];
+      if (here) {
+        const bar = here.parentElement;
+        const left = here.offsetLeft - bar.clientWidth / 2 + here.offsetWidth / 2;
+        bar.scrollTo({ left, behavior: "auto" });
+      }
+    };
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) e.isIntersecting ? visible.add(e.target) : visible.delete(e.target);
+      mark();
+    }, { rootMargin: "-60px 0px -55% 0px" });
+    targets.forEach((t) => io.observe(t));
+  })();
 </script>
 </body>
 </html>
