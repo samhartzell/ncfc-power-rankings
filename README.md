@@ -8,7 +8,8 @@ The league table answers "who has the most points?" This answers a different que
 more than a four-goal win over the team in last, and the ratings say so.
 
 There are two pages. `index.html` opens on **U11 Red Boys** with **NCFCY Chelsea**
-highlighted, and a picker switches to any of the league's 25 divisions. `team.html` is a
+highlighted, and a picker switches to any of the league's 25 divisions. Each division
+has its own link (`index.html#u14-girls`), so one can be shared or bookmarked. `team.html` is a
 full season report for the one team the build is pointed at.
 
 ## What the league page shows
