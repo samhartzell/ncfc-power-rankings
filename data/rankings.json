@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-09-23T15:33:47+00:00",
+  "generated_at": "2026-09-24T06:40:10+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -12261,7 +12261,7 @@
       "games_played": 24,
       "games_total": 48,
       "rounds_complete": 4,
-      "games_moved": 0,
+      "games_moved": 3,
       "teams": [
         {
           "id": 69396,
@@ -13278,11 +13278,11 @@
           "raw_margin": -2.93,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "10:30 AM",
+          "time": "11:30 AM",
           "round": "Round 6",
-          "field": "WRAL Soccer Park 2",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
+          "field": "North Raleigh Christian Academy Soccer",
+          "address": "7300 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
         },
         {
           "home": "Rovers",
@@ -13295,28 +13295,11 @@
           "raw_margin": 0.85,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "12:00 PM",
+          "time": "1:00 PM",
           "round": "Round 6",
-          "field": "WRAL Soccer Park 1",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
-        },
-        {
-          "home": "Sheffield",
-          "away": "Sunderland",
-          "home_id": 69400,
-          "away_id": 69396,
-          "favorite": "Sunderland",
-          "favorite_id": 69396,
-          "margin": 0.5,
-          "raw_margin": -0.73,
-          "date": "Oct  3, 2026",
-          "day": "Saturday",
-          "time": "1:30 PM",
-          "round": "Round 6",
-          "field": "WRAL Soccer Park 2",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
+          "field": "North Raleigh Christian Academy Soccer",
+          "address": "7300 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
         },
         {
           "home": "Galaxy",
@@ -13334,6 +13317,23 @@
           "field": "WRAL Soccer Park 10",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
+        },
+        {
+          "home": "Sheffield",
+          "away": "Sunderland",
+          "home_id": 69400,
+          "away_id": 69396,
+          "favorite": "Sunderland",
+          "favorite_id": 69396,
+          "margin": 0.5,
+          "raw_margin": -0.73,
+          "date": "Oct  3, 2026",
+          "day": "Saturday",
+          "time": "2:30 PM",
+          "round": "Round 6",
+          "field": "North Raleigh Christian Academy Soccer",
+          "address": "7300 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
         },
         {
           "home": "Hoffenheim",
@@ -14190,7 +14190,7 @@
           "raw_margin": -0.64,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "12:00 PM",
+          "time": "2:00 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
@@ -14966,7 +14966,7 @@
           "raw_margin": 0.57,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "1:30 PM",
+          "time": "2:00 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 1",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
@@ -20163,7 +20163,7 @@
           "raw_margin": -1.1,
           "date": "Oct  3, 2026",
           "day": "Saturday",
-          "time": "3:00 PM",
+          "time": "3:30 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
@@ -20416,7 +20416,7 @@
       "games_played": 17,
       "games_total": 32,
       "rounds_complete": 4,
-      "games_moved": 0,
+      "games_moved": 1,
       "teams": [
         {
           "id": 69408,
@@ -21096,6 +21096,23 @@
           "moved": false
         },
         {
+          "home": "Fiorentina",
+          "away": "Storm",
+          "home_id": 69404,
+          "away_id": 69405,
+          "favorite": "Fiorentina",
+          "favorite_id": 69404,
+          "margin": 0.5,
+          "raw_margin": 0.59,
+          "date": "Oct  3, 2026",
+          "day": "Saturday",
+          "time": "10:00 AM",
+          "round": "Round 6",
+          "field": "North Raleigh Christian Academy Soccer",
+          "address": "7300 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
+        },
+        {
           "home": "WF United Bronze",
           "away": "Chargers",
           "home_id": 69409,
@@ -21110,23 +21127,6 @@
           "round": "Round 6",
           "field": "Smith Creek Park 1",
           "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
-          "moved": false
-        },
-        {
-          "home": "Fiorentina",
-          "away": "Storm",
-          "home_id": 69404,
-          "away_id": 69405,
-          "favorite": "Fiorentina",
-          "favorite_id": 69404,
-          "margin": 0.5,
-          "raw_margin": 0.59,
-          "date": "Oct  3, 2026",
-          "day": "Saturday",
-          "time": "10:30 AM",
-          "round": "Round 6",
-          "field": "WRAL Soccer Park 1",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
         {
