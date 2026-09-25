@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-09-25T06:32:40+00:00",
+  "generated_at": "2026-09-25T15:55:17+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -15134,7 +15134,7 @@
       "games_played": 26,
       "games_total": 52,
       "rounds_complete": 4,
-      "games_moved": 2,
+      "games_moved": 3,
       "teams": [
         {
           "id": 69288,
@@ -16126,9 +16126,9 @@
           "day": "Saturday",
           "time": "3:15 PM",
           "round": "Round 5",
-          "field": "Davis Drive Park 2",
+          "field": "Davis Drive Park 1",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
+          "moved": true
         },
         {
           "home": "Thorns",
@@ -22148,23 +22148,6 @@
           "moved": false
         },
         {
-          "home": "Finley Fury",
-          "away": "WF United",
-          "home_id": 69628,
-          "away_id": 69448,
-          "favorite": "Finley Fury",
-          "favorite_id": 69628,
-          "margin": 2.5,
-          "raw_margin": 2.37,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 6",
-          "field": "WRAL Soccer Park 12",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
-        },
-        {
           "home": "Fleury",
           "away": "Freedom",
           "home_id": 69427,
@@ -22195,6 +22178,23 @@
           "time": "2:45 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 11",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Finley Fury",
+          "away": "WF United",
+          "home_id": 69628,
+          "away_id": 69448,
+          "favorite": "Finley Fury",
+          "favorite_id": 69628,
+          "margin": 2.5,
+          "raw_margin": 2.37,
+          "date": "Oct  4, 2026",
+          "day": "Sunday",
+          "time": "3:00 PM",
+          "round": "Round 6",
+          "field": "WRAL Soccer Park 6",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
