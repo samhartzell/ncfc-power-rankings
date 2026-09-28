@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-09-28T07:30:49+00:00",
+  "generated_at": "2026-09-28T18:43:10+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -2691,7 +2691,7 @@
           "raw_margin": -1.29,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "2:15 PM",
+          "time": "2:45 PM",
           "round": "Round 6",
           "field": "Wake Stone Athletic Park 1 C",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
@@ -3876,7 +3876,7 @@
           "raw_margin": -2.87,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "1:00 PM",
+          "time": "1:30 PM",
           "round": "Round 6",
           "field": "Wake Stone Athletic Park 1 D",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
@@ -3893,7 +3893,7 @@
           "raw_margin": -2.09,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "2:15 PM",
+          "time": "2:45 PM",
           "round": "Round 6",
           "field": "Wake Stone Athletic Park 1 D",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
@@ -5991,7 +5991,7 @@
       "games_played": 20,
       "games_total": 40,
       "rounds_complete": 4,
-      "games_moved": 3,
+      "games_moved": 2,
       "teams": [
         {
           "id": 69335,
@@ -6841,7 +6841,7 @@
           "raw_margin": 0.43,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "12:00 PM",
+          "time": "12:30 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 1",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
@@ -6911,9 +6911,9 @@
           "day": "Sunday",
           "time": "6:00 PM",
           "round": "Round 6",
-          "field": "Reedy Creek MS MP",
-          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
-          "moved": true
+          "field": "Davis Drive Park 4",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
         },
         {
           "home": "Barcelona",
@@ -7094,7 +7094,7 @@
       "games_played": 20,
       "games_total": 40,
       "rounds_complete": 4,
-      "games_moved": 3,
+      "games_moved": 2,
       "teams": [
         {
           "id": 69631,
@@ -8014,9 +8014,9 @@
           "day": "Sunday",
           "time": "4:45 PM",
           "round": "Round 6",
-          "field": "Reedy Creek MS MP",
-          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
-          "moved": true
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
         },
         {
           "home": "Celtic",
@@ -10294,7 +10294,7 @@
       "games_played": 15,
       "games_total": 32,
       "rounds_complete": 4,
-      "games_moved": 3,
+      "games_moved": 2,
       "teams": [
         {
           "id": 69637,
@@ -10955,9 +10955,9 @@
           "day": "Saturday",
           "time": "4:30 PM",
           "round": "Round 4",
-          "field": "Davis Drive Park 4",
+          "field": "Davis Drive Park 2",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": true
+          "moved": false
         },
         {
           "home": "Wrexham",
@@ -16260,7 +16260,7 @@
           "raw_margin": 1.47,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "1:00 PM",
+          "time": "1:30 PM",
           "round": "Round 6",
           "field": "Wake Stone Athletic Park 1 C",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
@@ -18492,7 +18492,7 @@
           "raw_margin": 0.44,
           "date": "Oct  4, 2026",
           "day": "Sunday",
-          "time": "1:15 PM",
+          "time": "1:45 PM",
           "round": "Round 6",
           "field": "WRAL Soccer Park 1",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
@@ -20425,10 +20425,10 @@
           "short": "Athletica",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64378/team_view.html",
           "power_rank": 1,
-          "power_score": 72.2,
-          "rating": 0.98,
+          "power_score": 73.4,
+          "rating": 1.15,
           "colley": 0.743,
-          "sos": 49.2,
+          "sos": 48.9,
           "sos_rank": 6,
           "table_rank": 2,
           "movement": 1,
@@ -20439,7 +20439,7 @@
             "t": 1,
             "gf": 7,
             "ga": 2,
-            "gd": 5,
+            "gd": 6,
             "pts": 10
           },
           "resume": [
@@ -20485,7 +20485,7 @@
               "opponent_rank": 6,
               "quality": "weak",
               "home": true,
-              "gf": 4,
+              "gf": 5,
               "ga": 1,
               "outcome": "W",
               "date": "Sep 19, 2026",
@@ -20500,10 +20500,10 @@
           "short": "WF United Black",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64376/team_view.html",
           "power_rank": 2,
-          "power_score": 67.8,
-          "rating": 0.85,
+          "power_score": 66.8,
+          "rating": 0.83,
           "colley": 0.674,
-          "sos": 45.4,
+          "sos": 45.3,
           "sos_rank": 7,
           "table_rank": 1,
           "movement": -1,
@@ -20587,10 +20587,10 @@
           "short": "Villa",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64417/team_view.html",
           "power_rank": 3,
-          "power_score": 56.9,
+          "power_score": 56.5,
           "rating": 0.45,
           "colley": 0.531,
-          "sos": 52.7,
+          "sos": 52.6,
           "sos_rank": 2,
           "table_rank": 4,
           "movement": 1,
@@ -20663,9 +20663,9 @@
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64373/team_view.html",
           "power_rank": 4,
           "power_score": 55.6,
-          "rating": 0.42,
+          "rating": 0.45,
           "colley": 0.507,
-          "sos": 50.8,
+          "sos": 51.1,
           "sos_rank": 4,
           "table_rank": 3,
           "movement": -1,
@@ -20737,10 +20737,10 @@
           "short": "Fiorentina",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64374/team_view.html",
           "power_rank": 5,
-          "power_score": 46.4,
+          "power_score": 46.7,
           "rating": -0.33,
           "colley": 0.513,
-          "sos": 52.0,
+          "sos": 51.9,
           "sos_rank": 3,
           "table_rank": 5,
           "movement": 0,
@@ -20812,10 +20812,10 @@
           "short": "Chargers",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64377/team_view.html",
           "power_rank": 6,
-          "power_score": 37.8,
-          "rating": -0.66,
+          "power_score": 36.6,
+          "rating": -0.81,
           "colley": 0.404,
-          "sos": 55.3,
+          "sos": 55.4,
           "sos_rank": 1,
           "table_rank": 7,
           "movement": 1,
@@ -20826,7 +20826,7 @@
             "t": 3,
             "gf": 6,
             "ga": 11,
-            "gd": -5,
+            "gd": -6,
             "pts": 3
           },
           "resume": [
@@ -20873,7 +20873,7 @@
               "quality": "strong",
               "home": false,
               "gf": 1,
-              "ga": 4,
+              "ga": 5,
               "outcome": "L",
               "date": "Sep 19, 2026",
               "round": "Round 4"
@@ -20899,10 +20899,10 @@
           "short": "Storm",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64375/team_view.html",
           "power_rank": 7,
-          "power_score": 33.0,
-          "rating": -0.92,
+          "power_score": 33.5,
+          "rating": -0.94,
           "colley": 0.367,
-          "sos": 45.1,
+          "sos": 44.9,
           "sos_rank": 8,
           "table_rank": 6,
           "movement": -1,
@@ -20974,10 +20974,10 @@
           "short": "WF United Bronze",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64379/team_view.html",
           "power_rank": 8,
-          "power_score": 30.2,
-          "rating": -0.79,
+          "power_score": 30.9,
+          "rating": -0.8,
           "colley": 0.26,
-          "sos": 50.7,
+          "sos": 50.6,
           "sos_rank": 5,
           "table_rank": 8,
           "movement": 0,
@@ -21068,8 +21068,8 @@
           "away_id": 69403,
           "favorite": "Gotham City",
           "favorite_id": 69403,
-          "margin": 0.5,
-          "raw_margin": -0.75,
+          "margin": 1.0,
+          "raw_margin": -0.77,
           "date": "Sep 26, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
@@ -21086,7 +21086,7 @@
           "favorite": "Athletica",
           "favorite_id": 69408,
           "margin": 2.0,
-          "raw_margin": -1.89,
+          "raw_margin": -2.09,
           "date": "Sep 26, 2026",
           "day": "Saturday",
           "time": "4:30 PM",
@@ -21103,7 +21103,7 @@
           "favorite": "Fiorentina",
           "favorite_id": 69404,
           "margin": 0.5,
-          "raw_margin": 0.59,
+          "raw_margin": 0.62,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "10:00 AM",
@@ -21117,10 +21117,10 @@
           "away": "Chargers",
           "home_id": 69409,
           "away_id": 69407,
-          "favorite": "Chargers",
-          "favorite_id": 69407,
+          "favorite": "WF United Bronze",
+          "favorite_id": 69409,
           "margin": 0.0,
-          "raw_margin": -0.13,
+          "raw_margin": 0.01,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "10:30 AM",
@@ -21136,8 +21136,8 @@
           "away_id": 69408,
           "favorite": "Athletica",
           "favorite_id": 69408,
-          "margin": 0.0,
-          "raw_margin": -0.13,
+          "margin": 0.5,
+          "raw_margin": -0.33,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "1:30 PM",
@@ -21151,10 +21151,10 @@
           "away": "Villa",
           "home_id": 69403,
           "away_id": 69635,
-          "favorite": "Villa",
-          "favorite_id": 69635,
+          "favorite": "Gotham City",
+          "favorite_id": 69403,
           "margin": 0.0,
-          "raw_margin": -0.03,
+          "raw_margin": 0.0,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
@@ -21171,7 +21171,7 @@
           "favorite": "Villa",
           "favorite_id": 69635,
           "margin": 1.0,
-          "raw_margin": 0.78,
+          "raw_margin": 0.77,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "12:00 PM",
@@ -21204,8 +21204,8 @@
           "away_id": 69403,
           "favorite": "Gotham City",
           "favorite_id": 69403,
-          "margin": 1.0,
-          "raw_margin": -1.08,
+          "margin": 1.5,
+          "raw_margin": -1.25,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "1:30 PM",
@@ -21222,7 +21222,7 @@
           "favorite": "Athletica",
           "favorite_id": 69408,
           "margin": 2.0,
-          "raw_margin": 1.77,
+          "raw_margin": 1.95,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "1:30 PM",
@@ -21239,7 +21239,7 @@
           "favorite": "Fiorentina",
           "favorite_id": 69404,
           "margin": 0.5,
-          "raw_margin": 0.34,
+          "raw_margin": 0.48,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "10:30 AM",
@@ -21256,7 +21256,7 @@
           "favorite": "WF United Black",
           "favorite_id": 69406,
           "margin": 1.5,
-          "raw_margin": -1.64,
+          "raw_margin": -1.63,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "1:30 PM",
@@ -21273,7 +21273,7 @@
           "favorite": "Athletica",
           "favorite_id": 69408,
           "margin": 0.5,
-          "raw_margin": -0.55,
+          "raw_margin": -0.7,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
@@ -21290,7 +21290,7 @@
           "favorite": "Villa",
           "favorite_id": 69635,
           "margin": 1.5,
-          "raw_margin": -1.37,
+          "raw_margin": -1.39,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
@@ -24164,21 +24164,21 @@
         {
           "low": 0.0,
           "high": 0.2,
-          "predicted": 0.108,
-          "actual": 0.085,
-          "games": 94
+          "predicted": 0.107,
+          "actual": 0.086,
+          "games": 93
         },
         {
           "low": 0.2,
           "high": 0.4,
-          "predicted": 0.293,
-          "actual": 0.308,
-          "games": 120
+          "predicted": 0.292,
+          "actual": 0.306,
+          "games": 121
         },
         {
           "low": 0.4,
           "high": 0.6,
-          "predicted": 0.496,
+          "predicted": 0.497,
           "actual": 0.516,
           "games": 95
         },
@@ -24200,7 +24200,7 @@
       "games": 430,
       "brier": 0.18,
       "baseline": 0.246,
-      "skill": 0.267
+      "skill": 0.268
     },
     "played": [
       {
@@ -24273,17 +24273,17 @@
         "moved": true,
         "raw_margin": 1.13,
         "line": 1.0,
-        "win": 0.6099,
-        "draw": 0.155,
-        "loss": 0.2351,
+        "win": 0.6098,
+        "draw": 0.1548,
+        "loss": 0.2354,
         "margins": [
           [
             -4,
-            0.0201
+            0.0202
           ],
           [
             -3,
-            0.0338
+            0.0339
           ],
           [
             -2,
@@ -24295,40 +24295,40 @@
           ],
           [
             0,
-            0.155
+            0.1548
           ],
           [
             1,
-            0.1751
+            0.1748
           ],
           [
             2,
-            0.163
+            0.1628
           ],
           [
             3,
-            0.1251
+            0.125
           ],
           [
             4,
-            0.1468
+            0.1471
           ]
         ],
         "swing": {
           "W": {
-            "share": 0.6135,
-            "first": 0.2021,
-            "top3": 0.7925,
+            "share": 0.6133,
+            "first": 0.2025,
+            "top3": 0.7921,
             "mean_finish": 2.6
           },
           "D": {
-            "share": 0.1517,
-            "first": 0.0719,
-            "top3": 0.5737,
-            "mean_finish": 3.36
+            "share": 0.1516,
+            "first": 0.0726,
+            "top3": 0.5739,
+            "mean_finish": 3.35
           },
           "L": {
-            "share": 0.2349,
+            "share": 0.2351,
             "first": 0.0234,
             "top3": 0.335,
             "mean_finish": 4.12
@@ -24347,9 +24347,9 @@
         "moved": false,
         "raw_margin": 4.22,
         "line": 4.0,
-        "win": 0.9504,
-        "draw": 0.0314,
-        "loss": 0.0182,
+        "win": 0.9501,
+        "draw": 0.0315,
+        "loss": 0.0184,
         "margins": [
           [
             -4,
@@ -24357,7 +24357,7 @@
           ],
           [
             -3,
-            0.0011
+            0.0012
           ],
           [
             -2,
@@ -24365,15 +24365,15 @@
           ],
           [
             -1,
-            0.0126
+            0.0127
           ],
           [
             0,
-            0.0314
+            0.0315
           ],
           [
             1,
-            0.0644
+            0.0645
           ],
           [
             2,
@@ -24381,31 +24381,31 @@
           ],
           [
             3,
-            0.1519
+            0.1517
           ],
           [
             4,
-            0.6252
+            0.625
           ]
         ],
         "swing": {
           "W": {
-            "share": 0.95,
-            "first": 0.146,
-            "top3": 0.6669,
+            "share": 0.9499,
+            "first": 0.1463,
+            "top3": 0.6666,
             "mean_finish": 3.02
           },
           "D": {
-            "share": 0.0309,
-            "first": 0.0485,
-            "top3": 0.411,
-            "mean_finish": 3.86
+            "share": 0.0308,
+            "first": 0.0486,
+            "top3": 0.4084,
+            "mean_finish": 3.87
           },
           "L": {
-            "share": 0.0191,
-            "first": 0.0105,
-            "top3": 0.294,
-            "mean_finish": 4.31
+            "share": 0.0192,
+            "first": 0.0104,
+            "top3": 0.2969,
+            "mean_finish": 4.3
           }
         }
       },
@@ -24421,17 +24421,17 @@
         "moved": false,
         "raw_margin": -0.06,
         "line": -0.0,
-        "win": 0.402,
-        "draw": 0.1753,
-        "loss": 0.4227,
+        "win": 0.4021,
+        "draw": 0.175,
+        "loss": 0.4228,
         "margins": [
           [
             -4,
-            0.0637
+            0.064
           ],
           [
             -3,
-            0.0761
+            0.0762
           ],
           [
             -2,
@@ -24439,15 +24439,15 @@
           ],
           [
             -1,
-            0.161
+            0.1608
           ],
           [
             0,
-            0.1753
+            0.175
           ],
           [
             1,
-            0.1573
+            0.1571
           ],
           [
             2,
@@ -24455,30 +24455,30 @@
           ],
           [
             3,
-            0.071
+            0.0711
           ],
           [
             4,
-            0.0573
+            0.0576
           ]
         ],
         "swing": {
           "W": {
-            "share": 0.4016,
-            "first": 0.2968,
-            "top3": 0.869,
+            "share": 0.4017,
+            "first": 0.2973,
+            "top3": 0.8688,
             "mean_finish": 2.23
           },
           "D": {
-            "share": 0.1759,
-            "first": 0.0984,
-            "top3": 0.645,
-            "mean_finish": 3.15
+            "share": 0.1756,
+            "first": 0.0985,
+            "top3": 0.6448,
+            "mean_finish": 3.14
           },
           "L": {
-            "share": 0.4225,
-            "first": 0.0092,
-            "top3": 0.4483,
+            "share": 0.4227,
+            "first": 0.0093,
+            "top3": 0.4478,
             "mean_finish": 3.83
           }
         }
@@ -24496,16 +24496,16 @@
         "raw_margin": 0.38,
         "line": 0.5,
         "win": 0.4788,
-        "draw": 0.1729,
-        "loss": 0.3483,
+        "draw": 0.1727,
+        "loss": 0.3485,
         "margins": [
           [
             -4,
-            0.0428
+            0.043
           ],
           [
             -3,
-            0.0582
+            0.0583
           ],
           [
             -2,
@@ -24513,19 +24513,19 @@
           ],
           [
             -1,
-            0.1459
+            0.1458
           ],
           [
             0,
-            0.1729
+            0.1727
           ],
           [
             1,
-            0.169
+            0.1687
           ],
           [
             2,
-            0.1361
+            0.136
           ],
           [
             3,
@@ -24533,27 +24533,27 @@
           ],
           [
             4,
-            0.0834
+            0.0837
           ]
         ],
         "swing": {
           "W": {
             "share": 0.4746,
-            "first": 0.2501,
-            "top3": 0.87,
+            "first": 0.2506,
+            "top3": 0.8699,
             "mean_finish": 2.36
           },
           "D": {
-            "share": 0.1701,
-            "first": 0.0961,
-            "top3": 0.6448,
-            "mean_finish": 3.16
+            "share": 0.1697,
+            "first": 0.0966,
+            "top3": 0.6458,
+            "mean_finish": 3.15
           },
           "L": {
-            "share": 0.3554,
-            "first": 0.0151,
-            "top3": 0.364,
-            "mean_finish": 3.97
+            "share": 0.3557,
+            "first": 0.015,
+            "top3": 0.3629,
+            "mean_finish": 3.98
           }
         }
       }
@@ -24568,39 +24568,39 @@
         {
           "id": 69335,
           "finish": [
-            0.4978,
-            0.3151,
-            0.1231,
-            0.0444,
-            0.0166,
+            0.4973,
+            0.3153,
+            0.1233,
+            0.0447,
+            0.0165,
             0.0029,
             0.0001,
             0.0,
             0.0,
             0.0
           ],
-          "first": 0.4978,
-          "top3": 0.9361,
+          "first": 0.4973,
+          "top3": 0.9358,
           "last": 0.0,
-          "mean_points": 19.49,
+          "mean_points": 19.48,
           "mean_finish": 1.78
         },
         {
           "id": 69327,
           "finish": [
-            0.2811,
-            0.2831,
-            0.2215,
-            0.1224,
-            0.0722,
+            0.2812,
+            0.2829,
+            0.2213,
+            0.1223,
+            0.0725,
             0.0194,
             0.0003,
             0.0,
             0.0,
             0.0
           ],
-          "first": 0.2811,
-          "top3": 0.7856,
+          "first": 0.2812,
+          "top3": 0.7855,
           "last": 0.0,
           "mean_points": 17.89,
           "mean_finish": 2.48
@@ -24608,19 +24608,19 @@
         {
           "id": 69315,
           "finish": [
-            0.1404,
+            0.1407,
             0.2275,
-            0.2839,
-            0.1737,
-            0.1197,
-            0.0541,
+            0.2834,
+            0.1739,
+            0.1196,
+            0.0543,
             0.0006,
             0.0,
             0.0,
             0.0
           ],
-          "first": 0.1404,
-          "top3": 0.6519,
+          "first": 0.1407,
+          "top3": 0.6515,
           "last": 0.0,
           "mean_points": 16.85,
           "mean_finish": 3.07
@@ -24628,19 +24628,19 @@
         {
           "id": 69320,
           "finish": [
-            0.0639,
+            0.064,
             0.0982,
-            0.1711,
-            0.2356,
-            0.28,
-            0.1452,
+            0.1716,
+            0.2351,
+            0.2797,
+            0.1454,
             0.006,
             0.0001,
             0.0,
             0.0
           ],
-          "first": 0.0639,
-          "top3": 0.3331,
+          "first": 0.064,
+          "top3": 0.3337,
           "last": 0.0,
           "mean_points": 15.12,
           "mean_finish": 4.03
@@ -24651,16 +24651,16 @@
             0.0145,
             0.0575,
             0.1373,
-            0.2772,
+            0.2773,
             0.2727,
-            0.2191,
+            0.2189,
             0.0206,
             0.0011,
             0.0001,
             0.0
           ],
           "first": 0.0145,
-          "top3": 0.2092,
+          "top3": 0.2094,
           "last": 0.0,
           "mean_points": 14.47,
           "mean_finish": 4.48
@@ -24669,18 +24669,18 @@
           "id": 69323,
           "finish": [
             0.0024,
-            0.0187,
+            0.0186,
             0.063,
             0.1449,
-            0.2276,
-            0.4702,
-            0.0605,
+            0.2278,
+            0.4699,
+            0.0607,
             0.0108,
             0.0019,
             0.0
           ],
           "first": 0.0024,
-          "top3": 0.084,
+          "top3": 0.0839,
           "last": 0.0,
           "mean_points": 12.63,
           "mean_finish": 5.29
@@ -24694,14 +24694,14 @@
             0.0001,
             0.0015,
             0.027,
-            0.2371,
+            0.2367,
             0.3537,
-            0.2903,
-            0.0904
+            0.2904,
+            0.0906
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.0904,
+          "last": 0.0906,
           "mean_points": 5.48,
           "mean_finish": 8.18
         },
@@ -24714,14 +24714,14 @@
             0.0014,
             0.0069,
             0.0437,
-            0.487,
-            0.2532,
-            0.2015,
-            0.0062
+            0.4871,
+            0.2531,
+            0.2014,
+            0.0063
           ],
           "first": 0.0,
           "top3": 0.0001,
-          "last": 0.0062,
+          "last": 0.0063,
           "mean_points": 6.95,
           "mean_finish": 7.61
         },
@@ -24734,14 +24734,14 @@
             0.0003,
             0.0028,
             0.0185,
-            0.1862,
+            0.1863,
             0.3644,
-            0.4102,
-            0.0177
+            0.4099,
+            0.0179
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.0177,
+          "last": 0.0179,
           "mean_points": 5.51,
           "mean_finish": 8.21
         },
@@ -24756,12 +24756,12 @@
             0.0,
             0.0016,
             0.0167,
-            0.0961,
-            0.8857
+            0.0964,
+            0.8853
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.8857,
+          "last": 0.8853,
           "mean_points": 1.09,
           "mean_finish": 9.87
         }
@@ -24782,42 +24782,42 @@
           ],
           [
             18,
-            0.0371
+            0.0372
           ],
           [
             19,
-            0.2509
+            0.2511
           ],
           [
             20,
-            0.214
+            0.2139
           ],
           [
             21,
-            0.1135
+            0.1137
           ],
           [
             22,
-            0.373
+            0.3726
           ]
         ]
       },
       "focus": {
         "id": 69315,
         "finish": [
-          0.1404,
+          0.1407,
           0.2275,
-          0.2839,
-          0.1737,
-          0.1197,
-          0.0541,
+          0.2834,
+          0.1739,
+          0.1196,
+          0.0543,
           0.0006,
           0.0,
           0.0,
           0.0
         ],
-        "first": 0.1404,
-        "top3": 0.6519,
+        "first": 0.1407,
+        "top3": 0.6515,
         "last": 0.0,
         "mean_points": 16.85,
         "mean_finish": 3.07,
@@ -24841,7 +24841,7 @@
             ],
             [
               12,
-              0.0387
+              0.0389
             ],
             [
               13,
@@ -24849,19 +24849,19 @@
             ],
             [
               14,
-              0.0309
+              0.0308
             ],
             [
               15,
-              0.1737
+              0.1741
             ],
             [
               16,
-              0.1699
+              0.1696
             ],
             [
               17,
-              0.043
+              0.0429
             ],
             [
               18,
@@ -24869,7 +24869,7 @@
             ],
             [
               19,
-              0.1203
+              0.1205
             ],
             [
               21,
@@ -24879,7 +24879,7 @@
         },
         "sweep": {
           "share": 0.1133,
-          "first": 0.714,
+          "first": 0.7152,
           "top3": 1.0
         }
       }
