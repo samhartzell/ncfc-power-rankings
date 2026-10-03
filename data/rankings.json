@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-02T16:48:53+00:00",
+  "generated_at": "2026-10-03T07:01:46+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -2877,6 +2877,23 @@
           "moved": false
         },
         {
+          "home": "Teal",
+          "away": "Internacional",
+          "home_id": 69641,
+          "away_id": 69499,
+          "favorite": "Teal",
+          "favorite_id": 69641,
+          "margin": 0.5,
+          "raw_margin": 0.54,
+          "date": "Oct 25, 2026",
+          "day": "Sunday",
+          "time": "12:45 PM",
+          "round": "Round 8",
+          "field": "WRAL Soccer Park 18",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
           "home": "WF United Blue",
           "away": "WF United White",
           "home_id": 69503,
@@ -2894,23 +2911,6 @@
           "moved": false
         },
         {
-          "home": "Teal",
-          "away": "Internacional",
-          "home_id": 69641,
-          "away_id": 69499,
-          "favorite": "Teal",
-          "favorite_id": 69641,
-          "margin": 0.5,
-          "raw_margin": 0.54,
-          "date": "Oct 25, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 C",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
-          "moved": false
-        },
-        {
           "home": "Santos",
           "away": "Palmeiras",
           "home_id": 69501,
@@ -2921,10 +2921,10 @@
           "raw_margin": 0.19,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "2:15 PM",
+          "time": "2:00 PM",
           "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 C",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
+          "field": "WRAL Soccer Park 23 A",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
         {
@@ -4161,10 +4161,10 @@
           "raw_margin": 0.83,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "3:30 PM",
+          "time": "3:15 PM",
           "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 C",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
+          "field": "WRAL Soccer Park 23 A",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
         {
@@ -4195,10 +4195,10 @@
           "raw_margin": -1.5,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "4:45 PM",
+          "time": "5:00 PM",
           "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 D",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
+          "field": "WRAL Soccer Park 22 B",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         }
       ]
@@ -12461,7 +12461,7 @@
           "day": "Saturday",
           "time": "4:00 PM",
           "round": "Round 7",
-          "field": "WRAL Soccer Park 10",
+          "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
@@ -13732,7 +13732,7 @@
           "day": "Saturday",
           "time": "10:00 AM",
           "round": "Round 7",
-          "field": "WRAL Soccer Park 10",
+          "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
@@ -13766,7 +13766,7 @@
           "day": "Saturday",
           "time": "11:30 AM",
           "round": "Round 7",
-          "field": "WRAL Soccer Park 10",
+          "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
@@ -14641,7 +14641,7 @@
           "day": "Saturday",
           "time": "2:30 PM",
           "round": "Round 7",
-          "field": "WRAL Soccer Park 10",
+          "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
@@ -16925,6 +16925,23 @@
           "moved": false
         },
         {
+          "home": "Lightning",
+          "away": "Reign",
+          "home_id": 69640,
+          "away_id": 69514,
+          "favorite": "Lightning",
+          "favorite_id": 69640,
+          "margin": 3.0,
+          "raw_margin": 3.0,
+          "date": "Oct 25, 2026",
+          "day": "Sunday",
+          "time": "2:00 PM",
+          "round": "Round 8",
+          "field": "WRAL Soccer Park 23 B",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
           "home": "White",
           "away": "Ascent",
           "home_id": 69624,
@@ -16942,23 +16959,6 @@
           "moved": false
         },
         {
-          "home": "Lightning",
-          "away": "Reign",
-          "home_id": 69640,
-          "away_id": 69514,
-          "favorite": "Lightning",
-          "favorite_id": 69640,
-          "margin": 3.0,
-          "raw_margin": 3.0,
-          "date": "Oct 25, 2026",
-          "day": "Sunday",
-          "time": "2:15 PM",
-          "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 D",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
-          "moved": false
-        },
-        {
           "home": "Teal",
           "away": "Thorns",
           "home_id": 69622,
@@ -16969,10 +16969,10 @@
           "raw_margin": 2.97,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "3:30 PM",
+          "time": "3:15 PM",
           "round": "Round 8",
-          "field": "Wake Stone Athletic Park 1 D",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
+          "field": "WRAL Soccer Park 23 B",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         }
       ]
@@ -21767,7 +21767,7 @@
           "day": "Saturday",
           "time": "1:00 PM",
           "round": "Round 7",
-          "field": "WRAL Soccer Park 10",
+          "field": "WRAL Soccer Park 2",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         },
