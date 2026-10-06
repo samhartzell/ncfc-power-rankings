@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-05T19:44:03+00:00",
+  "generated_at": "2026-10-06T08:03:23+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -1644,23 +1644,6 @@
           "moved": false
         },
         {
-          "home": "Current",
-          "away": "WF United Red",
-          "home_id": 69511,
-          "away_id": 69492,
-          "favorite": "Current",
-          "favorite_id": 69511,
-          "margin": 1.0,
-          "raw_margin": 1.08,
-          "date": "Oct 18, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 7",
-          "field": "Woods Creek ES MP",
-          "address": "7451 Wds Crk Rd, Apex, NC 27539, USA",
-          "moved": false
-        },
-        {
           "home": "Sun",
           "away": "Sporting",
           "home_id": 69490,
@@ -1692,6 +1675,23 @@
           "round": "Round 7",
           "field": "Davis Drive Park 3 A",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
+          "home": "Current",
+          "away": "WF United Red",
+          "home_id": 69511,
+          "away_id": 69492,
+          "favorite": "Current",
+          "favorite_id": 69511,
+          "margin": 1.0,
+          "raw_margin": 1.08,
+          "date": "Oct 18, 2026",
+          "day": "Sunday",
+          "time": "4:00 PM",
+          "round": "Round 7",
+          "field": "Thomas Brooks Park 1 A",
+          "address": "9008 Green Level Church Road, Cary, NC 27519, USA",
           "moved": false
         },
         {
@@ -5116,7 +5116,7 @@
       "games_played": 22,
       "games_total": 36,
       "rounds_complete": 5,
-      "games_moved": 6,
+      "games_moved": 4,
       "teams": [
         {
           "id": 69318,
@@ -5909,57 +5909,6 @@
           "moved": false
         },
         {
-          "home": "Swansea",
-          "away": "West Brom",
-          "home_id": 69334,
-          "away_id": 69332,
-          "favorite": "West Brom",
-          "favorite_id": 69332,
-          "margin": 1.0,
-          "raw_margin": -0.95,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
-          "home": "Dortmund",
-          "away": "Earthquakes",
-          "home_id": 69319,
-          "away_id": 69643,
-          "favorite": "Dortmund",
-          "favorite_id": 69319,
-          "margin": 1.0,
-          "raw_margin": 0.98,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 6",
-          "field": "Reedy Creek MS MP",
-          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
-          "moved": true
-        },
-        {
-          "home": "Crystal Palace",
-          "away": "Atletico",
-          "home_id": 69322,
-          "away_id": 69317,
-          "favorite": "Atletico",
-          "favorite_id": 69317,
-          "margin": 1.5,
-          "raw_margin": -1.72,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "2:15 PM",
-          "round": "Round 6",
-          "field": "Reedy Creek MS MP",
-          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
-          "moved": true
-        },
-        {
           "home": "Arsenal",
           "away": "Inter Miami",
           "home_id": 69619,
@@ -6128,6 +6077,57 @@
           "field": "Reedy Creek MS MP",
           "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
           "moved": true
+        },
+        {
+          "home": "Swansea",
+          "away": "West Brom",
+          "home_id": 69334,
+          "away_id": 69332,
+          "favorite": "West Brom",
+          "favorite_id": 69332,
+          "margin": 1.0,
+          "raw_margin": -0.95,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
+          "home": "Dortmund",
+          "away": "Earthquakes",
+          "home_id": 69319,
+          "away_id": 69643,
+          "favorite": "Dortmund",
+          "favorite_id": 69319,
+          "margin": 1.0,
+          "raw_margin": 0.98,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Davis Drive Park 4",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
+          "home": "Crystal Palace",
+          "away": "Atletico",
+          "home_id": 69322,
+          "away_id": 69317,
+          "favorite": "Atletico",
+          "favorite_id": 69317,
+          "margin": 1.5,
+          "raw_margin": -1.72,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "10:15 AM",
+          "round": "Round 6",
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
         }
       ]
     },
@@ -7033,23 +7033,6 @@
           "moved": false
         },
         {
-          "home": "Arsenal",
-          "away": "WF United White",
-          "home_id": 69321,
-          "away_id": 69324,
-          "favorite": "Arsenal",
-          "favorite_id": 69321,
-          "margin": 0.0,
-          "raw_margin": 0.21,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "2:00 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 4",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Ipswich Town",
           "away": "WF United Blue",
           "home_id": 69330,
@@ -7064,23 +7047,6 @@
           "round": "Round 6",
           "field": "WRAL Soccer Park 14",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
-        },
-        {
-          "home": "Lyon",
-          "away": "Coventry",
-          "home_id": 69329,
-          "away_id": 69335,
-          "favorite": "Coventry",
-          "favorite_id": 69335,
-          "margin": 3.0,
-          "raw_margin": -2.82,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "6:00 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 4",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
           "moved": false
         },
         {
@@ -7249,6 +7215,40 @@
           "day": "Sunday",
           "time": "4:45 PM",
           "round": "Round 8",
+          "field": "Davis Drive Park 4",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
+          "home": "Lyon",
+          "away": "Coventry",
+          "home_id": 69329,
+          "away_id": 69335,
+          "favorite": "Coventry",
+          "favorite_id": 69335,
+          "margin": 3.0,
+          "raw_margin": -2.82,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "South Side Fields 1",
+          "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
+          "moved": false
+        },
+        {
+          "home": "Arsenal",
+          "away": "WF United White",
+          "home_id": 69321,
+          "away_id": 69324,
+          "favorite": "Arsenal",
+          "favorite_id": 69321,
+          "margin": 0.0,
+          "raw_margin": 0.21,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "10:15 AM",
+          "round": "Round 6",
           "field": "Davis Drive Park 4",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
           "moved": false
@@ -8137,23 +8137,6 @@
       ],
       "upcoming": [
         {
-          "home": "Portsmouth",
-          "away": "Rowdies",
-          "home_id": 69331,
-          "away_id": 69517,
-          "favorite": "Rowdies",
-          "favorite_id": 69517,
-          "margin": 0.5,
-          "raw_margin": -0.27,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "2:15 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Finley Storm",
           "away": "WF United Silver",
           "home_id": 69631,
@@ -8389,6 +8372,23 @@
           "round": "Round 8",
           "field": "WRAL Soccer Park 7",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Portsmouth",
+          "away": "Rowdies",
+          "home_id": 69331,
+          "away_id": 69517,
+          "favorite": "Rowdies",
+          "favorite_id": 69517,
+          "margin": 0.5,
+          "raw_margin": -0.27,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "11:30 AM",
+          "round": "Round 6",
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
           "moved": false
         }
       ]
@@ -9145,23 +9145,6 @@
           "moved": false
         },
         {
-          "home": "WF United White",
-          "away": "Strikers",
-          "home_id": 69358,
-          "away_id": 69369,
-          "favorite": "WF United White",
-          "favorite_id": 69358,
-          "margin": 1.0,
-          "raw_margin": 1.16,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "2:15 PM",
-          "round": "Round 6",
-          "field": "Smith Creek Park 2 A",
-          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
-          "moved": false
-        },
-        {
           "home": "Herons",
           "away": "Southampton",
           "home_id": 69644,
@@ -9397,6 +9380,23 @@
           "round": "Round 8",
           "field": "WRAL Soccer Park 14",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "WF United White",
+          "away": "Strikers",
+          "home_id": 69358,
+          "away_id": 69369,
+          "favorite": "WF United White",
+          "favorite_id": 69358,
+          "margin": 1.0,
+          "raw_margin": 1.16,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Smith Creek Park 2 A",
+          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
           "moved": false
         }
       ]
@@ -10300,23 +10300,6 @@
           "moved": false
         },
         {
-          "home": "Luton Town",
-          "away": "Monaco",
-          "home_id": 69370,
-          "away_id": 69359,
-          "favorite": "Luton Town",
-          "favorite_id": 69370,
-          "margin": 0.5,
-          "raw_margin": 0.31,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "3:15 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 4",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Madrid",
           "away": "Aston Villa",
           "home_id": 69352,
@@ -10331,23 +10314,6 @@
           "round": "Round 6",
           "field": "WRAL Soccer Park 17",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
-        },
-        {
-          "home": "Cardiff City",
-          "away": "Rowdies",
-          "home_id": 69353,
-          "away_id": 69373,
-          "favorite": "Rowdies",
-          "favorite_id": 69373,
-          "margin": 2.0,
-          "raw_margin": -2.17,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "3:30 PM",
-          "round": "Round 6",
-          "field": "Kiwanis Park 2",
-          "address": "2525 Noble Rd, Raleigh, NC 27608, USA",
           "moved": false
         },
         {
@@ -10535,6 +10501,40 @@
           "round": "Round 8",
           "field": "Davis Drive Park 2",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
+          "home": "Cardiff City",
+          "away": "Rowdies",
+          "home_id": 69353,
+          "away_id": 69373,
+          "favorite": "Rowdies",
+          "favorite_id": 69373,
+          "margin": 2.0,
+          "raw_margin": -2.17,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Kiwanis Park 2",
+          "address": "2525 Noble Rd, Raleigh, NC 27608, USA",
+          "moved": false
+        },
+        {
+          "home": "Luton Town",
+          "away": "Monaco",
+          "home_id": 69370,
+          "away_id": 69359,
+          "favorite": "Luton Town",
+          "favorite_id": 69370,
+          "margin": 0.5,
+          "raw_margin": 0.31,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "10:15 AM",
+          "round": "Round 6",
+          "field": "South Side Fields 1",
+          "address": "2508 Old US 1 Hwy, Apex, NC 27502, USA",
           "moved": false
         }
       ]
@@ -11240,23 +11240,6 @@
           "moved": false
         },
         {
-          "home": "Wrexham",
-          "away": "Norwich",
-          "home_id": 69360,
-          "away_id": 69362,
-          "favorite": "Norwich",
-          "favorite_id": 69362,
-          "margin": 0.0,
-          "raw_margin": -0.0,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "4:30 PM",
-          "round": "Round 6",
-          "field": "Davis Drive Park 4",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Brentford",
           "away": "Stoke City",
           "home_id": 69355,
@@ -11441,6 +11424,23 @@
           "round": "Round 8",
           "field": "Wake Stone Athletic Park 2 B",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
+          "moved": false
+        },
+        {
+          "home": "Wrexham",
+          "away": "Norwich",
+          "home_id": 69360,
+          "away_id": 69362,
+          "favorite": "Norwich",
+          "favorite_id": 69362,
+          "margin": 0.0,
+          "raw_margin": -0.0,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "11:30 AM",
+          "round": "Round 6",
+          "field": "Davis Drive Park 4",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
           "moved": false
         }
       ]
@@ -14579,23 +14579,6 @@
         },
         {
           "home": "Barcelona",
-          "away": "Strikers",
-          "home_id": 69410,
-          "away_id": 69420,
-          "favorite": "Strikers",
-          "favorite_id": 69420,
-          "margin": 2.0,
-          "raw_margin": -1.89,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "2:00 PM",
-          "round": "Round 6",
-          "field": "Davis Drive MS MP",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
-          "moved": false
-        },
-        {
-          "home": "Barcelona",
           "away": "Roma",
           "home_id": 69410,
           "away_id": 69417,
@@ -14711,6 +14694,23 @@
           "round": "Round 8",
           "field": "WRAL Soccer Park 1",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Barcelona",
+          "away": "Strikers",
+          "home_id": 69410,
+          "away_id": 69420,
+          "favorite": "Strikers",
+          "favorite_id": 69420,
+          "margin": 2.0,
+          "raw_margin": -1.89,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "10:30 AM",
+          "round": "Round 6",
+          "field": "Davis Drive MS MP",
+          "address": "2101 Davis Dr, Cary, NC 27519, USA",
           "moved": false
         }
       ]
@@ -22757,23 +22757,6 @@
       ],
       "upcoming": [
         {
-          "home": "Fleury",
-          "away": "Freedom",
-          "home_id": 69427,
-          "away_id": 69447,
-          "favorite": "Freedom",
-          "favorite_id": 69447,
-          "margin": 3.5,
-          "raw_margin": -3.36,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:15 PM",
-          "round": "Round 6",
-          "field": "Davis Drive MS Soccer 1",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
-          "moved": false
-        },
-        {
           "home": "Wave",
           "away": "WF United Red",
           "home_id": 69450,
@@ -23009,6 +22992,23 @@
           "round": "Round 8",
           "field": "WRAL Soccer Park 19",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Fleury",
+          "away": "Freedom",
+          "home_id": 69427,
+          "away_id": 69447,
+          "favorite": "Freedom",
+          "favorite_id": 69447,
+          "margin": 3.5,
+          "raw_margin": -3.36,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "12:30 PM",
+          "round": "Round 6",
+          "field": "Reedy Creek MS Stadium",
+          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
           "moved": false
         }
       ]
@@ -23782,57 +23782,6 @@
           "moved": true
         },
         {
-          "home": "WF United Red",
-          "away": "Royals",
-          "home_id": 69481,
-          "away_id": 69470,
-          "favorite": "Royals",
-          "favorite_id": 69470,
-          "margin": 2.0,
-          "raw_margin": -1.77,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 6",
-          "field": "Smith Creek Park 3",
-          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
-          "moved": false
-        },
-        {
-          "home": "Fusion",
-          "away": "Finley United",
-          "home_id": 69468,
-          "away_id": 69642,
-          "favorite": "Finley United",
-          "favorite_id": 69642,
-          "margin": 2.0,
-          "raw_margin": -1.95,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "1:00 PM",
-          "round": "Round 6",
-          "field": "South Garner Park 1",
-          "address": "1210 Poole Dr, Garner, NC 27529, USA",
-          "moved": false
-        },
-        {
-          "home": "WF United Black",
-          "away": "Royals Gold",
-          "home_id": 69471,
-          "away_id": 69459,
-          "favorite": "Royals Gold",
-          "favorite_id": 69459,
-          "margin": 0.0,
-          "raw_margin": -0.09,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "3:00 PM",
-          "round": "Round 6",
-          "field": "Smith Creek Park 3",
-          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
-          "moved": false
-        },
-        {
           "home": "Royals Gold",
           "away": "WF United Red",
           "home_id": 69459,
@@ -24017,6 +23966,57 @@
           "round": "Round 6",
           "field": "WRAL Soccer Park 3",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "WF United Red",
+          "away": "Royals",
+          "home_id": 69481,
+          "away_id": 69470,
+          "favorite": "Royals",
+          "favorite_id": 69470,
+          "margin": 2.0,
+          "raw_margin": -1.77,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Smith Creek Park 3",
+          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
+          "moved": false
+        },
+        {
+          "home": "Fusion",
+          "away": "Finley United",
+          "home_id": 69468,
+          "away_id": 69642,
+          "favorite": "Finley United",
+          "favorite_id": 69642,
+          "margin": 2.0,
+          "raw_margin": -1.95,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "South Garner Park 1",
+          "address": "1210 Poole Dr, Garner, NC 27529, USA",
+          "moved": false
+        },
+        {
+          "home": "WF United Black",
+          "away": "Royals Gold",
+          "home_id": 69471,
+          "away_id": 69459,
+          "favorite": "Royals Gold",
+          "favorite_id": 69459,
+          "margin": 0.0,
+          "raw_margin": -0.09,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "11:00 AM",
+          "round": "Round 6",
+          "field": "Smith Creek Park 3",
+          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
           "moved": false
         }
       ]
@@ -24682,23 +24682,6 @@
         },
         {
           "home": "Everton",
-          "away": "Thunder",
-          "home_id": 69412,
-          "away_id": 69425,
-          "favorite": "Everton",
-          "favorite_id": 69412,
-          "margin": 1.0,
-          "raw_margin": 0.9,
-          "date": "Oct  4, 2026",
-          "day": "Sunday",
-          "time": "3:30 PM",
-          "round": "Round 6",
-          "field": "Davis Drive MS MP",
-          "address": "2101 Davis Dr, Cary, NC 27519, USA",
-          "moved": false
-        },
-        {
-          "home": "Everton",
           "away": "Real Madrid",
           "home_id": 69412,
           "away_id": 69424,
@@ -24814,6 +24797,23 @@
           "round": "Round 8",
           "field": "WRAL Soccer Park 1",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Everton",
+          "away": "Thunder",
+          "home_id": 69412,
+          "away_id": 69425,
+          "favorite": "Everton",
+          "favorite_id": 69412,
+          "margin": 1.0,
+          "raw_margin": 0.9,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "9:00 AM",
+          "round": "Round 6",
+          "field": "Davis Drive MS MP",
+          "address": "2101 Davis Dr, Cary, NC 27519, USA",
           "moved": false
         }
       ]
@@ -24982,21 +24982,21 @@
         "swing": {
           "W": {
             "share": 0.627,
-            "first": 0.2355,
-            "top3": 0.8062,
-            "mean_finish": 2.48
+            "first": 0.2489,
+            "top3": 0.8041,
+            "mean_finish": 2.47
           },
           "D": {
             "share": 0.1534,
-            "first": 0.101,
-            "top3": 0.5926,
-            "mean_finish": 3.23
+            "first": 0.0988,
+            "top3": 0.5909,
+            "mean_finish": 3.24
           },
           "L": {
             "share": 0.2195,
-            "first": 0.0301,
-            "top3": 0.3605,
-            "mean_finish": 4.04
+            "first": 0.0276,
+            "top3": 0.3626,
+            "mean_finish": 4.02
           }
         }
       },
@@ -25056,21 +25056,21 @@
         "swing": {
           "W": {
             "share": 0.9386,
-            "first": 0.1778,
-            "top3": 0.6924,
-            "mean_finish": 2.88
+            "first": 0.1857,
+            "top3": 0.6907,
+            "mean_finish": 2.87
           },
           "D": {
             "share": 0.0384,
-            "first": 0.0665,
-            "top3": 0.4615,
-            "mean_finish": 3.71
+            "first": 0.0652,
+            "top3": 0.4759,
+            "mean_finish": 3.67
           },
           "L": {
             "share": 0.023,
-            "first": 0.0174,
-            "top3": 0.3478,
-            "mean_finish": 4.18
+            "first": 0.0217,
+            "top3": 0.3413,
+            "mean_finish": 4.13
           }
         }
       },
@@ -25129,22 +25129,22 @@
         ],
         "swing": {
           "W": {
-            "share": 0.507,
-            "first": 0.296,
-            "top3": 0.8687,
-            "mean_finish": 2.22
+            "share": 0.5117,
+            "first": 0.3056,
+            "top3": 0.869,
+            "mean_finish": 2.21
           },
           "D": {
-            "share": 0.1702,
-            "first": 0.0952,
-            "top3": 0.6119,
+            "share": 0.1703,
+            "first": 0.0998,
+            "top3": 0.6136,
             "mean_finish": 3.18
           },
           "L": {
-            "share": 0.3229,
-            "first": 0.011,
-            "top3": 0.4059,
-            "mean_finish": 3.93
+            "share": 0.318,
+            "first": 0.0124,
+            "top3": 0.3941,
+            "mean_finish": 3.96
           }
         }
       },
@@ -25203,22 +25203,22 @@
         ],
         "swing": {
           "W": {
-            "share": 0.5053,
-            "first": 0.2864,
-            "top3": 0.8652,
-            "mean_finish": 2.26
+            "share": 0.5059,
+            "first": 0.2996,
+            "top3": 0.8648,
+            "mean_finish": 2.25
           },
           "D": {
-            "share": 0.1713,
-            "first": 0.1232,
-            "top3": 0.6594,
-            "mean_finish": 3.05
+            "share": 0.1771,
+            "first": 0.1239,
+            "top3": 0.6395,
+            "mean_finish": 3.07
           },
           "L": {
-            "share": 0.3234,
-            "first": 0.0124,
-            "top3": 0.3879,
-            "mean_finish": 3.93
+            "share": 0.317,
+            "first": 0.012,
+            "top3": 0.3903,
+            "mean_finish": 3.94
           }
         }
       }
@@ -25233,99 +25233,99 @@
         {
           "id": 69335,
           "finish": [
-            0.5695,
-            0.251,
-            0.1067,
-            0.052,
-            0.0177,
-            0.0031,
+            0.5609,
+            0.2599,
+            0.1088,
+            0.0488,
+            0.0187,
+            0.0028,
             0.0001,
             0.0,
             0.0,
             0.0
           ],
-          "first": 0.5695,
-          "top3": 0.9272,
+          "first": 0.5609,
+          "top3": 0.9296,
           "last": 0.0,
-          "mean_points": 19.63,
+          "mean_points": 19.6,
           "mean_finish": 1.71
         },
         {
           "id": 69315,
           "finish": [
-            0.1698,
-            0.2697,
-            0.2361,
-            0.1514,
-            0.1226,
-            0.0503,
-            0.0001,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "first": 0.1698,
-          "top3": 0.6756,
-          "last": 0.0,
-          "mean_points": 17.27,
-          "mean_finish": 2.94
-        },
-        {
-          "id": 69327,
-          "finish": [
-            0.1393,
-            0.2169,
-            0.2135,
-            0.2029,
-            0.1725,
-            0.0549,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "first": 0.1393,
-          "top3": 0.5697,
-          "last": 0.0,
-          "mean_points": 17.0,
-          "mean_finish": 3.22
-        },
-        {
-          "id": 69320,
-          "finish": [
-            0.0746,
-            0.1111,
-            0.1645,
-            0.2278,
-            0.3059,
-            0.1161,
-            0.0001,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "first": 0.0746,
-          "top3": 0.3502,
-          "last": 0.0,
-          "mean_points": 15.73,
-          "mean_finish": 3.93
-        },
-        {
-          "id": 69330,
-          "finish": [
-            0.0449,
-            0.1353,
-            0.2409,
-            0.2732,
-            0.1941,
-            0.1113,
+            0.1773,
+            0.2618,
+            0.2354,
+            0.1526,
+            0.1228,
+            0.0499,
             0.0003,
             0.0,
             0.0,
             0.0
           ],
-          "first": 0.0449,
-          "top3": 0.4213,
+          "first": 0.1773,
+          "top3": 0.6744,
+          "last": 0.0,
+          "mean_points": 17.29,
+          "mean_finish": 2.93
+        },
+        {
+          "id": 69327,
+          "finish": [
+            0.1373,
+            0.2162,
+            0.2106,
+            0.2048,
+            0.1771,
+            0.0541,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": 0.1373,
+          "top3": 0.5641,
+          "last": 0.0,
+          "mean_points": 16.97,
+          "mean_finish": 3.23
+        },
+        {
+          "id": 69320,
+          "finish": [
+            0.0769,
+            0.1104,
+            0.1666,
+            0.2263,
+            0.2994,
+            0.1203,
+            0.0001,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": 0.0769,
+          "top3": 0.3538,
+          "last": 0.0,
+          "mean_points": 15.73,
+          "mean_finish": 3.92
+        },
+        {
+          "id": 69330,
+          "finish": [
+            0.0459,
+            0.1356,
+            0.2374,
+            0.275,
+            0.1933,
+            0.1124,
+            0.0004,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": 0.0459,
+          "top3": 0.419,
           "last": 0.0,
           "mean_points": 15.8,
           "mean_finish": 3.77
@@ -25333,21 +25333,21 @@
         {
           "id": 69323,
           "finish": [
-            0.0019,
-            0.0159,
-            0.0382,
+            0.0018,
+            0.016,
+            0.0412,
             0.0926,
-            0.1868,
-            0.6099,
-            0.0447,
-            0.0092,
-            0.0006,
+            0.1883,
+            0.601,
+            0.0486,
+            0.0098,
+            0.0008,
             0.0
           ],
-          "first": 0.0019,
-          "top3": 0.0561,
+          "first": 0.0018,
+          "top3": 0.059,
           "last": 0.0,
-          "mean_points": 12.37,
+          "mean_points": 12.38,
           "mean_finish": 5.5
         },
         {
@@ -25356,19 +25356,19 @@
             0.0,
             0.0,
             0.0,
-            0.0001,
+            0.0,
             0.0003,
-            0.0269,
-            0.2994,
-            0.3175,
-            0.2427,
-            0.1132
+            0.0302,
+            0.2944,
+            0.3242,
+            0.2415,
+            0.1094
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.1132,
-          "mean_points": 5.37,
-          "mean_finish": 8.11
+          "last": 0.1094,
+          "mean_points": 5.39,
+          "mean_finish": 8.1
         },
         {
           "id": 69329,
@@ -25377,17 +25377,17 @@
             0.0,
             0.0,
             0.0,
-            0.0001,
-            0.0153,
-            0.2703,
-            0.3559,
-            0.3332,
-            0.0252
+            0.0,
+            0.0169,
+            0.2715,
+            0.3558,
+            0.3305,
+            0.0254
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.0252,
-          "mean_points": 5.42,
+          "last": 0.0254,
+          "mean_points": 5.44,
           "mean_finish": 8.08
         },
         {
@@ -25398,17 +25398,17 @@
             0.0,
             0.0,
             0.0001,
-            0.0123,
-            0.3821,
-            0.2899,
-            0.2906,
-            0.025
+            0.0124,
+            0.381,
+            0.2858,
+            0.2978,
+            0.0228
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.025,
-          "mean_points": 5.88,
-          "mean_finish": 7.93
+          "last": 0.0228,
+          "mean_points": 5.87,
+          "mean_finish": 7.94
         },
         {
           "id": 69333,
@@ -25419,16 +25419,16 @@
             0.0,
             0.0,
             0.0,
-            0.0029,
-            0.0274,
-            0.133,
-            0.8367
+            0.0037,
+            0.0244,
+            0.1295,
+            0.8424
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.8367,
+          "last": 0.8424,
           "mean_points": 1.22,
-          "mean_finish": 9.8
+          "mean_finish": 9.81
         }
       ],
       "champion_points": {
@@ -25439,53 +25439,53 @@
         "distribution": [
           [
             16,
-            0.0003
+            0.0004
           ],
           [
             17,
-            0.0079
+            0.0084
           ],
           [
             18,
-            0.0321
+            0.0333
           ],
           [
             19,
-            0.2613
+            0.2647
           ],
           [
             20,
-            0.193
+            0.1921
           ],
           [
             21,
-            0.1467
+            0.153
           ],
           [
             22,
-            0.3585
+            0.3479
           ]
         ]
       },
       "focus": {
         "id": 69315,
         "finish": [
-          0.1698,
-          0.2697,
-          0.2361,
-          0.1514,
-          0.1226,
-          0.0503,
-          0.0001,
+          0.1773,
+          0.2618,
+          0.2354,
+          0.1526,
+          0.1228,
+          0.0499,
+          0.0003,
           0.0,
           0.0,
           0.0
         ],
-        "first": 0.1698,
-        "top3": 0.6756,
+        "first": 0.1773,
+        "top3": 0.6744,
         "last": 0.0,
-        "mean_points": 17.27,
-        "mean_finish": 2.94,
+        "mean_points": 17.29,
+        "mean_finish": 2.93,
         "points": {
           "mean": 17.3,
           "low": 14,
@@ -25494,27 +25494,27 @@
           "distribution": [
             [
               9,
-              0.0002
+              0.0004
             ],
             [
               10,
-              0.0021
+              0.0018
             ],
             [
               11,
-              0.0019
+              0.0017
             ],
             [
               12,
-              0.0256
+              0.0251
             ],
             [
               13,
-              0.0471
+              0.0438
             ],
             [
               14,
-              0.0291
+              0.0311
             ],
             [
               15,
@@ -25522,29 +25522,29 @@
             ],
             [
               16,
-              0.1617
+              0.1636
             ],
             [
               17,
-              0.0465
+              0.046
             ],
             [
               18,
-              0.2477
+              0.2431
             ],
             [
               19,
-              0.1456
+              0.148
             ],
             [
               21,
-              0.1511
+              0.154
             ]
           ]
         },
         "sweep": {
-          "share": 0.1511,
-          "first": 0.6741,
+          "share": 0.154,
+          "first": 0.7011,
           "top3": 1.0
         }
       }
