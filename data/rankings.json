@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-08T07:57:09+00:00",
+  "generated_at": "2026-10-08T17:59:03+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -14177,23 +14177,6 @@
           "moved": false
         },
         {
-          "home": "Sheffield",
-          "away": "Galaxy",
-          "home_id": 69400,
-          "away_id": 69388,
-          "favorite": "Sheffield",
-          "favorite_id": 69400,
-          "margin": 1.5,
-          "raw_margin": 1.73,
-          "date": "Oct 24, 2026",
-          "day": "Saturday",
-          "time": "4:30 PM",
-          "round": "Round 8",
-          "field": "WRAL Soccer Park 10",
-          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
-          "moved": false
-        },
-        {
           "home": "Whitecaps",
           "away": "Hoffenheim",
           "home_id": 69394,
@@ -14207,6 +14190,23 @@
           "time": "4:30 PM",
           "round": "Round 8",
           "field": "WRAL Soccer Park 2",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Sheffield",
+          "away": "Galaxy",
+          "home_id": 69400,
+          "away_id": 69388,
+          "favorite": "Sheffield",
+          "favorite_id": 69400,
+          "margin": 1.5,
+          "raw_margin": 1.73,
+          "date": "Oct 25, 2026",
+          "day": "Sunday",
+          "time": "11:30 AM",
+          "round": "Round 8",
+          "field": "WRAL Soccer Park 20",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
         }
