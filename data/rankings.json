@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-09T07:57:23+00:00",
+  "generated_at": "2026-10-09T17:32:21+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -14216,7 +14216,7 @@
       "id": 19788,
       "name": "U14 Gray Boys",
       "gender": "M",
-      "games_played": 17,
+      "games_played": 18,
       "games_total": 28,
       "rounds_complete": 7,
       "games_moved": 2,
@@ -14228,22 +14228,22 @@
           "short": "Ninjas",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64385/team_view.html",
           "power_rank": 1,
-          "power_score": 73.4,
-          "rating": 2.28,
-          "colley": 0.796,
-          "sos": 45.7,
+          "power_score": 72.9,
+          "rating": 2.06,
+          "colley": 0.814,
+          "sos": 46.1,
           "sos_rank": 6,
-          "table_rank": 2,
-          "movement": 1,
+          "table_rank": 1,
+          "movement": 0,
           "record": {
-            "gp": 4,
-            "w": 4,
+            "gp": 5,
+            "w": 5,
             "l": 0,
             "t": 0,
-            "gf": 15,
+            "gf": 16,
             "ga": 3,
-            "gd": 13,
-            "pts": 12
+            "gd": 14,
+            "pts": 15
           },
           "resume": [
             {
@@ -14283,6 +14283,18 @@
               "round": "Round 4"
             },
             {
+              "opponent": "Falcons",
+              "opponent_id": 69615,
+              "opponent_rank": 4,
+              "quality": "middle",
+              "home": false,
+              "gf": 1,
+              "ga": 0,
+              "outcome": "W",
+              "date": "Sep 26, 2026",
+              "round": "Round 5"
+            },
+            {
               "opponent": "Strikers",
               "opponent_id": 69420,
               "opponent_rank": 5,
@@ -14303,13 +14315,13 @@
           "short": "Roma",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64387/team_view.html",
           "power_rank": 2,
-          "power_score": 67.1,
+          "power_score": 67.4,
           "rating": 1.57,
-          "colley": 0.738,
+          "colley": 0.737,
           "sos": 49.5,
           "sos_rank": 5,
-          "table_rank": 1,
-          "movement": -1,
+          "table_rank": 2,
+          "movement": 0,
           "record": {
             "gp": 6,
             "w": 5,
@@ -14402,9 +14414,9 @@
           "short": "Phoenix Rise",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64414/team_view.html",
           "power_rank": 3,
-          "power_score": 53.3,
-          "rating": 0.1,
-          "colley": 0.588,
+          "power_score": 53.4,
+          "rating": 0.13,
+          "colley": 0.586,
           "sos": 44.7,
           "sos_rank": 7,
           "table_rank": 3,
@@ -14489,21 +14501,21 @@
           "short": "Falcons",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64415/team_view.html",
           "power_rank": 4,
-          "power_score": 46.3,
-          "rating": -0.35,
-          "colley": 0.452,
-          "sos": 52.1,
-          "sos_rank": 4,
+          "power_score": 47.0,
+          "rating": -0.17,
+          "colley": 0.437,
+          "sos": 55.5,
+          "sos_rank": 2,
           "table_rank": 4,
           "movement": 0,
           "record": {
-            "gp": 5,
+            "gp": 6,
             "w": 2,
-            "l": 3,
+            "l": 4,
             "t": 0,
             "gf": 8,
-            "ga": 12,
-            "gd": -3,
+            "ga": 13,
+            "gd": -4,
             "pts": 6
           },
           "resume": [
@@ -14556,6 +14568,18 @@
               "round": "Round 1"
             },
             {
+              "opponent": "Ninjas",
+              "opponent_id": 69415,
+              "opponent_rank": 1,
+              "quality": "strong",
+              "home": true,
+              "gf": 0,
+              "ga": 1,
+              "outcome": "L",
+              "date": "Sep 26, 2026",
+              "round": "Round 5"
+            },
+            {
               "opponent": "Crew",
               "opponent_id": 69411,
               "opponent_rank": 6,
@@ -14576,11 +14600,11 @@
           "short": "Strikers",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64390/team_view.html",
           "power_rank": 5,
-          "power_score": 43.1,
-          "rating": -0.52,
-          "colley": 0.381,
-          "sos": 52.1,
-          "sos_rank": 3,
+          "power_score": 42.9,
+          "rating": -0.55,
+          "colley": 0.383,
+          "sos": 52.0,
+          "sos_rank": 4,
           "table_rank": 5,
           "movement": 0,
           "record": {
@@ -14663,10 +14687,10 @@
           "short": "Crew",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64381/team_view.html",
           "power_rank": 6,
-          "power_score": 40.3,
-          "rating": -0.77,
-          "colley": 0.342,
-          "sos": 55.4,
+          "power_score": 40.4,
+          "rating": -0.74,
+          "colley": 0.34,
+          "sos": 55.6,
           "sos_rank": 1,
           "table_rank": 6,
           "movement": 0,
@@ -14750,11 +14774,11 @@
           "short": "Barcelona",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64380/team_view.html",
           "power_rank": 7,
-          "power_score": 26.4,
+          "power_score": 26.0,
           "rating": -2.3,
           "colley": 0.203,
           "sos": 54.0,
-          "sos_rank": 2,
+          "sos_rank": 3,
           "table_rank": 7,
           "movement": 0,
           "record": {
@@ -14828,30 +14852,13 @@
           "favorite": "Crew",
           "favorite_id": 69411,
           "margin": 1.5,
-          "raw_margin": -1.53,
+          "raw_margin": -1.56,
           "date": "Sep 26, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
           "round": "Round 5",
           "field": "Davis Drive MS Soccer 1",
           "address": "2101 Davis Dr, Cary, NC 27519, USA",
-          "moved": false
-        },
-        {
-          "home": "Falcons",
-          "away": "Ninjas",
-          "home_id": 69615,
-          "away_id": 69415,
-          "favorite": "Ninjas",
-          "favorite_id": 69415,
-          "margin": 2.5,
-          "raw_margin": -2.63,
-          "date": "Sep 26, 2026",
-          "day": "Saturday",
-          "time": "4:30 PM",
-          "round": "Round 5",
-          "field": "Wake Stone Athletic Park 4",
-          "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
           "moved": false
         },
         {
@@ -14862,7 +14869,7 @@
           "favorite": "Phoenix Rise",
           "favorite_id": 69614,
           "margin": 1.0,
-          "raw_margin": -0.88,
+          "raw_margin": -0.87,
           "date": "Oct  3, 2026",
           "day": "Saturday",
           "time": "2:00 PM",
@@ -14879,7 +14886,7 @@
           "favorite": "Roma",
           "favorite_id": 69417,
           "margin": 4.0,
-          "raw_margin": -3.86,
+          "raw_margin": -3.88,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "11:45 AM",
@@ -14895,8 +14902,8 @@
           "away_id": 69420,
           "favorite": "Falcons",
           "favorite_id": 69615,
-          "margin": 0.0,
-          "raw_margin": 0.17,
+          "margin": 0.5,
+          "raw_margin": 0.37,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "1:30 PM",
@@ -14913,7 +14920,7 @@
           "favorite": "Ninjas",
           "favorite_id": 69415,
           "margin": 2.0,
-          "raw_margin": 2.18,
+          "raw_margin": 1.93,
           "date": "Oct 17, 2026",
           "day": "Saturday",
           "time": "2:30 PM",
@@ -14930,7 +14937,7 @@
           "favorite": "Ninjas",
           "favorite_id": 69415,
           "margin": 3.0,
-          "raw_margin": -3.05,
+          "raw_margin": -2.8,
           "date": "Oct 18, 2026",
           "day": "Sunday",
           "time": "1:00 PM",
@@ -14947,7 +14954,7 @@
           "favorite": "Roma",
           "favorite_id": 69417,
           "margin": 2.0,
-          "raw_margin": -2.09,
+          "raw_margin": -2.12,
           "date": "Oct 18, 2026",
           "day": "Sunday",
           "time": "1:00 PM",
@@ -14964,7 +14971,7 @@
           "favorite": "Phoenix Rise",
           "favorite_id": 69614,
           "margin": 0.5,
-          "raw_margin": -0.46,
+          "raw_margin": -0.31,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "3:00 PM",
@@ -14981,7 +14988,7 @@
           "favorite": "Ninjas",
           "favorite_id": 69415,
           "margin": 4.5,
-          "raw_margin": 4.58,
+          "raw_margin": 4.37,
           "date": "Oct 24, 2026",
           "day": "Saturday",
           "time": "4:30 PM",
@@ -14998,7 +15005,7 @@
           "favorite": "Strikers",
           "favorite_id": 69420,
           "margin": 2.0,
-          "raw_margin": -1.78,
+          "raw_margin": -1.76,
           "date": "Oct 31, 2026",
           "day": "Saturday",
           "time": "10:30 AM",
@@ -25383,15 +25390,15 @@
     "team_id": 69315,
     "league_team_id": 64255,
     "division_id": 19780,
-    "sigma": 2.16,
+    "sigma": 2.15,
     "calibration": {
       "buckets": [
         {
           "low": 0.0,
           "high": 0.2,
           "predicted": 0.105,
-          "actual": 0.094,
-          "games": 149
+          "actual": 0.093,
+          "games": 150
         },
         {
           "low": 0.2,
@@ -25422,8 +25429,8 @@
           "games": 71
         }
       ],
-      "games": 605,
-      "brier": 0.172,
+      "games": 606,
+      "brier": 0.171,
       "baseline": 0.248,
       "skill": 0.308
     },
@@ -25532,7 +25539,7 @@
         "margins": [
           [
             -4,
-            0.0765
+            0.0764
           ],
           [
             -3,
@@ -25552,7 +25559,7 @@
           ],
           [
             1,
-            0.1482
+            0.1483
           ],
           [
             2,
@@ -25560,18 +25567,18 @@
           ],
           [
             3,
-            0.0533
+            0.0532
           ],
           [
             4,
-            0.0345
+            0.0344
           ]
         ],
         "swing": {
           "W": {
             "share": 0.3401,
             "first": 0.014,
-            "top3": 0.4463,
+            "top3": 0.4465,
             "mean_finish": 4.0
           },
           "D": {
@@ -25606,7 +25613,7 @@
         "margins": [
           [
             -4,
-            0.0612
+            0.0611
           ],
           [
             -3,
@@ -25626,7 +25633,7 @@
           ],
           [
             1,
-            0.1587
+            0.1588
           ],
           [
             2,
@@ -25651,7 +25658,7 @@
           "D": {
             "share": 0.1865,
             "first": 0.0003,
-            "top3": 0.1252,
+            "top3": 0.1255,
             "mean_finish": 4.88
           },
           "L": {
@@ -25667,13 +25674,13 @@
     "remaining_sos": 63.2,
     "sim": {
       "runs": 20000,
-      "sigma": 2.16,
+      "sigma": 2.15,
       "fixtures": 13,
       "teams": [
         {
           "id": 69335,
           "finish": [
-            0.59,
+            0.5901,
             0.29,
             0.0775,
             0.0278,
@@ -25684,7 +25691,7 @@
             0.0,
             0.0
           ],
-          "first": 0.59,
+          "first": 0.5901,
           "top3": 0.9576,
           "last": 0.0,
           "mean_points": 19.78,
@@ -25695,7 +25702,7 @@
           "finish": [
             0.3199,
             0.3819,
-            0.1958,
+            0.1959,
             0.0992,
             0.0032,
             0.0,
@@ -25713,10 +25720,10 @@
         {
           "id": 69330,
           "finish": [
-            0.0799,
-            0.2368,
-            0.4263,
-            0.1908,
+            0.0798,
+            0.2369,
+            0.4264,
+            0.1907,
             0.0466,
             0.0196,
             0.0,
@@ -25724,8 +25731,8 @@
             0.0,
             0.0
           ],
-          "first": 0.0799,
-          "top3": 0.7429,
+          "first": 0.0798,
+          "top3": 0.7431,
           "last": 0.0,
           "mean_points": 16.91,
           "mean_finish": 2.95
@@ -25735,8 +25742,8 @@
           "finish": [
             0.0055,
             0.05,
-            0.1433,
-            0.2339,
+            0.1431,
+            0.234,
             0.2437,
             0.3236,
             0.0001,
@@ -25745,7 +25752,7 @@
             0.0
           ],
           "first": 0.0055,
-          "top3": 0.1988,
+          "top3": 0.1986,
           "last": 0.0,
           "mean_points": 14.58,
           "mean_finish": 4.63
@@ -25756,16 +25763,16 @@
             0.0047,
             0.041,
             0.1323,
-            0.1785,
-            0.2475,
-            0.3955,
+            0.1786,
+            0.2474,
+            0.3956,
             0.0004,
             0.0,
             0.0,
             0.0
           ],
           "first": 0.0047,
-          "top3": 0.178,
+          "top3": 0.1781,
           "last": 0.0,
           "mean_points": 14.53,
           "mean_finish": 4.81
@@ -25800,8 +25807,8 @@
             0.0008,
             0.004,
             0.2459,
-            0.3213,
-            0.2583,
+            0.3212,
+            0.2584,
             0.1698
           ],
           "first": 0.0,
@@ -25821,12 +25828,12 @@
             0.0011,
             0.2646,
             0.357,
-            0.3295,
-            0.0477
+            0.3296,
+            0.0476
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.0477,
+          "last": 0.0476,
           "mean_points": 5.13,
           "mean_finish": 8.16
         },
@@ -25840,8 +25847,8 @@
             0.0,
             0.001,
             0.476,
-            0.2696,
-            0.216,
+            0.2697,
+            0.2159,
             0.0374
           ],
           "first": 0.0,
@@ -25861,13 +25868,13 @@
             0.0,
             0.0067,
             0.0519,
-            0.1963,
-            0.7451
+            0.1961,
+            0.7452
           ],
           "first": 0.0,
           "top3": 0.0,
-          "last": 0.7451,
-          "mean_points": 1.41,
+          "last": 0.7452,
+          "mean_points": 1.4,
           "mean_finish": 9.68
         }
       ],
@@ -25891,11 +25898,11 @@
           ],
           [
             19,
-            0.2581
+            0.258
           ],
           [
             20,
-            0.2352
+            0.2353
           ],
           [
             22,
@@ -25909,16 +25916,16 @@
           0.0047,
           0.041,
           0.1323,
-          0.1785,
-          0.2475,
-          0.3955,
+          0.1786,
+          0.2474,
+          0.3956,
           0.0004,
           0.0,
           0.0,
           0.0
         ],
         "first": 0.0047,
-        "top3": 0.178,
+        "top3": 0.1781,
         "last": 0.0,
         "mean_points": 14.53,
         "mean_finish": 4.81,
@@ -25942,11 +25949,11 @@
             ],
             [
               15,
-              0.3331
+              0.333
             ],
             [
               16,
-              0.1313
+              0.1314
             ],
             [
               18,
