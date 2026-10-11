@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-11T07:46:34+00:00",
+  "generated_at": "2026-10-11T16:45:21+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -6028,23 +6028,6 @@
       ],
       "upcoming": [
         {
-          "home": "Arsenal",
-          "away": "Inter Miami",
-          "home_id": 69619,
-          "away_id": 69318,
-          "favorite": "Inter Miami",
-          "favorite_id": 69318,
-          "margin": 0.5,
-          "raw_margin": -0.51,
-          "date": "",
-          "day": "",
-          "time": "",
-          "round": "Round 6",
-          "field": "",
-          "address": "",
-          "moved": false
-        },
-        {
           "home": "Inter Miami",
           "away": "Crystal Palace",
           "home_id": 69318,
@@ -6057,6 +6040,23 @@
           "day": "Saturday",
           "time": "9:00 AM",
           "round": "Round 7",
+          "field": "WRAL Soccer Park 7",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": false
+        },
+        {
+          "home": "Arsenal",
+          "away": "Inter Miami",
+          "home_id": 69619,
+          "away_id": 69318,
+          "favorite": "Inter Miami",
+          "favorite_id": 69318,
+          "margin": 0.5,
+          "raw_margin": -0.51,
+          "date": "Oct 17, 2026",
+          "day": "Saturday",
+          "time": "2:00 PM",
+          "round": "Round 6",
           "field": "WRAL Soccer Park 7",
           "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
           "moved": false
