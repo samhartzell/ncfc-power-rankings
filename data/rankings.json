@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-13T08:21:12+00:00",
+  "generated_at": "2026-10-13T18:29:13+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -8477,8 +8477,8 @@
           "day": "Saturday",
           "time": "2:00 PM",
           "round": "Round 8",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "field": "Mills Park 2 B",
+          "address": "441 Mills Park Dr, Cary, NC 27519, USA",
           "moved": true
         },
         {
@@ -9489,8 +9489,8 @@
           "day": "Saturday",
           "time": "12:45 PM",
           "round": "Round 5",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "field": "Mills Park 2 B",
+          "address": "441 Mills Park Dr, Cary, NC 27519, USA",
           "moved": true
         },
         {
@@ -14261,7 +14261,7 @@
       "games_played": 20,
       "games_total": 28,
       "rounds_complete": 7,
-      "games_moved": 2,
+      "games_moved": 1,
       "teams": [
         {
           "id": 69415,
@@ -15015,9 +15015,9 @@
           "day": "Sunday",
           "time": "1:00 PM",
           "round": "Round 6",
-          "field": "Cresset Christian Academy Soccer Field 1",
-          "address": "3707 Garrett Rd, Durham, NC 27707, USA",
-          "moved": true
+          "field": "Wake Competition Center 2",
+          "address": "121 Competition Ctr Dr, Morrisville, NC 27560, USA",
+          "moved": false
         },
         {
           "home": "Falcons",
@@ -23629,7 +23629,7 @@
       "games_played": 22,
       "games_total": 36,
       "rounds_complete": 6,
-      "games_moved": 2,
+      "games_moved": 3,
       "teams": [
         {
           "id": 69470,
@@ -24592,23 +24592,6 @@
           "moved": false
         },
         {
-          "home": "WF United Red",
-          "away": "Royals",
-          "home_id": 69481,
-          "away_id": 69470,
-          "favorite": "Royals",
-          "favorite_id": 69470,
-          "margin": 1.5,
-          "raw_margin": -1.71,
-          "date": "Oct 31, 2026",
-          "day": "Saturday",
-          "time": "9:00 AM",
-          "round": "Round 6",
-          "field": "Smith Creek Park 3",
-          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
-          "moved": false
-        },
-        {
           "home": "Fusion",
           "away": "Finley United",
           "home_id": 69468,
@@ -24634,6 +24617,23 @@
           "favorite_id": 69471,
           "margin": 0.0,
           "raw_margin": 0.03,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "11:00 AM",
+          "round": "Round 6",
+          "field": "Smith Creek Park 3",
+          "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
+          "moved": true
+        },
+        {
+          "home": "WF United Red",
+          "away": "Royals",
+          "home_id": 69481,
+          "away_id": 69470,
+          "favorite": "Royals",
+          "favorite_id": 69470,
+          "margin": 1.5,
+          "raw_margin": -1.71,
           "date": "Nov  1, 2026",
           "day": "Sunday",
           "time": "5:00 PM",
