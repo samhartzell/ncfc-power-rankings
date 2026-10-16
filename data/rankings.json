@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-16T06:17:52+00:00",
+  "generated_at": "2026-10-16T15:30:52+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -10763,7 +10763,7 @@
       "games_played": 22,
       "games_total": 32,
       "rounds_complete": 6,
-      "games_moved": 1,
+      "games_moved": 2,
       "teams": [
         {
           "id": 69637,
@@ -11541,9 +11541,9 @@
           "day": "Sunday",
           "time": "12:00 PM",
           "round": "Round 7",
-          "field": "Kiwanis Park 2",
-          "address": "2525 Noble Rd, Raleigh, NC 27608, USA",
-          "moved": false
+          "field": "WRAL Soccer Park 2",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
         },
         {
           "home": "Norwich",
@@ -18713,7 +18713,7 @@
       "games_played": 24,
       "games_total": 32,
       "rounds_complete": 6,
-      "games_moved": 0,
+      "games_moved": 1,
       "teams": [
         {
           "id": 69339,
@@ -19539,9 +19539,9 @@
           "day": "Sunday",
           "time": "1:15 PM",
           "round": "Round 7",
-          "field": "Kiwanis Park 2",
-          "address": "2525 Noble Rd, Raleigh, NC 27608, USA",
-          "moved": false
+          "field": "WRAL Soccer Park 2",
+          "address": "7700 Perry Creek Rd, Raleigh, NC 27616, USA",
+          "moved": true
         },
         {
           "home": "West Ham",
