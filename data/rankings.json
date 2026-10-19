@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-19T06:43:08+00:00",
+  "generated_at": "2026-10-19T17:44:50+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -10670,6 +10670,23 @@
           "moved": false
         },
         {
+          "home": "Luton Town",
+          "away": "Aston Villa",
+          "home_id": 69370,
+          "away_id": 69365,
+          "favorite": "Luton Town",
+          "favorite_id": 69370,
+          "margin": 1.5,
+          "raw_margin": 1.44,
+          "date": "Oct 25, 2026",
+          "day": "Sunday",
+          "time": "3:30 PM",
+          "round": "Round 8",
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
           "home": "Como",
           "away": "Rowdies",
           "home_id": 69366,
@@ -10687,23 +10704,6 @@
           "moved": false
         },
         {
-          "home": "Luton Town",
-          "away": "Aston Villa",
-          "home_id": 69370,
-          "away_id": 69365,
-          "favorite": "Luton Town",
-          "favorite_id": 69370,
-          "margin": 1.5,
-          "raw_margin": 1.44,
-          "date": "Oct 25, 2026",
-          "day": "Sunday",
-          "time": "4:45 PM",
-          "round": "Round 8",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Monaco",
           "away": "Watford",
           "home_id": 69359,
@@ -10714,7 +10714,7 @@
           "raw_margin": 2.16,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "6:00 PM",
+          "time": "4:45 PM",
           "round": "Round 8",
           "field": "Davis Drive Park 2",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
@@ -11614,6 +11614,23 @@
           "moved": false
         },
         {
+          "home": "Wrexham",
+          "away": "Red Dragons",
+          "home_id": 69360,
+          "away_id": 69637,
+          "favorite": "Red Dragons",
+          "favorite_id": 69637,
+          "margin": 2.5,
+          "raw_margin": -2.37,
+          "date": "Oct 25, 2026",
+          "day": "Sunday",
+          "time": "2:15 PM",
+          "round": "Round 8",
+          "field": "Davis Drive Park 2",
+          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "moved": false
+        },
+        {
           "home": "Stoke City",
           "away": "Valencia",
           "home_id": 69371,
@@ -11628,23 +11645,6 @@
           "round": "Round 8",
           "field": "Wake Stone Athletic Park 2 B",
           "address": "1209 Old Crews Rd, Knightdale, NC 27545, USA",
-          "moved": false
-        },
-        {
-          "home": "Wrexham",
-          "away": "Red Dragons",
-          "home_id": 69360,
-          "away_id": 69637,
-          "favorite": "Red Dragons",
-          "favorite_id": 69637,
-          "margin": 2.5,
-          "raw_margin": -2.37,
-          "date": "Oct 25, 2026",
-          "day": "Sunday",
-          "time": "3:30 PM",
-          "round": "Round 8",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
           "moved": false
         },
         {
@@ -17991,8 +17991,8 @@
           "day": "Sunday",
           "time": "1:00 PM",
           "round": "Round 8",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
+          "field": "Reedy Creek MS MP",
+          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
           "moved": false
         }
       ]
@@ -20331,7 +20331,7 @@
           "raw_margin": 2.08,
           "date": "Oct 25, 2026",
           "day": "Sunday",
-          "time": "2:15 PM",
+          "time": "1:00 PM",
           "round": "Round 8",
           "field": "Davis Drive Park 2",
           "address": "1610 Davis Dr, Apex, NC 27523, USA",
