@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-19T17:44:50+00:00",
+  "generated_at": "2026-10-20T06:30:06+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -8575,7 +8575,7 @@
       "games_played": 23,
       "games_total": 36,
       "rounds_complete": 6,
-      "games_moved": 3,
+      "games_moved": 4,
       "teams": [
         {
           "id": 69358,
@@ -9375,23 +9375,6 @@
       ],
       "upcoming": [
         {
-          "home": "Southampton",
-          "away": "Finley Warriors",
-          "home_id": 69372,
-          "away_id": 69632,
-          "favorite": "Finley Warriors",
-          "favorite_id": 69632,
-          "margin": 2.0,
-          "raw_margin": -2.12,
-          "date": "Oct 17, 2026",
-          "day": "Saturday",
-          "time": "9:00 AM",
-          "round": "Round 7",
-          "field": "Davis Drive Park 2",
-          "address": "1610 Davis Dr, Apex, NC 27523, USA",
-          "moved": false
-        },
-        {
           "home": "Strikers",
           "away": "Spurs",
           "home_id": 69369,
@@ -9594,6 +9577,23 @@
           "field": "Smith Creek Park 2 A",
           "address": "690 Heritage Lake Rd, Wake Forest, NC 27587, USA",
           "moved": false
+        },
+        {
+          "home": "Southampton",
+          "away": "Finley Warriors",
+          "home_id": 69372,
+          "away_id": 69632,
+          "favorite": "Finley Warriors",
+          "favorite_id": 69632,
+          "margin": 2.0,
+          "raw_margin": -2.12,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "10:15 AM",
+          "round": "Round 7",
+          "field": "Reedy Creek MS MP",
+          "address": "930 Reedy Creek Rd, Cary, NC 27513, USA",
+          "moved": true
         }
       ]
     },
@@ -24651,7 +24651,7 @@
       "games_played": 20,
       "games_total": 28,
       "rounds_complete": 6,
-      "games_moved": 2,
+      "games_moved": 3,
       "teams": [
         {
           "id": 69422,
@@ -25342,23 +25342,6 @@
           "moved": false
         },
         {
-          "home": "Predators",
-          "away": "Thunder",
-          "home_id": 69518,
-          "away_id": 69425,
-          "favorite": "Thunder",
-          "favorite_id": 69425,
-          "margin": 0.0,
-          "raw_margin": -0.08,
-          "date": "Oct 17, 2026",
-          "day": "Saturday",
-          "time": "12:00 PM",
-          "round": "Round 7",
-          "field": "South Garner Park 1",
-          "address": "1210 Poole Dr, Garner, NC 27529, USA",
-          "moved": false
-        },
-        {
           "home": "City",
           "away": "Railhawks",
           "home_id": 69645,
@@ -25459,6 +25442,23 @@
           "field": "Davis Drive MS MP",
           "address": "2101 Davis Dr, Cary, NC 27519, USA",
           "moved": false
+        },
+        {
+          "home": "Predators",
+          "away": "Thunder",
+          "home_id": 69518,
+          "away_id": 69425,
+          "favorite": "Thunder",
+          "favorite_id": 69425,
+          "margin": 0.0,
+          "raw_margin": -0.08,
+          "date": "Oct 31, 2026",
+          "day": "Saturday",
+          "time": "2:15 PM",
+          "round": "Round 7",
+          "field": "South Garner Park 1",
+          "address": "1210 Poole Dr, Garner, NC 27529, USA",
+          "moved": true
         }
       ]
     }
