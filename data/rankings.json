@@ -1,6 +1,6 @@
 {
   "league": "Challenge - Fall 2026",
-  "generated_at": "2026-10-29T07:37:34+00:00",
+  "generated_at": "2026-10-29T17:31:20+00:00",
   "source_url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64255/team_view.html",
   "featured_division": 19780,
   "featured_team": 64255,
@@ -11472,141 +11472,18 @@
       "games_moved": 0,
       "teams": [
         {
-          "id": 69355,
-          "league_team_id": 64295,
-          "name": "U12 (14) NCFCY Brentford",
-          "short": "Brentford",
-          "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64295/team_view.html",
-          "power_rank": 1,
-          "power_score": 72.7,
-          "rating": 1.36,
-          "colley": 0.722,
-          "sos": 46.3,
-          "sos_rank": 7,
-          "table_rank": 1,
-          "movement": 0,
-          "record": {
-            "gp": 8,
-            "w": 6,
-            "l": 1,
-            "t": 1,
-            "gf": 20,
-            "ga": 6,
-            "gd": 14,
-            "pts": 19
-          },
-          "resume": [
-            {
-              "opponent": "Norwich",
-              "opponent_id": 69362,
-              "opponent_rank": 5,
-              "quality": "middle",
-              "home": false,
-              "gf": 3,
-              "ga": 0,
-              "outcome": "W",
-              "date": "Aug 23, 2026",
-              "round": "Round 1"
-            },
-            {
-              "opponent": "WF United Silver",
-              "opponent_id": 69351,
-              "opponent_rank": 8,
-              "quality": "weak",
-              "home": false,
-              "gf": 4,
-              "ga": 1,
-              "outcome": "W",
-              "date": "Aug 30, 2026",
-              "round": "Round 2"
-            },
-            {
-              "opponent": "Red Dragons",
-              "opponent_id": 69637,
-              "opponent_rank": 2,
-              "quality": "strong",
-              "home": true,
-              "gf": 2,
-              "ga": 2,
-              "outcome": "T",
-              "date": "Sep 13, 2026",
-              "round": "Round 3"
-            },
-            {
-              "opponent": "Wrexham",
-              "opponent_id": 69360,
-              "opponent_rank": 7,
-              "quality": "weak",
-              "home": false,
-              "gf": 4,
-              "ga": 1,
-              "outcome": "W",
-              "date": "Sep 20, 2026",
-              "round": "Round 4"
-            },
-            {
-              "opponent": "Fulham",
-              "opponent_id": 69367,
-              "opponent_rank": 4,
-              "quality": "middle",
-              "home": true,
-              "gf": 2,
-              "ga": 1,
-              "outcome": "W",
-              "date": "Sep 27, 2026",
-              "round": "Round 5"
-            },
-            {
-              "opponent": "Stoke City",
-              "opponent_id": 69371,
-              "opponent_rank": 3,
-              "quality": "middle",
-              "home": true,
-              "gf": 0,
-              "ga": 1,
-              "outcome": "L",
-              "date": "Oct  4, 2026",
-              "round": "Round 6"
-            },
-            {
-              "opponent": "Valencia",
-              "opponent_id": 69361,
-              "opponent_rank": 6,
-              "quality": "weak",
-              "home": false,
-              "gf": 4,
-              "ga": 0,
-              "outcome": "W",
-              "date": "Oct 18, 2026",
-              "round": "Round 7"
-            },
-            {
-              "opponent": "Norwich",
-              "opponent_id": 69362,
-              "opponent_rank": 5,
-              "quality": "middle",
-              "home": true,
-              "gf": 1,
-              "ga": 0,
-              "outcome": "W",
-              "date": "Oct 25, 2026",
-              "round": "Round 8"
-            }
-          ]
-        },
-        {
           "id": 69637,
           "league_team_id": 64366,
           "name": "U12 (14) TYSC Red Dragons",
           "short": "Red Dragons",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64366/team_view.html",
-          "power_rank": 2,
-          "power_score": 68.0,
-          "rating": 1.12,
-          "colley": 0.666,
-          "sos": 45.8,
+          "power_rank": 1,
+          "power_score": 69.3,
+          "rating": 1.11,
+          "colley": 0.665,
+          "sos": 45.4,
           "sos_rank": 8,
-          "table_rank": 2,
+          "table_rank": 1,
           "movement": 0,
           "record": {
             "gp": 8,
@@ -11646,7 +11523,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": false,
               "gf": 2,
@@ -11718,17 +11595,140 @@
           ]
         },
         {
+          "id": 69355,
+          "league_team_id": 64295,
+          "name": "U12 (14) NCFCY Brentford",
+          "short": "Brentford",
+          "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64295/team_view.html",
+          "power_rank": 2,
+          "power_score": 67.9,
+          "rating": 1.09,
+          "colley": 0.639,
+          "sos": 47.8,
+          "sos_rank": 5,
+          "table_rank": 2,
+          "movement": 0,
+          "record": {
+            "gp": 8,
+            "w": 5,
+            "l": 2,
+            "t": 1,
+            "gf": 19,
+            "ga": 8,
+            "gd": 11,
+            "pts": 16
+          },
+          "resume": [
+            {
+              "opponent": "Norwich",
+              "opponent_id": 69362,
+              "opponent_rank": 5,
+              "quality": "middle",
+              "home": false,
+              "gf": 3,
+              "ga": 1,
+              "outcome": "W",
+              "date": "Aug 23, 2026",
+              "round": "Round 1"
+            },
+            {
+              "opponent": "WF United Silver",
+              "opponent_id": 69351,
+              "opponent_rank": 8,
+              "quality": "weak",
+              "home": false,
+              "gf": 4,
+              "ga": 1,
+              "outcome": "W",
+              "date": "Aug 30, 2026",
+              "round": "Round 2"
+            },
+            {
+              "opponent": "Red Dragons",
+              "opponent_id": 69637,
+              "opponent_rank": 1,
+              "quality": "strong",
+              "home": true,
+              "gf": 2,
+              "ga": 2,
+              "outcome": "T",
+              "date": "Sep 13, 2026",
+              "round": "Round 3"
+            },
+            {
+              "opponent": "Wrexham",
+              "opponent_id": 69360,
+              "opponent_rank": 7,
+              "quality": "weak",
+              "home": false,
+              "gf": 4,
+              "ga": 1,
+              "outcome": "W",
+              "date": "Sep 20, 2026",
+              "round": "Round 4"
+            },
+            {
+              "opponent": "Fulham",
+              "opponent_id": 69367,
+              "opponent_rank": 4,
+              "quality": "middle",
+              "home": true,
+              "gf": 2,
+              "ga": 1,
+              "outcome": "W",
+              "date": "Sep 27, 2026",
+              "round": "Round 5"
+            },
+            {
+              "opponent": "Stoke City",
+              "opponent_id": 69371,
+              "opponent_rank": 3,
+              "quality": "middle",
+              "home": true,
+              "gf": 0,
+              "ga": 1,
+              "outcome": "L",
+              "date": "Oct  4, 2026",
+              "round": "Round 6"
+            },
+            {
+              "opponent": "Valencia",
+              "opponent_id": 69361,
+              "opponent_rank": 6,
+              "quality": "weak",
+              "home": false,
+              "gf": 4,
+              "ga": 0,
+              "outcome": "W",
+              "date": "Oct 18, 2026",
+              "round": "Round 7"
+            },
+            {
+              "opponent": "Norwich",
+              "opponent_id": 69362,
+              "opponent_rank": 5,
+              "quality": "middle",
+              "home": true,
+              "gf": 0,
+              "ga": 1,
+              "outcome": "L",
+              "date": "Oct 25, 2026",
+              "round": "Round 8"
+            }
+          ]
+        },
+        {
           "id": 69371,
           "league_team_id": 64311,
           "name": "U12 (14) NCFCY Stoke City",
           "short": "Stoke City",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64311/team_view.html",
           "power_rank": 3,
-          "power_score": 62.2,
+          "power_score": 63.2,
           "rating": 0.71,
           "colley": 0.625,
-          "sos": 46.7,
-          "sos_rank": 6,
+          "sos": 46.4,
+          "sos_rank": 7,
           "table_rank": 3,
           "movement": 0,
           "record": {
@@ -11805,7 +11805,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": false,
               "gf": 1,
@@ -11817,7 +11817,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": true,
               "gf": 3,
@@ -11847,11 +11847,11 @@
           "short": "Fulham",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64307/team_view.html",
           "power_rank": 4,
-          "power_score": 51.2,
+          "power_score": 51.3,
           "rating": -0.0,
           "colley": 0.529,
-          "sos": 47.7,
-          "sos_rank": 5,
+          "sos": 47.5,
+          "sos_rank": 6,
           "table_rank": 4,
           "movement": 0,
           "record": {
@@ -11880,7 +11880,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": false,
               "gf": 2,
@@ -11916,7 +11916,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": false,
               "gf": 1,
@@ -11970,31 +11970,31 @@
           "short": "Norwich",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64302/team_view.html",
           "power_rank": 5,
-          "power_score": 43.3,
-          "rating": -0.42,
-          "colley": 0.44,
-          "sos": 56.4,
-          "sos_rank": 1,
+          "power_score": 50.2,
+          "rating": -0.12,
+          "colley": 0.533,
+          "sos": 55.1,
+          "sos_rank": 2,
           "table_rank": 5,
           "movement": 0,
           "record": {
             "gp": 7,
-            "w": 2,
-            "l": 4,
+            "w": 3,
+            "l": 3,
             "t": 1,
-            "gf": 10,
-            "ga": 17,
-            "gd": -6,
-            "pts": 7
+            "gf": 12,
+            "ga": 16,
+            "gd": -3,
+            "pts": 10
           },
           "resume": [
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": true,
-              "gf": 0,
+              "gf": 1,
               "ga": 3,
               "outcome": "L",
               "date": "Aug 23, 2026",
@@ -12039,7 +12039,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": true,
               "gf": 1,
@@ -12063,12 +12063,12 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": false,
-              "gf": 0,
-              "ga": 1,
-              "outcome": "L",
+              "gf": 1,
+              "ga": 0,
+              "outcome": "W",
               "date": "Oct 25, 2026",
               "round": "Round 8"
             }
@@ -12081,10 +12081,10 @@
           "short": "Valencia",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64301/team_view.html",
           "power_rank": 6,
-          "power_score": 35.5,
+          "power_score": 34.4,
           "rating": -0.93,
           "colley": 0.375,
-          "sos": 53.3,
+          "sos": 53.6,
           "sos_rank": 3,
           "table_rank": 6,
           "movement": 0,
@@ -12150,7 +12150,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": false,
               "gf": 0,
@@ -12174,7 +12174,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": true,
               "gf": 0,
@@ -12204,11 +12204,11 @@
           "short": "Wrexham",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64300/team_view.html",
           "power_rank": 7,
-          "power_score": 34.4,
-          "rating": -0.83,
-          "colley": 0.323,
-          "sos": 55.8,
-          "sos_rank": 2,
+          "power_score": 32.4,
+          "rating": -0.86,
+          "colley": 0.313,
+          "sos": 55.3,
+          "sos_rank": 1,
           "table_rank": 8,
           "movement": 1,
           "record": {
@@ -12225,7 +12225,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": false,
               "gf": 1,
@@ -12261,7 +12261,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": true,
               "gf": 1,
@@ -12297,7 +12297,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": true,
               "gf": 2,
@@ -12315,10 +12315,10 @@
           "short": "WF United Silver",
           "url": "https://playmetricssports.com/g/leagues/1321-2470-07598d11/teams/64291/team_view.html",
           "power_rank": 8,
-          "power_score": 32.6,
+          "power_score": 31.3,
           "rating": -1.0,
           "colley": 0.321,
-          "sos": 52.3,
+          "sos": 52.5,
           "sos_rank": 4,
           "table_rank": 7,
           "movement": -1,
@@ -12348,7 +12348,7 @@
             {
               "opponent": "Brentford",
               "opponent_id": 69355,
-              "opponent_rank": 1,
+              "opponent_rank": 2,
               "quality": "strong",
               "home": true,
               "gf": 1,
@@ -12408,7 +12408,7 @@
             {
               "opponent": "Red Dragons",
               "opponent_id": 69637,
-              "opponent_rank": 2,
+              "opponent_rank": 1,
               "quality": "strong",
               "home": false,
               "gf": 3,
@@ -12441,7 +12441,7 @@
           "favorite": "Norwich",
           "favorite_id": 69362,
           "margin": 0.5,
-          "raw_margin": -0.41,
+          "raw_margin": -0.75,
           "date": "Oct 31, 2026",
           "day": "Saturday",
           "time": "11:30 AM",
@@ -27068,49 +27068,49 @@
     "team_id": 69315,
     "league_team_id": 64255,
     "division_id": 19780,
-    "sigma": 2.02,
+    "sigma": 2.03,
     "calibration": {
       "buckets": [
         {
           "low": 0.0,
           "high": 0.2,
-          "predicted": 0.101,
-          "actual": 0.097,
-          "games": 236
+          "predicted": 0.1,
+          "actual": 0.095,
+          "games": 232
         },
         {
           "low": 0.2,
           "high": 0.4,
           "predicted": 0.289,
-          "actual": 0.366,
-          "games": 186
+          "actual": 0.365,
+          "games": 192
         },
         {
           "low": 0.4,
           "high": 0.6,
           "predicted": 0.499,
-          "actual": 0.514,
-          "games": 173
+          "actual": 0.515,
+          "games": 171
         },
         {
           "low": 0.6,
           "high": 0.8,
-          "predicted": 0.705,
-          "actual": 0.761,
-          "games": 142
+          "predicted": 0.703,
+          "actual": 0.752,
+          "games": 141
         },
         {
           "low": 0.8,
           "high": 1.0,
-          "predicted": 0.888,
-          "actual": 0.891,
-          "games": 110
+          "predicted": 0.887,
+          "actual": 0.892,
+          "games": 111
         }
       ],
       "games": 847,
-      "brier": 0.166,
+      "brier": 0.167,
       "baseline": 0.248,
-      "skill": 0.331
+      "skill": 0.328
     },
     "played": [
       {
@@ -27231,14 +27231,14 @@
     "remaining_sos": null,
     "sim": {
       "runs": 20000,
-      "sigma": 2.02,
+      "sigma": 2.03,
       "fixtures": 2,
       "teams": [
         {
           "id": 69335,
           "finish": [
-            0.9676,
-            0.0324,
+            0.9675,
+            0.0325,
             0.0,
             0.0,
             0.0,
@@ -27248,7 +27248,7 @@
             0.0,
             0.0
           ],
-          "first": 0.9676,
+          "first": 0.9675,
           "top3": 1.0,
           "last": 0.0,
           "mean_points": 21.79,
@@ -27257,8 +27257,8 @@
         {
           "id": 69330,
           "finish": [
-            0.0324,
-            0.9676,
+            0.0325,
+            0.9675,
             0.0,
             0.0,
             0.0,
@@ -27268,7 +27268,7 @@
             0.0,
             0.0
           ],
-          "first": 0.0324,
+          "first": 0.0325,
           "top3": 1.0,
           "last": 0.0,
           "mean_points": 19.0,
@@ -27384,8 +27384,8 @@
             0.0,
             0.0,
             0.5364,
-            0.448,
-            0.0156,
+            0.4479,
+            0.0157,
             0.0
           ],
           "first": 0.0,
@@ -27443,15 +27443,15 @@
         "distribution": [
           [
             19,
-            0.0324
+            0.0325
           ],
           [
             20,
-            0.0546
+            0.0548
           ],
           [
             22,
-            0.913
+            0.9127
           ]
         ]
       },
